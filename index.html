@@ -188,6 +188,8 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 
 .log-notes-wrap { padding: 0 14px 12px; }
 
+.set-row { border-top: 1px solid var(--border); padding-bottom: 8px; }
+
 .log-section-label {
   font-family: var(--mono); font-size: 9px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
@@ -389,94 +391,94 @@ const WEEKS = [
 const DAYS = [
   { day:"Monday", label:"Upper A", type:"upper", sub:"Pull dominant",
     exercises:[
-      {name:"Weighted pull-ups",         sets:"4", reps:"4–6",      note:"Primary. Start ~+45 lbs. Primary strength movement.", flags:""},
-      {name:"Chest-supported DB row",    sets:"3", reps:"10–12",    note:"Incline bench, chest down, row to hip. Horizontal pull. Low biceps risk.", flags:"n"},
-      {name:"Dips",                      sets:"3", reps:"6–8",      note:"Moderate load — secondary push day.", flags:""},
-      {name:"Archer pull-up negatives",  sets:"2", reps:"3–5/side", note:"Shift weight to one side, slow negative 3–5 sec. Low biceps risk.", flags:"n"},
-      {name:"Dead hangs",                sets:"2", reps:"30–45 sec",note:"Passive shoulder stretch. Low biceps risk.", flags:""},
+      {name:"Weighted pull-ups",         sets:"4", reps:"4–6",      note:"Wk2: 35×6, 35×6, 40×6, 40×6. Build within session.", flags:"", timed:false},
+      {name:"Chest-supported DB row",    sets:"3", reps:"10–12",    note:"Wk2: 75 lbs. Incline bench, chest down, row to hip.", flags:"n", timed:false},
+      {name:"Dips",                      sets:"3", reps:"6–8",      note:"Wk2: 35/45/45 lbs × 8. Progressive sets.", flags:"", timed:false},
+      {name:"Archer pull-up negatives",  sets:"2", reps:"4/side",   note:"Wk2: 4 reps/side. Slow negative 3–5 sec.", flags:"n", timed:false},
+      {name:"Dead hangs",                sets:"2", reps:"40 sec",   note:"Passive shoulder stretch. Log seconds in Reps field.", flags:"", timed:true},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",     sets:"3", reps:"30–45 sec",note:"Supinated grip, moderate load. Discomfort ≤4/10. Track pain.", flags:"t"},
-      {name:"Supination/pronation circles",sets:"2", reps:"10 each way",note:"Slow forearm rotation. Distal biceps tissue.", flags:""},
-      {name:"Lat hang stretch",            sets:"2", reps:"30 sec",  note:"Let shoulders fully elevate. Decompresses proximal biceps.", flags:""},
-      {name:"Band pull-apart",             sets:"2", reps:"15",      note:"Light band. Posterior shoulder. Counteracts internal rotation.", flags:""},
-      {name:"Thoracic extension (foam)",   sets:"1", reps:"60 sec",  note:"Foam roller mid-back, arms overhead. Non-negotiable.", flags:""},
+      {name:"Biceps tendon isometric",     sets:"3", reps:"35 sec", note:"Wk2: 17 lbs, 35 sec. Supinated grip. Pain ≤4/10.", flags:"t", timed:true},
+      {name:"Supination/pronation circles",sets:"2", reps:"10 each way",note:"Slow forearm rotation. Distal biceps tissue.", flags:"", timed:false},
+      {name:"Lat hang stretch",            sets:"2", reps:"30 sec", note:"Let shoulders fully elevate. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Band pull-apart",             sets:"2", reps:"15",     note:"Light band. Posterior shoulder. Counteracts internal rotation.", flags:"", timed:false},
+      {name:"Thoracic extension (foam)",   sets:"1", reps:"60 sec", note:"Foam roller mid-back, arms overhead. Non-negotiable. Log seconds in Reps field.", flags:"", timed:true},
     ]
   },
   { day:"Tuesday", label:"Lower A", type:"lower", sub:"Zercher + hinge",
     exercises:[
-      {name:"Zercher squat",             sets:"4", reps:"4–6",      note:"⚠ START CONSERVATIVELY. Hard 6 not a max. Bar loads biceps tendon directly.", flags:"w"},
-      {name:"Stiff-leg deadlift",        sets:"4", reps:"5–6",      note:"Load seriously. Slow eccentric. Primary DL carrier.", flags:""},
-      {name:"Bulgarian split squat",     sets:"3", reps:"8–10/side",note:"Rear foot elevated. Add DBs to 90 lbs when BW easy.", flags:""},
-      {name:"Bike — conditioning",       sets:"1", reps:"20–30 min",note:"Wks 1–2: 3×10 min RPE 5–6. Conversational pace.", flags:""},
+      {name:"Zercher squat",             sets:"4", reps:"4–6",      note:"⚠ Wk2: 185×6, 200×6, 210×6, 220×6. Monitor pain every set.", flags:"w", timed:false},
+      {name:"Stiff-leg deadlift",        sets:"4", reps:"5–6",      note:"Wk2: 275×6, 285×6, 300×6, 310×5. Slow eccentric.", flags:"", timed:false},
+      {name:"Bulgarian split squat",     sets:"3", reps:"8–10/side",note:"Wk2: 55 lbs. Rear foot elevated.", flags:"", timed:false},
+      {name:"Bike — conditioning",       sets:"3", reps:"10 min",   note:"Wks 1–2: 3×10 min RPE 5–6, 3 min easy between.", flags:"", timed:true},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Half-kneeling, posterior pelvic tilt. Hip flexor length for hinging.", flags:""},
-      {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Knee-over-toe. Zercher depth depends on ankle dorsiflexion.", flags:""},
-      {name:"Adductor rockback",         sets:"2", reps:"10/side",  note:"Quadruped wide stance, rock back. Hip internal rotation.", flags:""},
-      {name:"90/90 hip stretch",         sets:"2", reps:"45 sec/side",note:"Both hips at 90°. Comprehensive hip capsule.", flags:""},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8 slow",   note:"4-sec eccentric only, use other hand to reset. Distal tendon. Pain ≤4/10.", flags:"t"},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Half-kneeling, posterior pelvic tilt. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Knee-over-toe. Zercher depth depends on ankle dorsiflexion.", flags:"", timed:false},
+      {name:"Adductor rockback",         sets:"2", reps:"10/side",  note:"Quadruped wide stance, rock back. Hip internal rotation.", flags:"", timed:false},
+      {name:"90/90 hip stretch",         sets:"2", reps:"45 sec/side",note:"Both hips at 90°. Comprehensive hip capsule. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk2: 20 lbs. 4-sec eccentric only, use other hand to reset. Pain ≤4/10.", flags:"t", timed:false},
     ]
   },
   { day:"Wednesday", label:"Upper B", type:"upper", sub:"Push dominant",
     exercises:[
-      {name:"Weighted dips",             sets:"5", reps:"4–6",      note:"Primary push. At +70×10 est. Start ~+55–60 lbs.", flags:""},
-      {name:"Pike push-ups",             sets:"3", reps:"8–10",     note:"Inverted V, lower head to floor. Step toward HSPU.", flags:"n"},
-      {name:"Pull-ups (BW/light)",       sets:"3", reps:"8–12",     note:"Volume day. Vary grip: supinate/pronate/neutral across sets.", flags:""},
-      {name:"Parallel bar support hold", sets:"3", reps:"15–30 sec",note:"Arms locked at top of dip. Start 15 sec. Monitor elbows.", flags:"w"},
-      {name:"Hollow body hold",          sets:"3", reps:"20–30 sec",note:"Lower back flat, arms overhead, legs 6 in. Foundation for all skills.", flags:"n"},
+      {name:"Weighted dips",             sets:"5", reps:"4–6",      note:"Wk2: 60 lbs across all 5 sets.", flags:"", timed:false},
+      {name:"Pike push-ups",             sets:"3", reps:"8–10",     note:"Inverted V — walk feet in closer to increase shoulder angle. Head drops toward floor.", flags:"n", timed:false},
+      {name:"Pull-ups (BW/light)",       sets:"3", reps:"8–12",     note:"Wk2: BW. Volume day. Vary grip across sets.", flags:"", timed:false},
+      {name:"Parallel bar support hold", sets:"3", reps:"20–30 sec",note:"Wk2: hold 30 sec. Arms locked at top of dip. Log seconds in Reps field.", flags:"w", timed:true},
+      {name:"Hollow body hold",          sets:"3", reps:"25 sec",   note:"Wk2: 25 sec (backed off from RPE 8). Lower back flat, legs 6 in. Log seconds in Reps field.", flags:"n", timed:true},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",   sets:"3", reps:"30–45 sec",note:"Session 2 this week. Track pain 0–10. Should match or improve vs Monday.", flags:"t"},
-      {name:"Doorway chest stretch",     sets:"2", reps:"30 sec",   note:"Arms at 90°, lean through. Anterior shoulder and pec minor.", flags:""},
-      {name:"Thoracic rotation (seated)",sets:"2", reps:"10/side",  note:"Hands behind head, rotate mid-back only. T-spine rotation.", flags:""},
-      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Arm extended, palm up, downward pressure. Distal biceps attachment area.", flags:"t"},
-      {name:"Shoulder CARs",             sets:"2", reps:"5/side",   note:"Full-range shoulder circles under muscular control. Joint health.", flags:""},
+      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk2: 17 lbs, 35 sec. Session 2 this week. Track vs Monday.", flags:"t", timed:true},
+      {name:"Doorway chest stretch",     sets:"2", reps:"30 sec",   note:"Arms at 90°, lean through. Anterior shoulder and pec minor. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Thoracic rotation (seated)",sets:"2", reps:"10/side",  note:"Hands behind head, rotate mid-back only. T-spine rotation.", flags:"", timed:false},
+      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Arm extended, palm up, downward pressure. Log seconds in Reps field.", flags:"t", timed:true},
+      {name:"Shoulder CARs",             sets:"2", reps:"5/side",   note:"Full-range shoulder circles under muscular control. Joint health.", flags:"", timed:false},
     ]
   },
   { day:"Thursday", label:"Conditioning", type:"cond", sub:"Trek Dual Sport 1",
     exercises:[
-      {name:"Bike — Wks 1–2",            sets:"3", reps:"10 min",   note:"RPE 5–6. 3 min easy spin between. Conversational pace.", flags:""},
-      {name:"Bike — Wks 3–4",            sets:"1", reps:"35–45 min",note:"Continuous steady state. RPE 5–6.", flags:""},
-      {name:"Bike — Wks 5–6",            sets:"2", reps:"15 min",   note:"RPE 6–7. 5 min easy between. Warm/cool 5–10 min either side.", flags:""},
-      {name:"Bike — Wks 7–8",            sets:"1", reps:"50–60 min",note:"Long steady OR 3×8 min RPE 7–8, 4 min recovery.", flags:""},
+      {name:"Bike — Wks 1–2",            sets:"3", reps:"10 min",   note:"RPE 5–6. 3 min easy spin between. Conversational pace.", flags:"", timed:true},
+      {name:"Bike — Wks 3–4",            sets:"1", reps:"35–45 min",note:"Continuous steady state. RPE 5–6.", flags:"", timed:true},
+      {name:"Bike — Wks 5–6",            sets:"2", reps:"15 min",   note:"RPE 6–7. 5 min easy between. Warm/cool 5–10 min either side.", flags:"", timed:true},
+      {name:"Bike — Wks 7–8",            sets:"1", reps:"50–60 min",note:"Long steady OR 3×8 min RPE 7–8, 4 min recovery.", flags:"", timed:true},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Bike shortens hip flexors. Address post-ride.", flags:""},
-      {name:"Thoracic extension (foam)",sets:"1",reps:"60 sec",     note:"Every upper day minimum. Do after conditioning too.", flags:""},
-      {name:"Calf stretch (gastrocnemius)",sets:"2",reps:"30 sec/side",note:"Straight leg. Bike riding shortens calves. Feeds ankle mobility.", flags:""},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8 slow",   note:"Session 2 this week. 4-sec eccentric. Log load and pain 0–10.", flags:"t"},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Bike shortens hip flexors. Address post-ride. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Thoracic extension (foam)",sets:"1",reps:"60 sec",     note:"Every upper day minimum. Do after conditioning too. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Calf stretch (gastrocnemius)",sets:"2",reps:"30 sec/side",note:"Straight leg. Bike riding shortens calves. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk2: 20 lbs. Session 2 this week. 4-sec eccentric. Log load and pain 0–10.", flags:"t", timed:false},
     ]
   },
   { day:"Friday", label:"Upper C", type:"upper", sub:"Balanced volume",
     exercises:[
-      {name:"Pull-ups (BW)",             sets:"4", reps:"max–2",    note:"Stop 2–3 short of failure. Volume accumulation, not a test.", flags:""},
-      {name:"Dips (BW/light)",           sets:"4", reps:"max–2",    note:"Same. Not a max-out day.", flags:""},
-      {name:"Archer push-ups",           sets:"3", reps:"6–8/side", note:"Wide-stance, shift weight, opposite arm extends. Unilateral push.", flags:"n"},
-      {name:"Tuck L-sit",                sets:"3", reps:"10–15 sec",note:"Knees to chest, parallel bars or floor fists. Log time in Reps.", flags:"n"},
-      {name:"Prone Y/T raises",          sets:"3", reps:"15–20",    note:"Light DBs. Shoulder health. Sub for face pulls.", flags:""},
+      {name:"Pull-ups (BW)",             sets:"4", reps:"max–2",    note:"Wk2: aim 13/10/9/8. Stop 2 short of failure. Log first set as Reps.", flags:"", timed:false},
+      {name:"Dips (BW/light)",           sets:"4", reps:"max–2",    note:"Wk2: aim 15/13/11/9. Same — not a max-out day. Log first set as Reps.", flags:"", timed:false},
+      {name:"Archer push-ups",           sets:"3", reps:"7/side",   note:"Wk2: 7 reps/side. Wide-stance, shift weight, opposite arm extends.", flags:"n", timed:false},
+      {name:"Tuck L-sit",                sets:"3", reps:"15 sec",   note:"Wk2: 15 sec. Knees to chest, arms locked. Log seconds in Reps field.", flags:"n", timed:true},
+      {name:"Cable face pulls",          sets:"3", reps:"15–20",    note:"Rope at forehead height, elbows high and flared. Light load. Swapped in for Y/T raises.", flags:"", timed:false},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",   sets:"3", reps:"30–45 sec",note:"Session 3 this week. Compare pain to Monday. Should trend down.", flags:"t"},
-      {name:"Lat hang stretch",          sets:"2", reps:"30 sec",   note:"Every upper day. Proximal biceps decompression.", flags:""},
-      {name:"Supination/pronation circles",sets:"2",reps:"10 each way",note:"Forearm tissue management. Target daily habit.", flags:""},
-      {name:"Band pull-apart",           sets:"2", reps:"15",       note:"Posterior shoulder. Same as Monday.", flags:""},
-      {name:"Thoracic extension (foam)", sets:"1", reps:"60 sec",   note:"Non-negotiable.", flags:""},
+      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk2: 17 lbs, 35 sec. Session 3 this week. Compare pain to Monday.", flags:"t", timed:true},
+      {name:"Lat hang stretch",          sets:"2", reps:"30 sec",   note:"Every upper day. Proximal biceps decompression. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Supination/pronation circles",sets:"2",reps:"10 each way",note:"Forearm tissue management. Target daily habit.", flags:"", timed:false},
+      {name:"Band pull-apart",           sets:"2", reps:"15",       note:"Posterior shoulder. Same as Monday.", flags:"", timed:false},
+      {name:"Thoracic extension (foam)", sets:"1", reps:"60 sec",   note:"Non-negotiable. Log seconds in Reps field.", flags:"", timed:true},
     ]
   },
   { day:"Saturday", label:"Lower B", type:"lower", sub:"SLDL emphasis",
     exercises:[
-      {name:"Stiff-leg deadlift",        sets:"5", reps:"4–5",      note:"Top loading day. Load seriously. DL goal carrier.", flags:""},
-      {name:"Zercher squat",             sets:"3", reps:"6–8",      note:"⚠ Lower load than Tue. Back off if Tue caused any flare.", flags:"w"},
-      {name:"Single-leg RDL",            sets:"3", reps:"8–10/side",note:"Unilateral hinge. Balance and hip stability. DBs to 90s.", flags:""},
-      {name:"Bike — optional",           sets:"1", reps:"20–30 min",note:"Drop if lower session was heavy or fatigue is high.", flags:""},
+      {name:"Stiff-leg deadlift",        sets:"5", reps:"4–5",      note:"Wk2: 305×5, 315×5, 325×5, 335×5, 335×5. Top loading day.", flags:"", timed:false},
+      {name:"Zercher squat",             sets:"3", reps:"6–8",      note:"⚠ Wk2: 190 lbs. Hold Tue load — don't push if any flare.", flags:"w", timed:false},
+      {name:"Single-leg RDL",            sets:"3", reps:"8–10/side",note:"Wk2: 55 lbs. Slow and controlled.", flags:"", timed:false},
+      {name:"Bike — optional",           sets:"1", reps:"20–30 min",note:"Drop if lower session was heavy or fatigue is high.", flags:"", timed:true},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Lower body day — open hips before loading.", flags:""},
-      {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Zercher day — ankle mobility affects depth and knee tracking.", flags:""},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8 slow",   note:"Session 3 this week. Cumulative load — monitor carefully.", flags:"t"},
-      {name:"Pigeon / figure-4",         sets:"2", reps:"45 sec/side",note:"Glute and external rotator. Posterior chain recovery after SLDL.", flags:""},
-      {name:"Child's pose with lat reach",sets:"2",reps:"30 sec/side",note:"Lat, shoulder, thoracic. Good full-session cooldown.", flags:""},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Lower body day — open hips before loading. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Zercher day — ankle mobility affects depth and knee tracking.", flags:"", timed:false},
+      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk2: 20 lbs. Session 3 this week. Cumulative load — monitor carefully.", flags:"t", timed:false},
+      {name:"Pigeon / figure-4",         sets:"2", reps:"45 sec/side",note:"Glute and external rotator. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Child's pose with lat reach",sets:"2",reps:"30 sec/side",note:"Lat, shoulder, thoracic. Full-session cooldown. Log seconds in Reps field.", flags:"", timed:true},
     ]
   },
 ];
@@ -739,34 +741,68 @@ function renderLogBody() {
 
 function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
   const baseKey = `w${logWeek}_d${logDay}_e${idx}`;
-  const load = logData[baseKey+'_load'] || '';
-  const reps = logData[baseKey+'_reps'] || '';
-  const rpe  = logData[baseKey+'_rpe']  || '';
-  const pain = logData[baseKey+'_pain'] || '';
   const note = logData[baseKey+'_note'] || '';
+  const numSets = parseInt(ex.sets) || 1;
+  const isTimed = ex.timed === true;
+  const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
 
   const cardClass = isTendon ? 'tendon-card' : isMob ? 'mob-card' : '';
   const nameClass = isWatch ? 'watch' : isTendon ? 'tendon' : isMob ? 'mob' : '';
 
-  let inputs = '';
-  if (isCond) {
-    inputs = `<div class="log-inputs cond-inputs">
-      <div class="log-field"><label>Duration (min)</label><input type="number" inputmode="numeric" placeholder="—" value="${load}" oninput="saveField(this,'${baseKey}_load')"></div>
-      <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${rpe}" oninput="saveField(this,'${baseKey}_rpe')"></div>
-    </div>`;
-  } else if (isTendon) {
-    inputs = `<div class="log-inputs tendon-inputs">
-      <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="numeric" placeholder="—" value="${load}" oninput="saveField(this,'${baseKey}_load')"></div>
-      <div class="log-field"><label>Reps / sec</label><input type="number" inputmode="numeric" placeholder="—" value="${reps}" oninput="saveField(this,'${baseKey}_reps')"></div>
-      <div class="log-field"><label>RPE</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${rpe}" oninput="saveField(this,'${baseKey}_rpe')"></div>
-      <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${pain}" oninput="saveField(this,'${baseKey}_pain')"></div>
-    </div>`;
-  } else {
-    inputs = `<div class="log-inputs strength-inputs">
-      <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="numeric" placeholder="—" value="${load}" oninput="saveField(this,'${baseKey}_load')"></div>
-      <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${reps}" oninput="saveField(this,'${baseKey}_reps')"></div>
-      <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${rpe}" oninput="saveField(this,'${baseKey}_rpe')"></div>
-    </div>`;
+  // Build per-set rows
+  let setRows = '';
+  for (let s = 0; s < numSets; s++) {
+    const sk = `${baseKey}_s${s}`;
+    const sv_load = logData[sk+'_load'] || '';
+    const sv_reps = logData[sk+'_reps'] || '';
+    const sv_rpe  = logData[sk+'_rpe']  || '';
+    const sv_pain = logData[sk+'_pain'] || '';
+    const sv_sec  = logData[sk+'_sec']  || '';
+
+    let rowInputs = '';
+    if (isEccentric) {
+      // Fixed: Load + Reps + Eccentric tempo (sec) + Pain
+      rowInputs = `
+        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+        <div class="log-field"><label>Reps</label><input type="number" inputmode="numeric" placeholder="8" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>Tempo (sec)</label><input type="number" inputmode="numeric" placeholder="4" value="${sv_sec}" oninput="saveField(this,'${sk}_sec')"></div>
+        <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    } else if (isCond || isTimed) {
+      // Timed: Duration (sec or min) + RPE
+      const durLabel = isCond ? 'Duration (min)' : 'Time (sec)';
+      rowInputs = `
+        <div class="log-field"><label>${durLabel}</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    } else if (isTendon) {
+      // Isometric: Load + Time (sec) + RPE + Pain
+      rowInputs = `
+        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+        <div class="log-field"><label>Time (sec)</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>RPE</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>
+        <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    } else {
+      // Standard strength: Load + Reps + RPE
+      rowInputs = `
+        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+        <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    }
   }
 
   return `<div class="log-ex-card ${cardClass}">
@@ -774,8 +810,8 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
       <div class="log-ex-name ${nameClass}">${ex.name}</div>
       <div class="log-ex-prescribed">${ex.sets} sets × ${ex.reps}</div>
     </div>
-    ${inputs}
-    <div class="log-notes-wrap">
+    ${setRows}
+    <div class="log-notes-wrap" style="padding-top:8px">
       <div class="log-field"><label>Notes</label><textarea placeholder="Cues, substitutions, how it felt…" oninput="saveField(this,'${baseKey}_note')">${note}</textarea></div>
     </div>
   </div>`;
@@ -794,27 +830,68 @@ function copyReport() {
 
   DAYS.forEach((day, di) => {
     out += `${day.day.toUpperCase()} — ${day.label}\n`;
-    const allEx = [...day.exercises, ...day.mobility];
     const exOffset = day.exercises.length;
 
     day.exercises.forEach((ex, i) => {
       const base = `w${logWeek}_d${di}_e${i}`;
-      const load = data[base+'_load'], reps = data[base+'_reps'], rpe = data[base+'_rpe'], note = data[base+'_note'];
-      if (load||reps||rpe||note) {
-        out += `  ${ex.name}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`;
-        if (note) out += ` | ${note}`;
-        out += '\n';
+      const note = data[base+'_note'];
+      const numSets = parseInt(ex.sets) || 1;
+      const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
+      const isTimed = ex.timed === true;
+      const isCond = ex.note.toLowerCase().includes('bike') || ex.reps.includes('min');
+
+      let setLines = [];
+      for (let s = 0; s < numSets; s++) {
+        const sk = `${base}_s${s}`;
+        const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
+              pain = data[sk+'_pain'], sec = data[sk+'_sec'];
+        if (load||reps||rpe||pain||sec) {
+          if (isEccentric) {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
+          } else if (isCond || isTimed) {
+            setLines.push(`    Set ${s+1}: time=${reps||'—'} rpe=${rpe||'—'}`);
+          } else {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
+          }
+        }
+      }
+      if (setLines.length || note) {
+        out += `  ${ex.name}:\n`;
+        if (setLines.length) out += setLines.join('\n') + '\n';
+        if (note) out += `    Note: ${note}\n`;
       }
     });
+
     out += '  [Mobility]\n';
     day.mobility.forEach((ex, i) => {
       const base = `w${logWeek}_d${di}_e${exOffset+i}`;
-      const load = data[base+'_load'], reps = data[base+'_reps'], rpe = data[base+'_rpe'], pain = data[base+'_pain'], note = data[base+'_note'];
-      if (load||reps||rpe||pain||note) {
-        out += `  ${ex.name}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`;
-        if (pain) out += ` pain=${pain}/10`;
-        if (note) out += ` | ${note}`;
-        out += '\n';
+      const note = data[base+'_note'];
+      const numSets = parseInt(ex.sets) || 1;
+      const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
+      const isTendon = ex.flags.includes('t');
+      const isTimed = ex.timed === true;
+
+      let setLines = [];
+      for (let s = 0; s < numSets; s++) {
+        const sk = `${base}_s${s}`;
+        const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
+              pain = data[sk+'_pain'], sec = data[sk+'_sec'];
+        if (load||reps||rpe||pain||sec) {
+          if (isEccentric) {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
+          } else if (isTendon) {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} time=${reps||'—'}sec rpe=${rpe||'—'} pain=${pain||'—'}/10`);
+          } else if (isTimed) {
+            setLines.push(`    Set ${s+1}: time=${reps||'—'}sec rpe=${rpe||'—'}`);
+          } else {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
+          }
+        }
+      }
+      if (setLines.length || note) {
+        out += `  ${ex.name}:\n`;
+        if (setLines.length) out += setLines.join('\n') + '\n';
+        if (note) out += `    Note: ${note}\n`;
       }
     });
     out += '\n';
