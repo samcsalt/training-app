@@ -127,7 +127,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 .ex-row.tendon-row { background: #140808; }
 
 .ex-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-.ex-main { flex: 1; }
+.ex-main { flex: 1; min-width: 0; }
 .ex-name { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
 .ex-name.watch { color: var(--red); }
 .ex-name.new   { color: var(--amber); }
@@ -138,6 +138,216 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 .ex-sets.tendon { color: var(--red); }
 .ex-note { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
 .ex-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+
+/* Swap button */
+.swap-btn {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.swap-btn:hover { color: var(--amber); border-color: var(--amber); }
+.swap-btn.swapped { color: var(--amber); border-color: var(--amber); background: #1a0e00; }
+
+/* ══════════════════════════════════════════════════
+   SWAP MODAL
+══════════════════════════════════════════════════ */
+#swap-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 500;
+  padding: 0;
+  align-items: flex-end;
+  justify-content: center;
+}
+#swap-overlay.open { display: flex; }
+#swap-sheet {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: var(--safe-bottom);
+}
+#swap-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+#swap-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 4px;
+}
+#swap-ex-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+#swap-search {
+  width: 100%;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 8px 12px;
+  outline: none;
+  margin-bottom: 8px;
+}
+#swap-search:focus { border-color: var(--amber); }
+#swap-search::placeholder { color: var(--faint); }
+.swap-filter-row {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.swap-filter-row::-webkit-scrollbar { display: none; }
+.swap-filter-chip {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 3px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.swap-filter-chip.active { color: var(--amber); border-color: var(--amber); background: #1a0e00; }
+#swap-list {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 0;
+}
+.swap-ex-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.swap-ex-item:active { background: var(--bg3); }
+.swap-ex-item:last-child { border-bottom: none; }
+.swap-item-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.swap-item-info { flex: 1; min-width: 0; }
+.swap-item-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.swap-item-meta { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
+.swap-item-arrow { color: var(--faint); font-size: 14px; }
+.swap-list-empty { text-align: center; padding: 32px 16px; color: var(--muted); font-family: var(--mono); font-size: 11px; }
+#swap-cancel {
+  margin: 8px 16px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   SWAP SCOPE MODAL
+══════════════════════════════════════════════════ */
+#scope-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 600;
+  align-items: flex-end;
+  justify-content: center;
+}
+#scope-overlay.open { display: flex; }
+#scope-sheet {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+  width: 100%;
+  padding: 20px 16px;
+  padding-bottom: calc(20px + var(--safe-bottom));
+}
+#scope-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+#scope-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.scope-btn {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.scope-btn-week {
+  background: #1a0e00;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+}
+.scope-btn-phase {
+  background: #001814;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+}
+.scope-btn-cancel {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  margin-bottom: 0;
+}
+.scope-btn-sub { display: block; font-size: 9px; font-weight: 400; letter-spacing: 0.04em; color: inherit; opacity: 0.7; margin-top: 3px; text-transform: none; }
 
 /* ══════════════════════════════════════════════════
    LOG TAB
@@ -166,6 +376,21 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 .log-ex-name.watch { color: var(--red); }
 .log-ex-name.mob   { color: var(--blue); }
 .log-ex-name.tendon{ color: var(--red); }
+.log-ex-sub-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  background: #1a0e00;
+  margin-left: 6px;
+  vertical-align: middle;
+}
 .log-ex-prescribed { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
 
 .log-inputs { display: grid; gap: 6px; padding: 0 14px 10px; }
@@ -372,6 +597,37 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
   </div>
 </div>
 
+<!-- ══ SWAP MODAL ══ -->
+<div id="swap-overlay" onclick="closeSwapIfBackground(event)">
+  <div id="swap-sheet">
+    <div id="swap-header">
+      <div id="swap-title">Swap Exercise</div>
+      <div id="swap-ex-name"></div>
+      <input type="text" id="swap-search" placeholder="Search library…" oninput="filterSwapList()">
+      <div class="swap-filter-row" id="swap-filter-row"></div>
+    </div>
+    <div id="swap-list"></div>
+    <button id="swap-cancel" onclick="closeSwap()">Cancel</button>
+  </div>
+</div>
+
+<!-- ══ SCOPE MODAL ══ -->
+<div id="scope-overlay" onclick="closeScopeIfBackground(event)">
+  <div id="scope-sheet" onclick="event.stopPropagation()">
+    <div id="scope-title">Apply swap to…</div>
+    <div id="scope-desc"></div>
+    <button class="scope-btn scope-btn-week" onclick="confirmSwap('week')">
+      This week only
+      <span class="scope-btn-sub">Substitution in Log tab for current week. Base program unchanged.</span>
+    </button>
+    <button class="scope-btn scope-btn-phase" onclick="confirmSwap('phase')">
+      Rest of phase
+      <span class="scope-btn-sub">Program updated from current week forward. Past weeks unchanged.</span>
+    </button>
+    <button class="scope-btn scope-btn-cancel" onclick="closeScope()">Cancel</button>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════════
 // DATA
@@ -391,94 +647,95 @@ const WEEKS = [
 const DAYS = [
   { day:"Monday", label:"Upper A", type:"upper", sub:"Pull dominant",
     exercises:[
-      {name:"Weighted pull-ups",         sets:"4", reps:"4–6",      note:"Wk2: 35×6, 35×6, 40×6, 40×6. Build within session.", flags:"", timed:false},
-      {name:"Chest-supported DB row",    sets:"3", reps:"10–12",    note:"Wk2: 75 lbs. Incline bench, chest down, row to hip.", flags:"n", timed:false},
-      {name:"Dips",                      sets:"3", reps:"6–8",      note:"Wk2: 35/45/45 lbs × 8. Progressive sets.", flags:"", timed:false},
-      {name:"Archer pull-up negatives",  sets:"2", reps:"4/side",   note:"Wk2: 4 reps/side. Slow negative 3–5 sec.", flags:"n", timed:false},
-      {name:"Dead hangs",                sets:"2", reps:"40 sec",   note:"Passive shoulder stretch. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Weighted pull-ups",         sets:"4", reps:"4–5",      note:"Wk3: 40 lbs × 4–5 reps. Don't chase 6. Quality over grinding.", flags:"", timed:false, pattern:"pull"},
+      {name:"Chest-supported DB row",    sets:"3", reps:"10–12",    note:"Wk3: 80 lbs. Incline bench, chest down, row to hip.", flags:"n", timed:false, pattern:"pull"},
+      {name:"Dips",                      sets:"3", reps:"6–8",      note:"Wk3: 45 lbs × 8. Secondary push day.", flags:"", timed:false, pattern:"push"},
+      {name:"Archer pull-up negatives",  sets:"2", reps:"4/side",   note:"Jump to top position, shift weight to one side, slow negative 3–5 sec. 60/40 load split.", flags:"n", timed:false, pattern:"pull"},
+      {name:"Dead hangs",                sets:"2", reps:"40 sec",   note:"Passive shoulder stretch. Log seconds in Time field.", flags:"", timed:true, pattern:"pull"},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",     sets:"3", reps:"35 sec", note:"Wk2: 17 lbs, 35 sec. Supinated grip. Pain ≤4/10.", flags:"t", timed:true},
+      {name:"Biceps tendon isometric",     sets:"3", reps:"35 sec", note:"Wk3: 17–20 lbs, 35 sec. Supinated grip. Log pain 0–10 every set.", flags:"t", timed:true},
       {name:"Supination/pronation circles",sets:"2", reps:"10 each way",note:"Slow forearm rotation. Distal biceps tissue.", flags:"", timed:false},
-      {name:"Lat hang stretch",            sets:"2", reps:"30 sec", note:"Let shoulders fully elevate. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Band pull-apart",             sets:"2", reps:"15",     note:"Light band. Posterior shoulder. Counteracts internal rotation.", flags:"", timed:false},
-      {name:"Thoracic extension (foam)",   sets:"1", reps:"60 sec", note:"Foam roller mid-back, arms overhead. Non-negotiable. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Lat hang stretch",            sets:"2", reps:"30 sec", note:"Let shoulders fully elevate. Log seconds in Time field.", flags:"", timed:true},
+      {name:"Band pull-apart",             sets:"2", reps:"15",     note:"Light band. Posterior shoulder.", flags:"", timed:false},
+      {name:"Thoracic extension (foam)",   sets:"1", reps:"60 sec", note:"Foam roller mid-back, arms overhead. Log seconds in Time field.", flags:"", timed:true},
     ]
   },
   { day:"Tuesday", label:"Lower A", type:"lower", sub:"Zercher + hinge",
     exercises:[
-      {name:"Zercher squat",             sets:"4", reps:"4–6",      note:"⚠ Wk2: 185×6, 200×6, 210×6, 220×6. Monitor pain every set.", flags:"w", timed:false},
-      {name:"Stiff-leg deadlift",        sets:"4", reps:"5–6",      note:"Wk2: 275×6, 285×6, 300×6, 310×5. Slow eccentric.", flags:"", timed:false},
-      {name:"Bulgarian split squat",     sets:"3", reps:"8–10/side",note:"Wk2: 55 lbs. Rear foot elevated.", flags:"", timed:false},
-      {name:"Bike — conditioning",       sets:"3", reps:"10 min",   note:"Wks 1–2: 3×10 min RPE 5–6, 3 min easy between.", flags:"", timed:true},
+      {name:"Zercher squat",             sets:"4", reps:"4–6",      note:"⚠ Wk3: ramp to 225–230×6. Log pain each set. Don't increase if >4/10.", flags:"w", timed:false, pattern:"squat"},
+      {name:"Stiff-leg deadlift",        sets:"4", reps:"5–6",      note:"Wk3: ramp to ~315×6 top sets. Slow eccentric.", flags:"", timed:false, pattern:"hinge"},
+      {name:"Bulgarian split squat",     sets:"3", reps:"8–10/side",note:"Wk3: 55–60 lbs. Rear foot elevated.", flags:"", timed:false, pattern:"squat"},
+      {name:"Bike — conditioning",       sets:"1", reps:"35–40 min",note:"Wk3 protocol: steady state 35–40 min, RPE 5–6. No intervals — continuous effort.", flags:"", timed:true, pattern:"carry"},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Half-kneeling, posterior pelvic tilt. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Half-kneeling, posterior pelvic tilt.", flags:"", timed:true},
       {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Knee-over-toe. Zercher depth depends on ankle dorsiflexion.", flags:"", timed:false},
-      {name:"Adductor rockback",         sets:"2", reps:"10/side",  note:"Quadruped wide stance, rock back. Hip internal rotation.", flags:"", timed:false},
-      {name:"90/90 hip stretch",         sets:"2", reps:"45 sec/side",note:"Both hips at 90°. Comprehensive hip capsule. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk2: 20 lbs. 4-sec eccentric only, use other hand to reset. Pain ≤4/10.", flags:"t", timed:false},
+      {name:"Adductor rockback",         sets:"2", reps:"10/side",  note:"Quadruped wide stance, rock back.", flags:"", timed:false},
+      {name:"90/90 hip stretch",         sets:"2", reps:"45 sec/side",note:"Both hips at 90°. Log seconds in Time field.", flags:"", timed:true},
+      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk3: 20 lbs. 4-sec eccentric only, other hand resets. Log pain 0–10.", flags:"t", timed:false},
     ]
   },
   { day:"Wednesday", label:"Upper B", type:"upper", sub:"Push dominant",
     exercises:[
-      {name:"Weighted dips",             sets:"5", reps:"4–6",      note:"Wk2: 60 lbs across all 5 sets.", flags:"", timed:false},
-      {name:"Pike push-ups",             sets:"3", reps:"8–10",     note:"Inverted V — walk feet in closer to increase shoulder angle. Head drops toward floor.", flags:"n", timed:false},
-      {name:"Pull-ups (BW/light)",       sets:"3", reps:"8–12",     note:"Wk2: BW. Volume day. Vary grip across sets.", flags:"", timed:false},
-      {name:"Parallel bar support hold", sets:"3", reps:"20–30 sec",note:"Wk2: hold 30 sec. Arms locked at top of dip. Log seconds in Reps field.", flags:"w", timed:true},
-      {name:"Hollow body hold",          sets:"3", reps:"25 sec",   note:"Wk2: 25 sec (backed off from RPE 8). Lower back flat, legs 6 in. Log seconds in Reps field.", flags:"n", timed:true},
+      {name:"Weighted dips",             sets:"5", reps:"4–6",      note:"Wk3: 65 lbs across all 5 sets.", flags:"", timed:false, pattern:"push"},
+      {name:"Pike push-ups",             sets:"4", reps:"8–10",     note:"Wk3: 4 sets (added one). Feet flat — build reps before elevating. Inverted V, head drops to floor.", flags:"n", timed:false, pattern:"push"},
+      {name:"Pull-ups (BW/light)",       sets:"3", reps:"10–12",    note:"Wk3: BW. Volume day. Vary grip across sets.", flags:"", timed:false, pattern:"pull"},
+      {name:"Parallel bar support hold", sets:"3", reps:"30 sec",   note:"Wk3: 30 sec. Arms locked at top of dip. Log seconds in Time field.", flags:"w", timed:true, pattern:"push"},
+      {name:"Hollow body hold",          sets:"3", reps:"25–30 sec",note:"Wk3: push toward 30 sec. Lower back flat, legs 6 in. Log seconds in Time field.", flags:"n", timed:true, pattern:"core"},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk2: 17 lbs, 35 sec. Session 2 this week. Track vs Monday.", flags:"t", timed:true},
-      {name:"Doorway chest stretch",     sets:"2", reps:"30 sec",   note:"Arms at 90°, lean through. Anterior shoulder and pec minor. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Thoracic rotation (seated)",sets:"2", reps:"10/side",  note:"Hands behind head, rotate mid-back only. T-spine rotation.", flags:"", timed:false},
-      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Arm extended, palm up, downward pressure. Log seconds in Reps field.", flags:"t", timed:true},
-      {name:"Shoulder CARs",             sets:"2", reps:"5/side",   note:"Full-range shoulder circles under muscular control. Joint health.", flags:"", timed:false},
+      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk3: Session 2. Compare pain to Monday. Log pain 0–10.", flags:"t", timed:true},
+      {name:"Doorway chest stretch",     sets:"2", reps:"30 sec",   note:"Arms at 90°, lean through. Log seconds in Time field.", flags:"", timed:true},
+      {name:"Thoracic rotation (seated)",sets:"2", reps:"10/side",  note:"Hands behind head, rotate mid-back only.", flags:"", timed:false},
+      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Arm extended, palm up, downward pressure. Log seconds in Time field.", flags:"t", timed:true},
+      {name:"Shoulder CARs",             sets:"2", reps:"5/side",   note:"Full-range shoulder circles under control.", flags:"", timed:false},
     ]
   },
   { day:"Thursday", label:"Conditioning", type:"cond", sub:"Trek Dual Sport 1",
     exercises:[
-      {name:"Bike — Wks 1–2",            sets:"3", reps:"10 min",   note:"RPE 5–6. 3 min easy spin between. Conversational pace.", flags:"", timed:true},
-      {name:"Bike — Wks 3–4",            sets:"1", reps:"35–45 min",note:"Continuous steady state. RPE 5–6.", flags:"", timed:true},
-      {name:"Bike — Wks 5–6",            sets:"2", reps:"15 min",   note:"RPE 6–7. 5 min easy between. Warm/cool 5–10 min either side.", flags:"", timed:true},
-      {name:"Bike — Wks 7–8",            sets:"1", reps:"50–60 min",note:"Long steady OR 3×8 min RPE 7–8, 4 min recovery.", flags:"", timed:true},
+      {name:"Bike — Wks 1–2",            sets:"3", reps:"10 min",   note:"RPE 5–6. 3 min easy spin between.", flags:"", timed:true, pattern:"carry"},
+      {name:"Bike — Wks 3–4",            sets:"1", reps:"35–45 min",note:"Wk3: Continuous steady state. RPE 5–6.", flags:"", timed:true, pattern:"carry"},
+      {name:"Bike — Wks 5–6",            sets:"2", reps:"15 min",   note:"RPE 6–7. 5 min easy between.", flags:"", timed:true, pattern:"carry"},
+      {name:"Bike — Wks 7–8",            sets:"1", reps:"50–60 min",note:"Long steady OR 3×8 min RPE 7–8, 4 min recovery.", flags:"", timed:true, pattern:"carry"},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Bike shortens hip flexors. Address post-ride. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Thoracic extension (foam)",sets:"1",reps:"60 sec",     note:"Every upper day minimum. Do after conditioning too. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Calf stretch (gastrocnemius)",sets:"2",reps:"30 sec/side",note:"Straight leg. Bike riding shortens calves. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk2: 20 lbs. Session 2 this week. 4-sec eccentric. Log load and pain 0–10.", flags:"t", timed:false},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Bike shortens hip flexors. Address post-ride.", flags:"", timed:true},
+      {name:"Thoracic extension (foam)",sets:"1",reps:"60 sec",     note:"Every upper day minimum. Do after conditioning too.", flags:"", timed:true},
+      {name:"Calf stretch (gastrocnemius)",sets:"2",reps:"30 sec/side",note:"Straight leg. Bike riding shortens calves.", flags:"", timed:true},
+      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk3: 20 lbs. Session 2. 4-sec eccentric. Log pain 0–10.", flags:"t", timed:false},
     ]
   },
   { day:"Friday", label:"Upper C", type:"upper", sub:"Balanced volume",
     exercises:[
-      {name:"Pull-ups (BW)",             sets:"4", reps:"max–2",    note:"Wk2: aim 13/10/9/8. Stop 2 short of failure. Log first set as Reps.", flags:"", timed:false},
-      {name:"Dips (BW/light)",           sets:"4", reps:"max–2",    note:"Wk2: aim 15/13/11/9. Same — not a max-out day. Log first set as Reps.", flags:"", timed:false},
-      {name:"Archer push-ups",           sets:"3", reps:"7/side",   note:"Wk2: 7 reps/side. Wide-stance, shift weight, opposite arm extends.", flags:"n", timed:false},
-      {name:"Tuck L-sit",                sets:"3", reps:"15 sec",   note:"Wk2: 15 sec. Knees to chest, arms locked. Log seconds in Reps field.", flags:"n", timed:true},
-      {name:"Cable face pulls",          sets:"3", reps:"15–20",    note:"Rope at forehead height, elbows high and flared. Light load. Swapped in for Y/T raises.", flags:"", timed:false},
+      {name:"Pull-ups (BW)",             sets:"4", reps:"max–2",    note:"Wk3: Stop 2 short of failure. Log actual reps each set.", flags:"", timed:false, pattern:"pull"},
+      {name:"Dips (BW/light)",           sets:"4", reps:"max–2",    note:"Wk3: Stop 2 short of failure. Not a max-out day.", flags:"", timed:false, pattern:"push"},
+      {name:"Archer push-ups",           sets:"3", reps:"8/side",   note:"Wk3: 8 reps/side (up from 7). Wide-stance, shift weight, opposite arm extends.", flags:"n", timed:false, pattern:"push"},
+      {name:"Tuck L-sit",                sets:"3", reps:"20 sec",   note:"Wk3: 20 sec (up from 15). Knees to chest, arms locked. Log seconds in Time field.", flags:"n", timed:true, pattern:"core"},
+      {name:"Barbell bent-over row",     sets:"3", reps:"6–8",      note:"Wk3: 185–205 lbs. Overhand grip, ~45° torso, pull to lower chest/upper abdomen.", flags:"n", timed:false, pattern:"pull"},
+      {name:"Cable face pulls",          sets:"2", reps:"20",       note:"Rope at forehead height, elbows high and flared. Light load.", flags:"", timed:false, pattern:"pull"},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk2: 17 lbs, 35 sec. Session 3 this week. Compare pain to Monday.", flags:"t", timed:true},
-      {name:"Lat hang stretch",          sets:"2", reps:"30 sec",   note:"Every upper day. Proximal biceps decompression. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Supination/pronation circles",sets:"2",reps:"10 each way",note:"Forearm tissue management. Target daily habit.", flags:"", timed:false},
-      {name:"Band pull-apart",           sets:"2", reps:"15",       note:"Posterior shoulder. Same as Monday.", flags:"", timed:false},
-      {name:"Thoracic extension (foam)", sets:"1", reps:"60 sec",   note:"Non-negotiable. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk3: Session 3. Compare pain trend across week. Log pain 0–10.", flags:"t", timed:true},
+      {name:"Lat hang stretch",          sets:"2", reps:"30 sec",   note:"Every upper day. Log seconds in Time field.", flags:"", timed:true},
+      {name:"Supination/pronation circles",sets:"2",reps:"10 each way",note:"Forearm tissue management.", flags:"", timed:false},
+      {name:"Band pull-apart",           sets:"2", reps:"15",       note:"Posterior shoulder.", flags:"", timed:false},
+      {name:"Thoracic extension (foam)", sets:"1", reps:"60 sec",   note:"Non-negotiable. Log seconds in Time field.", flags:"", timed:true},
     ]
   },
   { day:"Saturday", label:"Lower B", type:"lower", sub:"SLDL emphasis",
     exercises:[
-      {name:"Stiff-leg deadlift",        sets:"5", reps:"4–5",      note:"Wk2: 305×5, 315×5, 325×5, 335×5, 335×5. Top loading day.", flags:"", timed:false},
-      {name:"Zercher squat",             sets:"3", reps:"6–8",      note:"⚠ Wk2: 190 lbs. Hold Tue load — don't push if any flare.", flags:"w", timed:false},
-      {name:"Single-leg RDL",            sets:"3", reps:"8–10/side",note:"Wk2: 55 lbs. Slow and controlled.", flags:"", timed:false},
-      {name:"Bike — optional",           sets:"1", reps:"20–30 min",note:"Drop if lower session was heavy or fatigue is high.", flags:"", timed:true},
+      {name:"Stiff-leg deadlift",        sets:"5", reps:"4–5",      note:"Wk3: ramp to 340–345 top sets. Top loading day.", flags:"", timed:false, pattern:"hinge"},
+      {name:"Zercher squat",             sets:"3", reps:"6–8",      note:"⚠ Wk3: 190–195 lbs. Hold below Tuesday load.", flags:"w", timed:false, pattern:"squat"},
+      {name:"Single-leg hamstring curl", sets:"3", reps:"10/side",  note:"Wk3: per your preference. Controlled through full range.", flags:"", timed:false, pattern:"hinge"},
+      {name:"Bike — optional",           sets:"1", reps:"30 min",   note:"Drop if lower session was heavy or fatigue is high. RPE 5–6.", flags:"", timed:true, pattern:"carry"},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Lower body day — open hips before loading. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Zercher day — ankle mobility affects depth and knee tracking.", flags:"", timed:false},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk2: 20 lbs. Session 3 this week. Cumulative load — monitor carefully.", flags:"t", timed:false},
-      {name:"Pigeon / figure-4",         sets:"2", reps:"45 sec/side",note:"Glute and external rotator. Log seconds in Reps field.", flags:"", timed:true},
-      {name:"Child's pose with lat reach",sets:"2",reps:"30 sec/side",note:"Lat, shoulder, thoracic. Full-session cooldown. Log seconds in Reps field.", flags:"", timed:true},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Lower body day — open hips.", flags:"", timed:true},
+      {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Zercher day — ankle mobility affects depth.", flags:"", timed:false},
+      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk3: 20 lbs. Session 3. Cumulative load — monitor carefully. Log pain 0–10.", flags:"t", timed:false},
+      {name:"Pigeon / figure-4",         sets:"2", reps:"45 sec/side",note:"Glute and external rotator.", flags:"", timed:true},
+      {name:"Child's pose with lat reach",sets:"2",reps:"30 sec/side",note:"Lat, shoulder, thoracic cooldown.", flags:"", timed:true},
     ]
   },
 ];
@@ -495,69 +752,78 @@ const REPORT_PROMPTS = [
 
 const EXERCISES = [
   {name:"Weighted pull-ups",category:"strength",pattern:"pull",equipment:["pull-up bar","belt/load"],muscles:"Lats, biceps, rear delt, rhomboids",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Primary vertical pull. At 16–20 BW reps, add load via belt or vest. Progress load before rep count. Grip varies: pronated for lats, supinated for biceps emphasis (higher tendon risk), neutral for balance."},
-  {name:"Archer pull-up negatives",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats (unilateral), biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Start at top, shift weight to one side, extend opposite arm near-straight. Lower in 3–5 sec on loaded side. Precursor to one-arm pull-up."},
+  {name:"Archer pull-up negatives",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats (unilateral), biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Jump to top, shift weight to one side, extend opposite arm near-straight. Lower in 3–5 sec on loaded side. 60/40 load split to start. Precursor to one-arm pull-up."},
   {name:"Chest-supported DB row",category:"strength",pattern:"pull",equipment:["dumbbells","incline bench"],muscles:"Mid traps, rhomboids, rear delt, lats",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Chest on incline bench, row to hip. Eliminates lower back. Horizontal pulling — underrepresented in powerlifting backgrounds. Use the 90 lb DBs for loaded sets."},
-  {name:"Dead hang",category:"strength",pattern:"pull",equipment:["pull-up bar"],muscles:"Shoulder girdle, grip, lats (passive)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Passive hang — let shoulders fully elevate. Decompresses shoulder joint. Counters internal rotation from low-bar squat. 30–45 sec."},
+  {name:"Dead hang",category:"strength",pattern:"pull",equipment:["pull-up bar"],muscles:"Shoulder girdle, grip, lats (passive)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Passive hang — let shoulders fully elevate. Decompresses shoulder joint. 30–45 sec."},
+  {name:"Barbell bent-over row",category:"strength",pattern:"pull",equipment:["barbell"],muscles:"Lats, mid traps, rhomboids, rear delt, biceps",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Hip-hinged torso ~45°, overhand grip, pull to lower chest/upper abdomen. Overhand grip is lower biceps tendon risk than supinated. Start 185–205 lbs × 3×6–8."},
   {name:"Archer pull-up (full)",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats (unilateral), biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Full range version of the negative. Progress from negatives only. Bridge toward one-arm pull-up."},
-  {name:"One-arm pull-up (assisted)",category:"skill",pattern:"pull",equipment:["pull-up bar","band"],muscles:"Lats (unilateral), biceps, core",risk:"moderate",difficulty:"advanced",phase:"1",inProgram:false,notes:"Band looped around wrist. Long-term goal movement. Build via archer negatives → full archer → band-assisted. Monitor biceps tendon at high loads."},
-  {name:"Inverted row",category:"strength",pattern:"pull",equipment:["barbell","rack"],muscles:"Mid traps, rhomboids, rear delt, biceps",risk:"low",difficulty:"beginner",phase:"1",inProgram:false,notes:"Bar set low in rack, body underneath. Elevate feet for more difficulty. Good horizontal pull substitute."},
-  {name:"Face pull (band)",category:"strength",pattern:"pull",equipment:["band"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Anchored band at face height, pull to forehead with elbows high. High reps (15–25), light load. Shoulder health staple."},
-  {name:"Prone Y/T raises",category:"strength",pattern:"pull",equipment:["dumbbells"],muscles:"Lower traps, rear delt, external rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Y: arms overhead. T: arms out to sides. Very light DBs. Shoulder health and scapular control."},
-  {name:"Renegade row",category:"strength",pattern:"pull",equipment:["dumbbells"],muscles:"Lats, rhomboids, core (anti-rotation)",risk:"low",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Push-up position on DBs, row one at a time. Anti-rotation core demand is high. Moderate load — core is limiting factor."},
-  {name:"Weighted dips",category:"strength",pattern:"push",equipment:["dip station","belt/load"],muscles:"Pecs (lower), triceps, anterior delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Primary push movement. At +70×10 estimated capacity. Start ~+55–60 for 4–6. Lean forward for pec, stay upright for tricep. Monitor elbows at high loads."},
+  {name:"One-arm pull-up (assisted)",category:"skill",pattern:"pull",equipment:["pull-up bar","band"],muscles:"Lats (unilateral), biceps, core",risk:"moderate",difficulty:"advanced",phase:"1",inProgram:false,notes:"Band looped around wrist. Long-term goal movement. Build via archer negatives → full archer → band-assisted."},
+  {name:"Inverted row",category:"strength",pattern:"pull",equipment:["barbell","rack"],muscles:"Mid traps, rhomboids, rear delt, biceps",risk:"low",difficulty:"beginner",phase:"1",inProgram:false,notes:"Bar set low in rack, body underneath. Elevate feet for more difficulty."},
+  {name:"Face pull (band)",category:"strength",pattern:"pull",equipment:["band"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Anchored band at face height, pull to forehead with elbows high. High reps (15–25), light load."},
+  {name:"Prone Y/T raises",category:"strength",pattern:"pull",equipment:["dumbbells"],muscles:"Lower traps, rear delt, external rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Y: arms overhead. T: arms out to sides. Very light DBs. Shoulder health and scapular control."},
+  {name:"Renegade row",category:"strength",pattern:"pull",equipment:["dumbbells"],muscles:"Lats, rhomboids, core (anti-rotation)",risk:"low",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Push-up position on DBs, row one at a time. Anti-rotation core demand is high."},
+  {name:"Weighted dips",category:"strength",pattern:"push",equipment:["dip station","belt/load"],muscles:"Pecs (lower), triceps, anterior delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Primary push movement. Lean forward for pec, stay upright for tricep. Monitor elbows at high loads."},
   {name:"Pike push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Anterior delt, triceps, upper pec",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Inverted V position, lower head to floor. Overhead pressing pattern. Bridge toward handstand push-ups. Elevate feet on box to increase difficulty."},
-  {name:"Archer push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Pec (unilateral), triceps, anterior delt",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Wide stance, shift weight to one side, opposite arm extends. Extended arm passive. Prerequisite to one-arm push-up."},
-  {name:"Deficit push-ups",category:"strength",pattern:"push",equipment:["bodyweight","parallettes or plates"],muscles:"Pecs, triceps, anterior delt",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Hands on parallettes or plates, chest below hand level. Greater stretch at bottom. Elevate feet for more upper pec/delt."},
-  {name:"Pseudo planche push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Anterior delt, pecs, triceps, wrists",risk:"none",difficulty:"advanced",phase:"1",inProgram:false,notes:"Push-up with hands by hips, fingers backward. Shifts load toward planche. Wrist prep required. Start fingers at 45° and work toward parallel."},
-  {name:"One-arm push-up (assisted)",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Pec (unilateral), triceps, core",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Start with elevated hand on box. Progress toward floor. Build via archer push-ups. Anti-rotation demand significant."},
-  {name:"Zercher squat",category:"strength",pattern:"squat",equipment:["barbell"],muscles:"Quads, glutes, upper back, core",risk:"high",difficulty:"intermediate",phase:"1",inProgram:true,notes:"⚠ HIGH BICEPS TENDON RISK — bar rests in elbow crook. Start conservatively. Hard 6, not a max. Monitor pain 0–10 every session. Do not increase load if pain >4/10."},
-  {name:"Stiff-leg deadlift",category:"strength",pattern:"hinge",equipment:["barbell"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Primary deadlift carrier. Minimal knee bend, hinge at hip. Slow eccentric 2–3 sec. Load seriously — tracking toward 600 lb deadlift goal."},
-  {name:"Bulgarian split squat",category:"strength",pattern:"squat",equipment:["dumbbells","bench"],muscles:"Quads, glutes, hip flexors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Rear foot elevated. Front foot forward enough for vertical shin. More posterior chain with foot forward, more quad with foot back. DBs to 90 lbs."},
-  {name:"Single-leg RDL",category:"strength",pattern:"hinge",equipment:["dumbbells","barbell"],muscles:"Hamstrings (unilateral), glutes, hip stabilizers",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Hip hinge on one leg. Contralateral DB or barbell. Slow and controlled — proprioception as much as strength."},
-  {name:"Romanian deadlift",category:"strength",pattern:"hinge",equipment:["barbell","dumbbells"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Similar to SLDL with slight knee bend. Can alternate for variety. Good accessory on lighter lower days."},
-  {name:"Hip thrust",category:"strength",pattern:"hinge",equipment:["barbell","bench"],muscles:"Glutes (primary), hamstrings",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Shoulders on bench, barbell across hips. Isolated glute drive. Good accessory that doesn't compete with SLDL recovery. 3×10–15."},
-  {name:"Step-ups (weighted)",category:"strength",pattern:"squat",equipment:["dumbbells","box or bench"],muscles:"Quads, glutes, hip stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Controlled step onto box, don't push off back foot. DBs in hands. Good unilateral quad work."},
-  {name:"Suitcase carry",category:"strength",pattern:"carry",equipment:["dumbbell"],muscles:"Core (lateral), hip stabilizers, traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Single DB in one hand, walk 30–40m. Lateral core anti-flexion. Underused in powerlifting programs. Great finisher."},
-  {name:"Farmer's carry",category:"strength",pattern:"carry",equipment:["dumbbells"],muscles:"Traps, grip, core, hip stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Heavy DBs both hands, walk for distance. Trap and grip strength. Heavy slow (30m) or moderate faster (50–60m)."},
-  {name:"Hollow body hold",category:"skill",pattern:"core",equipment:["bodyweight"],muscles:"Rectus abdominis, hip flexors, serratus",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Lower back FLAT on floor. Arms overhead, legs ~6 inches. Foundation for all advanced calisthenics. Quality over duration — if lower back lifts, set is over."},
-  {name:"Tuck L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars","floor"],muscles:"Hip flexors, abs, triceps, shoulders",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked, pull knees to chest. Entry to L-sit → V-sit → front lever. Log time in Reps. Progress to L-sit when holding 20+ sec consistently."},
-  {name:"L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars"],muscles:"Hip flexors, abs, triceps, shoulders, quads",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Arms locked, legs extended horizontally. Progress from tuck L-sit. 5–10 sec holds to start."},
-  {name:"Parallel bar support hold",category:"skill",pattern:"push",equipment:["dip station"],muscles:"Triceps, shoulders, chest, stabilizers",risk:"moderate",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked at top of dip, hold. Stabilizer demand deceptively high. Start 15 sec. Monitor elbows at extended load."},
-  {name:"Tuck front lever hold",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, core, rear delt, biceps",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Hang from bar, pull body horizontal with knees tucked. Introduced Weeks 3–4. Progress: tuck → advanced tuck → straddle → full."},
-  {name:"Explosive pull-ups",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Explosive concentric, controlled eccentric. Develops power output. Foundation for muscle-up. 3–5 sets of 3–5 explosive reps. Introduced Weeks 3–4."},
-  {name:"Muscle-up (kipping)",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, triceps, chest, core",risk:"moderate",difficulty:"advanced",phase:"1",inProgram:false,notes:"Explosive pull + transition over the bar. Long-term goal. Build through explosive pull-ups and straight-bar dip strength."},
-  {name:"Handstand hold (wall)",category:"skill",pattern:"push",equipment:["bodyweight","wall"],muscles:"Anterior delt, triceps, core, wrists",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Chest to wall first. 10–20 sec holds. Progress: chest-to-wall → freestanding kick-up attempts."},
-  {name:"Wall handstand push-up",category:"skill",pattern:"push",equipment:["bodyweight","wall"],muscles:"Anterior delt, triceps, upper traps",risk:"none",difficulty:"advanced",phase:"1",inProgram:false,notes:"From handstand, lower head to floor and press. Progresses from pike push-ups. Balance first, strength second."},
-  {name:"Biceps tendon isometric",category:"mobility",pattern:"pull",equipment:["band","dumbbell"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. Supinated grip, 30–45 sec sustained hold. Discomfort ≤4/10, pain-free 24h after. 3×/week Mon/Wed/Fri. Most evidence-supported intervention for chronic tendinopathy."},
-  {name:"Biceps eccentric curl",category:"mobility",pattern:"pull",equipment:["dumbbell","band"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. 4-sec eccentric only — lower slowly, other hand resets. 3×8. 3×/week Tue/Thu/Sat. Progress load only when pain ≤2/10 consistently."},
-  {name:"Thoracic extension (foam roller)",category:"mobility",pattern:"core",equipment:["foam roller"],muscles:"Thoracic extensors, pecs (stretch)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Foam roller perpendicular to spine, mid-back. Arms overhead. 60 sec. Every upper body day minimum. Powerlifting builds chronic t-spine flexion."},
-  {name:"Lat hang stretch",category:"mobility",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, shoulder capsule (inferior)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Dead hang, let shoulders passively elevate. Decompresses and lengthens lat — reduces proximal biceps tension. 30 sec every upper day."},
-  {name:"Shoulder CARs",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Rotator cuff, shoulder capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Controlled articular rotations — slow full-range shoulder circles under muscular control. 5 each direction. Joint health, not stretching."},
-  {name:"Band pull-apart",category:"mobility",pattern:"pull",equipment:["band"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Light band at shoulder height. Posterior shoulder and external rotation. Counteracts internal rotation from years of low-bar. 2×15 every upper day."},
-  {name:"Hip flexor stretch (kneeling)",category:"mobility",pattern:"hinge",equipment:["bodyweight"],muscles:"Hip flexors (psoas, rectus femoris)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Half-kneeling, posterior pelvic tilt, reach overhead. Heavy hinging and sitting shortens hip flexors. Address every lower day."},
-  {name:"Ankle mobility wall drill",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Ankle dorsiflexors, calf",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Knee-over-toe toward wall, heel flat. Zercher depth depends on ankle dorsiflexion. 10 reps/side. Move foot further from wall to progress."},
-  {name:"90/90 hip stretch",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Hip capsule (internal and external rotation)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Seated, both legs at 90°. Lean over front shin, switch. Comprehensive hip capsule — both internal and external rotation. 45 sec/side."},
-  {name:"Adductor rockback",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Adductors, hip internal rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Quadruped, wide knee stance. Rock hips back toward heels. Hip internal rotation and adductor length. Feeds squat depth."},
-  {name:"Wrist flexor stretch",category:"mobility",pattern:"push",equipment:["bodyweight"],muscles:"Forearm flexors, wrist capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arm extended, palm up, gentle downward pressure on fingers. Forearm flexors and distal biceps attachment area. 30 sec after grip-heavy sessions."},
-  {name:"Supination/pronation circles",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Forearm supinators/pronators, distal biceps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Slow controlled forearm rotation both ways. 10 each direction. Target daily habit. Easy to do between sets."},
-  {name:"Pigeon stretch / figure-4",category:"mobility",pattern:"hinge",equipment:["bodyweight"],muscles:"Glutes, piriformis, external rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Floor pigeon or supine figure-4. Glute and external rotator stretch. 45 sec/side. Especially useful after heavy SLDL sessions."},
-  {name:"Child's pose with lat reach",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Lats, thoracic spine, shoulder (inferior capsule)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Child's pose, walk hands to one side. Lat, shoulder, thoracic stretch combined. Good full-session cooldown. 30 sec/side."},
-  {name:"Calf stretch (gastrocnemius)",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Gastrocnemius",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Straight-leg against wall. Bike riding shortens calves. Also feeds ankle dorsiflexion. 30 sec/side."},
-  {name:"Doorway chest stretch",category:"mobility",pattern:"push",equipment:["bodyweight","doorway"],muscles:"Pec major, anterior delt, pec minor",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arms at 90°, lean through doorway. Anterior shoulder and pec minor. Reduces forward shoulder pull — decreases proximal biceps tendon tension. 30 sec."},
-  {name:"Thoracic rotation (seated)",category:"mobility",pattern:"core",equipment:["bodyweight"],muscles:"Thoracic rotators, rib cage",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Seated, hands behind head, rotate through mid-back only. Lock lumbar by sitting tall. T-spine rotation for pressing mechanics. 10 each side."},
-  {name:"Bike — steady state",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, calves, cardiovascular",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"RPE 5–6. Conversational pace. Nose breathing if possible. Wks 1–2: 3×10 min intervals. Wks 3–4: 35–45 min continuous."},
-  {name:"Bike — threshold intervals",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, cardiovascular",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"RPE 7–8. Comfortably hard. 2×15 min or 3×8 min with recovery. Introduced Weeks 5–6."},
+  {name:"Archer push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Pec (unilateral), triceps, anterior delt",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Wide stance, shift weight to one side, opposite arm extends. Prerequisite to one-arm push-up."},
+  {name:"Deficit push-ups",category:"strength",pattern:"push",equipment:["bodyweight","parallettes or plates"],muscles:"Pecs, triceps, anterior delt",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Hands on parallettes or plates, chest below hand level. Elevate feet for more upper pec/delt."},
+  {name:"Pseudo planche push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Anterior delt, pecs, triceps, wrists",risk:"none",difficulty:"advanced",phase:"1",inProgram:false,notes:"Push-up with hands by hips, fingers backward. Shifts load toward planche. Wrist prep required."},
+  {name:"One-arm push-up (assisted)",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Pec (unilateral), triceps, core",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Start with elevated hand on box. Progress toward floor. Build via archer push-ups."},
+  {name:"Zercher squat",category:"strength",pattern:"squat",equipment:["barbell"],muscles:"Quads, glutes, upper back, core",risk:"high",difficulty:"intermediate",phase:"1",inProgram:true,notes:"⚠ HIGH BICEPS TENDON RISK — bar rests in elbow crook. Start conservatively. Monitor pain 0–10 every session."},
+  {name:"Stiff-leg deadlift",category:"strength",pattern:"hinge",equipment:["barbell"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Primary deadlift carrier. Minimal knee bend, hinge at hip. Slow eccentric 2–3 sec."},
+  {name:"Bulgarian split squat",category:"strength",pattern:"squat",equipment:["dumbbells","bench"],muscles:"Quads, glutes, hip flexors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Rear foot elevated. More posterior chain with foot forward, more quad with foot back."},
+  {name:"Single-leg RDL",category:"strength",pattern:"hinge",equipment:["dumbbells","barbell"],muscles:"Hamstrings (unilateral), glutes, hip stabilizers",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Hip hinge on one leg. Slow and controlled — proprioception as much as strength."},
+  {name:"Single-leg hamstring curl",category:"strength",pattern:"hinge",equipment:["cable","machine"],muscles:"Hamstrings (unilateral), glutes",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Controlled through full range. Good isolation accessory."},
+  {name:"Romanian deadlift",category:"strength",pattern:"hinge",equipment:["barbell","dumbbells"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Similar to SLDL with slight knee bend. Can alternate for variety."},
+  {name:"Hip thrust",category:"strength",pattern:"hinge",equipment:["barbell","bench"],muscles:"Glutes (primary), hamstrings",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Shoulders on bench, barbell across hips. Isolated glute drive. 3×10–15."},
+  {name:"Step-ups (weighted)",category:"strength",pattern:"squat",equipment:["dumbbells","box or bench"],muscles:"Quads, glutes, hip stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Controlled step onto box, don't push off back foot. DBs in hands."},
+  {name:"Suitcase carry",category:"strength",pattern:"carry",equipment:["dumbbell"],muscles:"Core (lateral), hip stabilizers, traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Single DB in one hand, walk 30–40m. Lateral core anti-flexion."},
+  {name:"Farmer's carry",category:"strength",pattern:"carry",equipment:["dumbbells"],muscles:"Traps, grip, core, hip stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Heavy DBs both hands, walk for distance. Trap and grip strength."},
+  {name:"Hollow body hold",category:"skill",pattern:"core",equipment:["bodyweight"],muscles:"Rectus abdominis, hip flexors, serratus",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Lower back FLAT on floor. Arms overhead, legs ~6 inches. Foundation for all advanced calisthenics."},
+  {name:"Tuck L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars","floor"],muscles:"Hip flexors, abs, triceps, shoulders",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked, pull knees to chest. Entry to L-sit → V-sit → front lever. Progress to L-sit when holding 20+ sec consistently."},
+  {name:"L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars"],muscles:"Hip flexors, abs, triceps, shoulders, quads",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Arms locked, legs extended horizontally. Progress from tuck L-sit."},
+  {name:"Parallel bar support hold",category:"skill",pattern:"push",equipment:["dip station"],muscles:"Triceps, shoulders, chest, stabilizers",risk:"moderate",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked at top of dip, hold. Start 15 sec. Monitor elbows at extended load."},
+  {name:"Tuck front lever hold",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, core, rear delt, biceps",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Hang from bar, pull body horizontal with knees tucked. Introduced Weeks 3–4."},
+  {name:"Explosive pull-ups",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Explosive concentric, controlled eccentric. Develops power. Foundation for muscle-up. 3–5 sets of 3–5 reps. Introduced Weeks 3–4."},
+  {name:"Muscle-up (kipping)",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, triceps, chest, core",risk:"moderate",difficulty:"advanced",phase:"1",inProgram:false,notes:"Explosive pull + transition over the bar. Long-term goal."},
+  {name:"Handstand hold (wall)",category:"skill",pattern:"push",equipment:["bodyweight","wall"],muscles:"Anterior delt, triceps, core, wrists",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Chest to wall first. 10–20 sec holds. Progress toward freestanding."},
+  {name:"Wall handstand push-up",category:"skill",pattern:"push",equipment:["bodyweight","wall"],muscles:"Anterior delt, triceps, upper traps",risk:"none",difficulty:"advanced",phase:"1",inProgram:false,notes:"From handstand, lower head to floor and press. Progresses from pike push-ups."},
+  {name:"Biceps tendon isometric",category:"mobility",pattern:"pull",equipment:["band","dumbbell"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. Supinated grip, 30–45 sec sustained hold. Discomfort ≤4/10. 3×/week Mon/Wed/Fri."},
+  {name:"Biceps eccentric curl",category:"mobility",pattern:"pull",equipment:["dumbbell","band"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. 4-sec eccentric only — lower slowly, other hand resets. 3×8. 3×/week Tue/Thu/Sat."},
+  {name:"Thoracic extension (foam roller)",category:"mobility",pattern:"core",equipment:["foam roller"],muscles:"Thoracic extensors, pecs (stretch)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Foam roller perpendicular to spine, mid-back. Arms overhead. 60 sec. Every upper body day minimum."},
+  {name:"Lat hang stretch",category:"mobility",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, shoulder capsule (inferior)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Dead hang, let shoulders passively elevate. 30 sec every upper day."},
+  {name:"Shoulder CARs",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Rotator cuff, shoulder capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Controlled articular rotations — slow full-range shoulder circles. 5 each direction."},
+  {name:"Band pull-apart",category:"mobility",pattern:"pull",equipment:["band"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Light band at shoulder height. Posterior shoulder and external rotation. 2×15 every upper day."},
+  {name:"Hip flexor stretch (kneeling)",category:"mobility",pattern:"hinge",equipment:["bodyweight"],muscles:"Hip flexors (psoas, rectus femoris)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Half-kneeling, posterior pelvic tilt, reach overhead. Address every lower day."},
+  {name:"Ankle mobility wall drill",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Ankle dorsiflexors, calf",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Knee-over-toe toward wall, heel flat. 10 reps/side."},
+  {name:"90/90 hip stretch",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Hip capsule (internal and external rotation)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Seated, both legs at 90°. Lean over front shin, switch. 45 sec/side."},
+  {name:"Adductor rockback",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Adductors, hip internal rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Quadruped, wide knee stance. Rock hips back toward heels."},
+  {name:"Wrist flexor stretch",category:"mobility",pattern:"push",equipment:["bodyweight"],muscles:"Forearm flexors, wrist capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arm extended, palm up, gentle downward pressure on fingers. 30 sec after grip-heavy sessions."},
+  {name:"Supination/pronation circles",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Forearm supinators/pronators, distal biceps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Slow controlled forearm rotation both ways. 10 each direction. Easy to do between sets."},
+  {name:"Pigeon stretch / figure-4",category:"mobility",pattern:"hinge",equipment:["bodyweight"],muscles:"Glutes, piriformis, external rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Floor pigeon or supine figure-4. 45 sec/side. Especially useful after heavy SLDL sessions."},
+  {name:"Child's pose with lat reach",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Lats, thoracic spine, shoulder (inferior capsule)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Child's pose, walk hands to one side. 30 sec/side. Good full-session cooldown."},
+  {name:"Calf stretch (gastrocnemius)",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Gastrocnemius",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Straight-leg against wall. Bike riding shortens calves. 30 sec/side."},
+  {name:"Doorway chest stretch",category:"mobility",pattern:"push",equipment:["bodyweight","doorway"],muscles:"Pec major, anterior delt, pec minor",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arms at 90°, lean through doorway. Reduces forward shoulder pull. 30 sec."},
+  {name:"Thoracic rotation (seated)",category:"mobility",pattern:"core",equipment:["bodyweight"],muscles:"Thoracic rotators, rib cage",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Seated, hands behind head, rotate through mid-back only. 10 each side."},
+  {name:"Bike — steady state",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, calves, cardiovascular",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"RPE 5–6. Conversational pace. Wks 1–2: 3×10 min intervals. Wks 3–4: 35–45 min continuous."},
+  {name:"Bike — threshold intervals",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, cardiovascular",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"RPE 7–8. 2×15 min or 3×8 min with recovery. Introduced Weeks 5–6."},
+  {name:"Cable face pulls",category:"strength",pattern:"pull",equipment:["cable"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Rope at forehead height, elbows high and flared. Light load, high reps (15–20). Shoulder health staple."},
 ];
 
 // ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
-let activeWeek = 0;
-let logWeek = 0;
+let activeWeek = 2; // default to Week 3 (index 2)
+let logWeek = 2;
 let logDay = 0;
 let libFilters = { cat:"all", risk:"all", pattern:"all", program:"all" };
 let libQuery = "";
 const STORAGE_KEY = "phase1_log_v1";
+const SWAPS_KEY = "phase1_swaps_v1";
+
+// Swap state
+let swapContext = null; // {dayIdx, exIdx, isMobility, pattern}
+let swapPending = null; // {dayIdx, exIdx, isMobility, newExName}
+let swapFilter = "all"; // pattern filter in swap modal
 
 function loadLog() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
@@ -565,9 +831,50 @@ function loadLog() {
 function saveLog(data) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
 }
-function logKey(week, day, exIdx, field) {
-  return `w${week}_d${day}_e${exIdx}_${field}`;
+function loadSwaps() {
+  try { return JSON.parse(localStorage.getItem(SWAPS_KEY)) || {}; } catch(e) { return {}; }
 }
+function saveSwaps(data) {
+  try { localStorage.setItem(SWAPS_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+// swapKey: week-specific or phase-level
+function weekSwapKey(week, dayIdx, exIdx, isMob) {
+  return `week_${week}_d${dayIdx}_${isMob?'mob':'ex'}_${exIdx}`;
+}
+function phaseSwapKey(dayIdx, exIdx, isMob) {
+  return `phase_d${dayIdx}_${isMob?'mob':'ex'}_${exIdx}`;
+}
+
+// Get effective exercise for a given week/day/index
+function getEffectiveEx(week, dayIdx, exIdx, isMob) {
+  const swaps = loadSwaps();
+  const wKey = weekSwapKey(week, dayIdx, exIdx, isMob);
+  const pKey = phaseSwapKey(dayIdx, exIdx, isMob);
+  const arr = isMob ? DAYS[dayIdx].mobility : DAYS[dayIdx].exercises;
+  const original = arr[exIdx];
+
+  // Week swap takes priority, then phase swap
+  let swapName = swaps[wKey] || swaps[pKey] || null;
+  if (!swapName) return { ex: original, isSwapped: false, originalName: null };
+
+  // Find in EXERCISES library
+  const found = EXERCISES.find(e => e.name === swapName);
+  if (!found) return { ex: original, isSwapped: false, originalName: null };
+
+  // Build a compatible ex object from library
+  const swappedEx = {
+    name: found.name,
+    sets: original.sets,
+    reps: original.reps,
+    note: `[Substitution for ${original.name}] ${found.notes}`,
+    flags: original.flags, // keep tendon flags from original slot
+    timed: original.timed,
+    pattern: found.pattern,
+  };
+  return { ex: swappedEx, isSwapped: true, originalName: original.name };
+}
+
 function reportKey(week, field) {
   return `w${week}_report_${field}`;
 }
@@ -587,10 +894,9 @@ function switchTab(name, el) {
 // PROGRAM TAB
 // ═══════════════════════════════════════════════════════
 function buildProgram() {
-  // Week buttons
   const scroll = document.getElementById('week-scroll');
   scroll.innerHTML = WEEKS.map((w,i) =>
-    `<button class="week-btn ${i===0?'active':''}" onclick="selectWeek(${i},this)">${w.label}<br><span style="font-size:9px;opacity:.6">${w.dates}</span></button>`
+    `<button class="week-btn ${i===activeWeek?'active':''}" onclick="selectWeek(${i},this)">${w.label}<br><span style="font-size:9px;opacity:.6">${w.dates}</span></button>`
   ).join('');
   renderDays();
 }
@@ -616,27 +922,36 @@ function flagPill(flags) {
 function renderDays() {
   const wrap = document.getElementById('days-wrap');
   wrap.innerHTML = DAYS.map((d, di) => {
-    const exRows = d.exercises.map(ex => {
+    const exRows = d.exercises.map((origEx, ei) => {
+      const {ex, isSwapped, originalName} = getEffectiveEx(activeWeek, di, ei, false);
       const nameClass = ex.flags.includes('w') ? 'watch' : ex.flags.includes('n') ? 'new' : '';
+      const swappedBadge = isSwapped ? `<span class="pill pill-amber">⇄ Sub</span>` : '';
+      const dotColor = ex.flags.includes('w') ? 'var(--red)' : isSwapped ? 'var(--amber)' : ex.flags.includes('n') ? 'var(--amber)' : 'var(--faint)';
       return `<div class="ex-row">
-        <div class="ex-dot" style="background:${ex.flags.includes('w')?'var(--red)':ex.flags.includes('n')?'var(--amber)':'var(--faint)'}"></div>
+        <div class="ex-dot" style="background:${dotColor}"></div>
         <div class="ex-main">
-          <div class="ex-name ${nameClass}">${ex.name} ${flagPill(ex.flags)}</div>
+          <div class="ex-name ${nameClass}">${ex.name} ${flagPill(ex.flags)} ${swappedBadge}</div>
+          ${isSwapped ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ replaces ${originalName}</div>` : ''}
           <div class="ex-sets">${ex.sets} sets × ${ex.reps}</div>
           <div class="ex-note">${ex.note}</div>
         </div>
+        <button class="swap-btn ${isSwapped?'swapped':''}" onclick="event.stopPropagation();openSwap(${di},${ei},false,'${ex.pattern||'pull'}')">${isSwapped?'⇄ Swap':'Swap'}</button>
       </div>`;
     }).join('');
 
-    const mobRows = d.mobility.map(ex => {
+    const mobRows = d.mobility.map((origEx, mi) => {
+      const {ex, isSwapped, originalName} = getEffectiveEx(activeWeek, di, mi, true);
       const isTendon = ex.flags.includes('t');
+      const swappedBadge = isSwapped ? `<span class="pill pill-amber">⇄ Sub</span>` : '';
       return `<div class="ex-row ${isTendon?'tendon-row':'mob-row'}">
         <div class="ex-dot" style="background:${isTendon?'var(--red)':'var(--blue)'}"></div>
         <div class="ex-main">
-          <div class="ex-name ${isTendon?'tendon':'mob'}">${ex.name} ${isTendon?'<span class="pill pill-red">⚑ Protocol</span>':''}</div>
+          <div class="ex-name ${isTendon?'tendon':'mob'}">${ex.name} ${isTendon?'<span class="pill pill-red">⚑ Protocol</span>':''} ${swappedBadge}</div>
+          ${isSwapped ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ replaces ${originalName}</div>` : ''}
           <div class="ex-sets ${isTendon?'tendon':'mob'}">${ex.sets} sets × ${ex.reps}</div>
           <div class="ex-note">${ex.note}</div>
         </div>
+        <button class="swap-btn ${isSwapped?'swapped':''}" onclick="event.stopPropagation();openSwap(${di},${mi},true,'${ex.pattern||'pull'}')">${isSwapped?'⇄ Swap':'Swap'}</button>
       </div>`;
     }).join('');
 
@@ -662,6 +977,122 @@ function renderDays() {
 function toggleDay(di) {
   const card = document.getElementById(`prog-day-${di}`);
   card.classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════════════════
+// SWAP MODAL
+// ═══════════════════════════════════════════════════════
+function openSwap(dayIdx, exIdx, isMob, pattern) {
+  swapContext = {dayIdx, exIdx, isMob, pattern};
+  swapFilter = pattern || "all";
+
+  const arr = isMob ? DAYS[dayIdx].mobility : DAYS[dayIdx].exercises;
+  const {ex} = getEffectiveEx(activeWeek, dayIdx, exIdx, isMob);
+
+  document.getElementById('swap-ex-name').textContent = ex.name;
+  document.getElementById('swap-search').value = '';
+
+  // Build pattern filter chips
+  const patterns = ["all","push","pull","hinge","squat","core","carry"];
+  document.getElementById('swap-filter-row').innerHTML = patterns.map(p =>
+    `<button class="swap-filter-chip ${swapFilter===p?'active':''}" onclick="setSwapFilter('${p}',this)">${p==='all'?'All patterns':p}</button>`
+  ).join('');
+
+  filterSwapList();
+  document.getElementById('swap-overlay').classList.add('open');
+  document.getElementById('swap-search').focus();
+}
+
+function setSwapFilter(p, el) {
+  swapFilter = p;
+  document.querySelectorAll('.swap-filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  filterSwapList();
+}
+
+function filterSwapList() {
+  const q = document.getElementById('swap-search').value.toLowerCase();
+  const list = document.getElementById('swap-list');
+
+  const filtered = EXERCISES.filter(ex => {
+    if (swapFilter !== 'all' && ex.pattern !== swapFilter) return false;
+    if (q) {
+      const s = [ex.name, ex.muscles, ex.category, ex.pattern, ex.notes].join(' ').toLowerCase();
+      if (!s.includes(q)) return false;
+    }
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="swap-list-empty">No exercises match. Try a different filter.</div>';
+    return;
+  }
+
+  const riskColors = {none:'var(--green)',low:'var(--amber)',moderate:'#f08040',high:'var(--red)'};
+  list.innerHTML = filtered.map(ex =>
+    `<div class="swap-ex-item" onclick="selectSwapEx('${ex.name.replace(/'/g,"\\'")}')">
+      <div class="swap-item-dot" style="background:${riskColors[ex.risk]||'var(--faint)'}"></div>
+      <div class="swap-item-info">
+        <div class="swap-item-name">${ex.name}</div>
+        <div class="swap-item-meta">${ex.category} · ${ex.pattern} · ${ex.difficulty} · tendon: ${ex.risk}</div>
+      </div>
+      <div class="swap-item-arrow">›</div>
+    </div>`
+  ).join('');
+}
+
+function selectSwapEx(exName) {
+  swapPending = {...swapContext, newExName: exName};
+  closeSwap();
+  // Show scope modal
+  const {dayIdx, exIdx, isMob} = swapContext;
+  const {ex} = getEffectiveEx(activeWeek, dayIdx, exIdx, isMob);
+  document.getElementById('scope-desc').textContent =
+    `Replacing "${ex.name}" with "${exName}"`;
+  document.getElementById('scope-overlay').classList.add('open');
+}
+
+function closeSwap() {
+  document.getElementById('swap-overlay').classList.remove('open');
+}
+
+function closeSwapIfBackground(e) {
+  if (e.target === document.getElementById('swap-overlay')) closeSwap();
+}
+
+function closeScope() {
+  document.getElementById('scope-overlay').classList.remove('open');
+  swapPending = null;
+}
+
+function closeScopeIfBackground(e) {
+  if (e.target === document.getElementById('scope-overlay')) closeScope();
+}
+
+function confirmSwap(scope) {
+  if (!swapPending) return;
+  const {dayIdx, exIdx, isMob, newExName} = swapPending;
+  const swaps = loadSwaps();
+
+  if (scope === 'week') {
+    // Apply to active week only; clear any phase swap for this slot to avoid conflict
+    const wKey = weekSwapKey(activeWeek, dayIdx, exIdx, isMob);
+    swaps[wKey] = newExName;
+  } else {
+    // Apply from current week forward (phase swap)
+    const pKey = phaseSwapKey(dayIdx, exIdx, isMob);
+    swaps[pKey] = newExName;
+    // Clear any week-specific swaps for past weeks on this slot (leave current/future)
+    for (let w = 0; w < activeWeek; w++) {
+      const oldWKey = weekSwapKey(w, dayIdx, exIdx, isMob);
+      delete swaps[oldWKey];
+    }
+  }
+
+  saveSwaps(swaps);
+  closeScope();
+  swapPending = null;
+  renderDays();
 }
 
 // ═══════════════════════════════════════════════════════
@@ -699,28 +1130,26 @@ function selectLogDay(i, el) {
 function renderLogBody() {
   const logData = loadLog();
   const day = DAYS[logDay];
-  const allExercises = [...day.exercises, ...day.mobility];
   const exOffset = day.exercises.length;
 
   let html = '';
 
-  // Training section
   html += `<div class="log-section-label" style="color:var(--green)">Training</div>`;
-  day.exercises.forEach((ex, i) => {
+  day.exercises.forEach((origEx, i) => {
+    const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, logDay, i, false);
     const isTendon = ex.flags.includes('t');
     const isWatch = ex.flags.includes('w');
-    const isCond = ex.note.toLowerCase().includes('bike') || ex.reps.includes('min');
-    html += buildLogCard(ex, i, logData, isTendon, isWatch, isCond, false);
+    const isCond = ex.name.toLowerCase().includes('bike') || ex.reps.includes('min');
+    html += buildLogCard(ex, i, logData, isTendon, isWatch, isCond, false, isSwapped, originalName);
   });
 
-  // Mobility section
   html += `<div class="log-section-label" style="color:var(--blue)">Mobility & Tendon Work</div>`;
-  day.mobility.forEach((ex, i) => {
+  day.mobility.forEach((origEx, i) => {
+    const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, logDay, i, true);
     const isTendon = ex.flags.includes('t');
-    html += buildLogCard(ex, exOffset + i, logData, isTendon, false, false, true);
+    html += buildLogCard(ex, exOffset + i, logData, isTendon, false, false, true, isSwapped, originalName);
   });
 
-  // Week report (show only on last day tab or always show at bottom)
   html += `<div class="log-section-label" style="color:var(--amber);margin-top:24px">Week ${logWeek+1} Report</div>`;
   html += `<div class="week-report-box">`;
   REPORT_PROMPTS.forEach((prompt, pi) => {
@@ -739,7 +1168,7 @@ function renderLogBody() {
   document.getElementById('log-body').innerHTML = html;
 }
 
-function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
+function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob, isSwapped, originalName) {
   const baseKey = `w${logWeek}_d${logDay}_e${idx}`;
   const note = logData[baseKey+'_note'] || '';
   const numSets = parseInt(ex.sets) || 1;
@@ -748,8 +1177,8 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
 
   const cardClass = isTendon ? 'tendon-card' : isMob ? 'mob-card' : '';
   const nameClass = isWatch ? 'watch' : isTendon ? 'tendon' : isMob ? 'mob' : '';
+  const subBadge = isSwapped ? `<span class="log-ex-sub-badge">Sub</span>` : '';
 
-  // Build per-set rows
   let setRows = '';
   for (let s = 0; s < numSets; s++) {
     const sk = `${baseKey}_s${s}`;
@@ -761,7 +1190,6 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
 
     let rowInputs = '';
     if (isEccentric) {
-      // Fixed: Load + Reps + Eccentric tempo (sec) + Pain
       rowInputs = `
         <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
         <div class="log-field"><label>Reps</label><input type="number" inputmode="numeric" placeholder="8" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
@@ -771,8 +1199,7 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
         <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
         ${rowInputs}
       </div>`;
-    } else if (isCond || isTimed) {
-      // Timed: Duration (sec or min) + RPE
+    } else if (isCond || (isTimed && !isTendon)) {
       const durLabel = isCond ? 'Duration (min)' : 'Time (sec)';
       rowInputs = `
         <div class="log-field"><label>${durLabel}</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
@@ -782,7 +1209,6 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
         ${rowInputs}
       </div>`;
     } else if (isTendon) {
-      // Isometric: Load + Time (sec) + RPE + Pain
       rowInputs = `
         <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
         <div class="log-field"><label>Time (sec)</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
@@ -793,7 +1219,6 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
         ${rowInputs}
       </div>`;
     } else {
-      // Standard strength: Load + Reps + RPE
       rowInputs = `
         <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
         <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
@@ -807,7 +1232,8 @@ function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob) {
 
   return `<div class="log-ex-card ${cardClass}">
     <div class="log-ex-header">
-      <div class="log-ex-name ${nameClass}">${ex.name}</div>
+      <div class="log-ex-name ${nameClass}">${ex.name}${subBadge}</div>
+      ${isSwapped && originalName ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ substitution for ${originalName}</div>` : ''}
       <div class="log-ex-prescribed">${ex.sets} sets × ${ex.reps}</div>
     </div>
     ${setRows}
@@ -825,6 +1251,7 @@ function saveField(el, key) {
 
 function copyReport() {
   const data = loadLog();
+  const swaps = loadSwaps();
   const week = WEEKS[logWeek];
   let out = `WEEK ${logWeek+1} TRAINING REPORT — ${week.dates}\n${'─'.repeat(44)}\n\n`;
 
@@ -832,13 +1259,14 @@ function copyReport() {
     out += `${day.day.toUpperCase()} — ${day.label}\n`;
     const exOffset = day.exercises.length;
 
-    day.exercises.forEach((ex, i) => {
+    day.exercises.forEach((origEx, i) => {
+      const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, false);
       const base = `w${logWeek}_d${di}_e${i}`;
       const note = data[base+'_note'];
       const numSets = parseInt(ex.sets) || 1;
       const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
       const isTimed = ex.timed === true;
-      const isCond = ex.note.toLowerCase().includes('bike') || ex.reps.includes('min');
+      const isCond = ex.name.toLowerCase().includes('bike') || ex.reps.includes('min');
 
       let setLines = [];
       for (let s = 0; s < numSets; s++) {
@@ -848,22 +1276,24 @@ function copyReport() {
         if (load||reps||rpe||pain||sec) {
           if (isEccentric) {
             setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
-          } else if (isCond || isTimed) {
+          } else if (isCond || (isTimed && !ex.flags.includes('t'))) {
             setLines.push(`    Set ${s+1}: time=${reps||'—'} rpe=${rpe||'—'}`);
           } else {
             setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
           }
         }
       }
-      if (setLines.length || note) {
-        out += `  ${ex.name}:\n`;
+      if (setLines.length || note || isSwapped) {
+        const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
+        out += `  ${ex.name}${subTag}:\n`;
         if (setLines.length) out += setLines.join('\n') + '\n';
         if (note) out += `    Note: ${note}\n`;
       }
     });
 
     out += '  [Mobility]\n';
-    day.mobility.forEach((ex, i) => {
+    day.mobility.forEach((origEx, i) => {
+      const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, true);
       const base = `w${logWeek}_d${di}_e${exOffset+i}`;
       const note = data[base+'_note'];
       const numSets = parseInt(ex.sets) || 1;
@@ -888,8 +1318,9 @@ function copyReport() {
           }
         }
       }
-      if (setLines.length || note) {
-        out += `  ${ex.name}:\n`;
+      if (setLines.length || note || isSwapped) {
+        const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
+        out += `  ${ex.name}${subTag}:\n`;
         if (setLines.length) out += setLines.join('\n') + '\n';
         if (note) out += `    Note: ${note}\n`;
       }
