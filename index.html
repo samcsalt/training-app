@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -37,91 +36,91 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 
 /* ── Tab bar ── */
 #tabbar {
-display: flex;
-background: var(–bg2);
-border-top: 1px solid var(–border);
-padding-bottom: var(–safe-bottom);
-height: calc(var(–tab-h) + var(–safe-bottom));
-flex-shrink: 0;
-z-index: 200;
+  display: flex;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding-bottom: var(--safe-bottom);
+  height: calc(var(--tab-h) + var(--safe-bottom));
+  flex-shrink: 0;
+  z-index: 200;
 }
 .tab {
-flex: 1; display: flex; flex-direction: column; align-items: center;
-justify-content: center; gap: 4px; cursor: pointer;
-font-family: var(–mono); font-size: 9px; font-weight: 500;
-letter-spacing: 0.08em; text-transform: uppercase;
-color: var(–faint); transition: color 0.15s; padding-top: 4px;
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--faint); transition: color 0.15s; padding-top: 4px;
 }
 .tab svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.tab.active { color: var(–green); }
-.tab.active.log-tab { color: var(–amber); }
-.tab.active.lib-tab { color: var(–blue); }
+.tab.active { color: var(--green); }
+.tab.active.log-tab { color: var(--amber); }
+.tab.active.lib-tab { color: var(--blue); }
 
 /* ── Shared ── */
 .screen { display: none; padding: 0 0 24px; }
 .screen.active { display: block; }
-.page-header { padding: 20px 16px 12px; border-bottom: 1px solid var(–border); position: sticky; top: 0; background: var(–bg); z-index: 50; }
-.page-label { font-family: var(–mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(–green); margin-bottom: 4px; }
-.page-label.amber { color: var(–amber); }
-.page-label.blue  { color: var(–blue); }
-.page-title { font-family: var(–mono); font-size: 20px; font-weight: 600; color: var(–text); letter-spacing: -0.02em; }
-.section-label { font-family: var(–mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(–muted); margin: 20px 16px 8px; }
-.pill { display: inline-block; font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid; }
-.pill-red    { color: var(–red);    border-color: #4a1a0a; background: #200a04; }
-.pill-amber  { color: var(–amber);  border-color: #4a3a0a; background: #200a04; }
-.pill-green  { color: var(–green);  border-color: #3a4a1a; background: #0a1400; }
-.pill-blue   { color: var(–blue);   border-color: #1a3a4a; background: #040e18; }
-.pill-muted  { color: var(–muted);  border-color: var(–border); }
+.page-header { padding: 20px 16px 12px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 50; }
+.page-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+.page-label.amber { color: var(--amber); }
+.page-label.blue  { color: var(--blue); }
+.page-title { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+.section-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 20px 16px 8px; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid; }
+.pill-red    { color: var(--red);    border-color: #4a1a0a; background: #200a04; }
+.pill-amber  { color: var(--amber);  border-color: #4a3a0a; background: #200a04; }
+.pill-green  { color: var(--green);  border-color: #3a4a1a; background: #0a1400; }
+.pill-blue   { color: var(--blue);   border-color: #1a3a4a; background: #040e18; }
+.pill-muted  { color: var(--muted);  border-color: var(--border); }
 
 /* ══════════════════════════════════════════════════
-PROGRAM TAB
+   PROGRAM TAB
 ══════════════════════════════════════════════════ */
 .week-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px; scrollbar-width: none; }
 .week-scroll::-webkit-scrollbar { display: none; }
 .week-btn {
-flex-shrink: 0; font-family: var(–mono); font-size: 10px; font-weight: 600;
-letter-spacing: 0.06em; text-transform: uppercase;
-padding: 7px 14px; border-radius: 4px; border: 1px solid var(–border2);
-background: var(–bg3); color: var(–muted); cursor: pointer; white-space: nowrap;
-transition: all 0.12s;
+  flex-shrink: 0; font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 7px 14px; border-radius: 4px; border: 1px solid var(--border2);
+  background: var(--bg3); color: var(--muted); cursor: pointer; white-space: nowrap;
+  transition: all 0.12s;
 }
-.week-btn:hover { color: var(–text); }
-.week-btn.active { background: var(–bg4); border-color: var(–green); color: var(–green); }
+.week-btn:hover { color: var(--text); }
+.week-btn.active { background: var(--bg4); border-color: var(--green); color: var(--green); }
 
 .days-wrap { padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
 
 .day-card {
-background: var(–bg2); border: 1px solid var(–border);
-border-radius: 8px; overflow: hidden; cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden; cursor: pointer;
 }
 .day-header {
-display: flex; align-items: center; gap: 10px;
-padding: 14px 16px; user-select: none;
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px; user-select: none;
 }
 .day-pip { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.pip-upper   { background: var(–green); }
-.pip-lower   { background: var(–amber); }
-.pip-cond    { background: var(–purple); }
-.pip-rest    { background: var(–faint); }
+.pip-upper   { background: var(--green); }
+.pip-lower   { background: var(--amber); }
+.pip-cond    { background: var(--purple); }
+.pip-rest    { background: var(--faint); }
 .day-label-wrap { flex: 1; }
-.day-name { font-family: var(–mono); font-size: 12px; font-weight: 600; color: var(–text); }
-.day-sub  { font-size: 11px; color: var(–muted); margin-top: 2px; }
-.day-chevron { font-family: var(–mono); font-size: 11px; color: var(–faint); transition: transform 0.2s; }
+.day-name { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text); }
+.day-sub  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.day-chevron { font-family: var(--mono); font-size: 11px; color: var(--faint); transition: transform 0.2s; }
 .day-card.open .day-chevron { transform: rotate(180deg); }
 
-.day-body { display: none; border-top: 1px solid var(–border); }
+.day-body { display: none; border-top: 1px solid var(--border); }
 .day-card.open .day-body { display: block; }
 
 .ex-section-label {
-font-family: var(–mono); font-size: 9px; font-weight: 600;
-letter-spacing: 0.1em; text-transform: uppercase;
-padding: 10px 16px 4px; color: var(–faint);
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 16px 4px; color: var(--faint);
 }
 .ex-section-label.mob { color: #3060a0; }
 
 .ex-row {
-display: flex; align-items: flex-start; gap: 10px;
-padding: 10px 16px; border-bottom: 1px solid var(–border);
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 16px; border-bottom: 1px solid var(--border);
 }
 .ex-row:last-child { border-bottom: none; }
 .ex-row.mob-row { background: #0a0a14; }
@@ -129,270 +128,270 @@ padding: 10px 16px; border-bottom: 1px solid var(–border);
 
 .ex-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
 .ex-main { flex: 1; min-width: 0; }
-.ex-name { font-size: 13px; font-weight: 500; color: var(–text); line-height: 1.3; }
-.ex-name.watch { color: var(–red); }
-.ex-name.new   { color: var(–amber); }
-.ex-name.mob   { color: var(–blue); }
-.ex-name.tendon{ color: var(–red); font-weight: 500; }
-.ex-sets { font-family: var(–mono); font-size: 11px; color: var(–green); margin-top: 3px; }
-.ex-sets.mob { color: var(–blue); }
-.ex-sets.tendon { color: var(–red); }
-.ex-note { font-size: 11px; color: var(–muted); margin-top: 4px; line-height: 1.5; }
+.ex-name { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
+.ex-name.watch { color: var(--red); }
+.ex-name.new   { color: var(--amber); }
+.ex-name.mob   { color: var(--blue); }
+.ex-name.tendon{ color: var(--red); font-weight: 500; }
+.ex-sets { font-family: var(--mono); font-size: 11px; color: var(--green); margin-top: 3px; }
+.ex-sets.mob { color: var(--blue); }
+.ex-sets.tendon { color: var(--red); }
+.ex-note { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
 .ex-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
 
 /* Swap button */
 .swap-btn {
-flex-shrink: 0;
-background: transparent;
-border: 1px solid var(–border2);
-border-radius: 4px;
-color: var(–muted);
-font-family: var(–mono);
-font-size: 9px;
-font-weight: 600;
-letter-spacing: 0.06em;
-text-transform: uppercase;
-padding: 4px 8px;
-cursor: pointer;
-margin-top: 2px;
-transition: all 0.12s;
-white-space: nowrap;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: all 0.12s;
+  white-space: nowrap;
 }
-.swap-btn:hover { color: var(–amber); border-color: var(–amber); }
-.swap-btn.swapped { color: var(–amber); border-color: var(–amber); background: #1a0e00; }
+.swap-btn:hover { color: var(--amber); border-color: var(--amber); }
+.swap-btn.swapped { color: var(--amber); border-color: var(--amber); background: #1a0e00; }
 
 /* ══════════════════════════════════════════════════
-SWAP MODAL
+   SWAP MODAL
 ══════════════════════════════════════════════════ */
 #swap-overlay {
-display: none;
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.75);
-z-index: 500;
-padding: 0;
-align-items: flex-end;
-justify-content: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 500;
+  padding: 0;
+  align-items: flex-end;
+  justify-content: center;
 }
 #swap-overlay.open { display: flex; }
 #swap-sheet {
-background: var(–bg2);
-border: 1px solid var(–border);
-border-radius: 14px 14px 0 0;
-width: 100%;
-max-height: 85vh;
-display: flex;
-flex-direction: column;
-overflow: hidden;
-padding-bottom: var(–safe-bottom);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: var(--safe-bottom);
 }
 #swap-header {
-padding: 16px 16px 12px;
-border-bottom: 1px solid var(–border);
-flex-shrink: 0;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 #swap-title {
-font-family: var(–mono);
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(–amber);
-margin-bottom: 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 4px;
 }
 #swap-ex-name {
-font-size: 15px;
-font-weight: 500;
-color: var(–text);
-margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 10px;
 }
 #swap-search {
-width: 100%;
-background: var(–bg4);
-border: 1px solid var(–border2);
-border-radius: 5px;
-color: var(–text);
-font-family: var(–sans);
-font-size: 14px;
-padding: 8px 12px;
-outline: none;
-margin-bottom: 8px;
+  width: 100%;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 8px 12px;
+  outline: none;
+  margin-bottom: 8px;
 }
-#swap-search:focus { border-color: var(–amber); }
-#swap-search::placeholder { color: var(–faint); }
+#swap-search:focus { border-color: var(--amber); }
+#swap-search::placeholder { color: var(--faint); }
 .swap-filter-row {
-display: flex;
-gap: 5px;
-overflow-x: auto;
-scrollbar-width: none;
-padding-bottom: 2px;
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
 }
 .swap-filter-row::-webkit-scrollbar { display: none; }
 .swap-filter-chip {
-flex-shrink: 0;
-font-family: var(–mono);
-font-size: 9px;
-font-weight: 600;
-letter-spacing: 0.06em;
-text-transform: uppercase;
-padding: 4px 9px;
-border-radius: 3px;
-border: 1px solid var(–border2);
-background: transparent;
-color: var(–muted);
-cursor: pointer;
-white-space: nowrap;
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 3px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
 }
-.swap-filter-chip.active { color: var(–amber); border-color: var(–amber); background: #1a0e00; }
+.swap-filter-chip.active { color: var(--amber); border-color: var(--amber); background: #1a0e00; }
 #swap-list {
-flex: 1;
-overflow-y: auto;
--webkit-overflow-scrolling: touch;
-padding: 8px 0;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 0;
 }
 .swap-ex-item {
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 11px 16px;
-border-bottom: 1px solid var(–border);
-cursor: pointer;
-transition: background 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
 }
-.swap-ex-item:active { background: var(–bg3); }
+.swap-ex-item:active { background: var(--bg3); }
 .swap-ex-item:last-child { border-bottom: none; }
 .swap-item-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .swap-item-info { flex: 1; min-width: 0; }
-.swap-item-name { font-size: 13px; font-weight: 500; color: var(–text); }
-.swap-item-meta { font-family: var(–mono); font-size: 10px; color: var(–muted); margin-top: 2px; }
-.swap-item-arrow { color: var(–faint); font-size: 14px; }
-.swap-list-empty { text-align: center; padding: 32px 16px; color: var(–muted); font-family: var(–mono); font-size: 11px; }
+.swap-item-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.swap-item-meta { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
+.swap-item-arrow { color: var(--faint); font-size: 14px; }
+.swap-list-empty { text-align: center; padding: 32px 16px; color: var(--muted); font-family: var(--mono); font-size: 11px; }
 #swap-cancel {
-margin: 8px 16px;
-padding: 12px;
-background: transparent;
-border: 1px solid var(–border2);
-border-radius: 6px;
-color: var(–muted);
-font-family: var(–mono);
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-cursor: pointer;
-flex-shrink: 0;
+  margin: 8px 16px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════════════
-SWAP SCOPE MODAL
+   SWAP SCOPE MODAL
 ══════════════════════════════════════════════════ */
 #scope-overlay {
-display: none;
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.75);
-z-index: 600;
-align-items: flex-end;
-justify-content: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 600;
+  align-items: flex-end;
+  justify-content: center;
 }
 #scope-overlay.open { display: flex; }
 #scope-sheet {
-background: var(–bg2);
-border: 1px solid var(–border);
-border-radius: 14px 14px 0 0;
-width: 100%;
-padding: 20px 16px;
-padding-bottom: calc(20px + var(–safe-bottom));
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+  width: 100%;
+  padding: 20px 16px;
+  padding-bottom: calc(20px + var(--safe-bottom));
 }
 #scope-title {
-font-family: var(–mono);
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–amber);
-margin-bottom: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
 }
 #scope-desc {
-font-size: 13px;
-color: var(–muted);
-margin-bottom: 18px;
-line-height: 1.5;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 18px;
+  line-height: 1.5;
 }
 .scope-btn {
-width: 100%;
-padding: 14px 16px;
-border-radius: 6px;
-font-family: var(–mono);
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-cursor: pointer;
-margin-bottom: 8px;
-text-align: left;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 8px;
+  text-align: left;
 }
 .scope-btn-week {
-background: #1a0e00;
-border: 1px solid var(–amber);
-color: var(–amber);
+  background: #1a0e00;
+  border: 1px solid var(--amber);
+  color: var(--amber);
 }
 .scope-btn-phase {
-background: #001814;
-border: 1px solid var(–blue);
-color: var(–blue);
+  background: #001814;
+  border: 1px solid var(--blue);
+  color: var(--blue);
 }
 .scope-btn-cancel {
-background: transparent;
-border: 1px solid var(–border2);
-color: var(–muted);
-margin-bottom: 0;
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  margin-bottom: 0;
 }
 .scope-btn-sub { display: block; font-size: 9px; font-weight: 400; letter-spacing: 0.04em; color: inherit; opacity: 0.7; margin-top: 3px; text-transform: none; }
 
 /* ══════════════════════════════════════════════════
-LOG TAB
+   LOG TAB
 ══════════════════════════════════════════════════ */
 .log-day-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px 16px; scrollbar-width: none; }
 .log-day-tabs::-webkit-scrollbar { display: none; }
 .log-day-btn {
-flex-shrink: 0; font-family: var(–mono); font-size: 10px; font-weight: 600;
-letter-spacing: 0.05em; text-transform: uppercase;
-padding: 6px 12px; border-radius: 4px; border: 1px solid var(–border2);
-background: var(–bg3); color: var(–muted); cursor: pointer; white-space: nowrap;
+  flex-shrink: 0; font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border2);
+  background: var(--bg3); color: var(--muted); cursor: pointer; white-space: nowrap;
 }
-.log-day-btn.active { background: var(–bg4); border-color: var(–amber); color: var(–amber); }
+.log-day-btn.active { background: var(--bg4); border-color: var(--amber); color: var(--amber); }
 
 .log-body { padding: 8px 16px 24px; }
 
 .log-ex-card {
-background: var(–bg2); border: 1px solid var(–border);
-border-radius: 6px; margin-bottom: 8px; overflow: hidden;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; margin-bottom: 8px; overflow: hidden;
 }
 .log-ex-card.mob-card { background: #0a0a14; border-color: #1a1a2a; }
 .log-ex-card.tendon-card { background: #140808; border-color: #2a1010; }
 
 .log-ex-header { padding: 10px 14px 6px; }
-.log-ex-name { font-size: 13px; font-weight: 500; color: var(–text); }
-.log-ex-name.watch { color: var(–red); }
-.log-ex-name.mob   { color: var(–blue); }
-.log-ex-name.tendon{ color: var(–red); }
+.log-ex-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.log-ex-name.watch { color: var(--red); }
+.log-ex-name.mob   { color: var(--blue); }
+.log-ex-name.tendon{ color: var(--red); }
 .log-ex-sub-badge {
-display: inline-block;
-font-family: var(–mono);
-font-size: 8px;
-font-weight: 600;
-letter-spacing: 0.06em;
-text-transform: uppercase;
-padding: 2px 6px;
-border-radius: 2px;
-border: 1px solid var(–amber);
-color: var(–amber);
-background: #1a0e00;
-margin-left: 6px;
-vertical-align: middle;
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  background: #1a0e00;
+  margin-left: 6px;
+  vertical-align: middle;
 }
-.log-ex-prescribed { font-family: var(–mono); font-size: 10px; color: var(–muted); margin-top: 2px; }
+.log-ex-prescribed { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
 
 .log-inputs { display: grid; gap: 6px; padding: 0 14px 10px; }
 .log-inputs.strength-inputs { grid-template-columns: 1fr 1fr 1fr; }
@@ -400,192 +399,188 @@ vertical-align: middle;
 .log-inputs.cond-inputs     { grid-template-columns: 1fr 1fr; }
 
 .log-field { display: flex; flex-direction: column; gap: 3px; }
-.log-field label { font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(–faint); }
+.log-field label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
 .log-field input, .log-field textarea {
-background: var(–bg4); border: 1px solid var(–border2);
-border-radius: 4px; color: var(–text); font-family: var(–sans);
-font-size: 14px; font-weight: 400; padding: 8px 10px; outline: none;
-transition: border-color 0.12s; width: 100%;
+  background: var(--bg4); border: 1px solid var(--border2);
+  border-radius: 4px; color: var(--text); font-family: var(--sans);
+  font-size: 14px; font-weight: 400; padding: 8px 10px; outline: none;
+  transition: border-color 0.12s; width: 100%;
 }
-.log-field input:focus, .log-field textarea:focus { border-color: var(–amber); }
-.log-field input.tendon-input:focus { border-color: var(–red); }
-.log-field input::placeholder, .log-field textarea::placeholder { color: var(–faint); font-size: 13px; }
+.log-field input:focus, .log-field textarea:focus { border-color: var(--amber); }
+.log-field input.tendon-input:focus { border-color: var(--red); }
+.log-field input::placeholder, .log-field textarea::placeholder { color: var(--faint); font-size: 13px; }
 .log-field textarea { resize: none; height: 60px; font-size: 13px; }
 
 .log-notes-wrap { padding: 0 14px 12px; }
 
-.set-row { border-top: 1px solid var(–border); padding-bottom: 8px; }
+.set-row { border-top: 1px solid var(--border); padding-bottom: 8px; }
 
 .log-section-label {
-font-family: var(–mono); font-size: 9px; font-weight: 600;
-letter-spacing: 0.1em; text-transform: uppercase;
-color: var(–muted); padding: 16px 0 6px;
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); padding: 16px 0 6px;
 }
 
 .week-report-box {
-background: var(–bg2); border: 1px solid var(–border);
-border-radius: 8px; padding: 16px; margin: 8px 0;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px; margin: 8px 0;
 }
 .report-field { margin-bottom: 10px; }
 .report-field:last-child { margin-bottom: 0; }
-.report-field label { display: block; font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(–muted); margin-bottom: 4px; }
+.report-field label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .report-field textarea {
-width: 100%; background: var(–bg4); border: 1px solid var(–border2);
-border-radius: 4px; color: var(–text); font-family: var(–sans);
-font-size: 13px; padding: 8px 10px; outline: none; resize: none;
-height: 52px; transition: border-color 0.12s;
+  width: 100%; background: var(--bg4); border: 1px solid var(--border2);
+  border-radius: 4px; color: var(--text); font-family: var(--sans);
+  font-size: 13px; padding: 8px 10px; outline: none; resize: none;
+  height: 52px; transition: border-color 0.12s;
 }
-.report-field textarea:focus { border-color: var(–amber); }
+.report-field textarea:focus { border-color: var(--amber); }
 
 .copy-btn {
-width: 100%; padding: 14px; margin-top: 12px;
-background: var(–bg4); border: 1px solid var(–amber);
-border-radius: 6px; color: var(–amber);
-font-family: var(–mono); font-size: 12px; font-weight: 600;
-letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
-transition: background 0.15s;
+  width: 100%; padding: 14px; margin-top: 12px;
+  background: var(--bg4); border: 1px solid var(--amber);
+  border-radius: 6px; color: var(--amber);
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  transition: background 0.15s;
 }
 .copy-btn:active { background: #2a1e00; }
-.copy-btn.copied { background: #1a2800; border-color: var(–green); color: var(–green); }
+.copy-btn.copied { background: #1a2800; border-color: var(--green); color: var(--green); }
 
 .clear-btn {
-width: 100%; padding: 11px; margin-top: 8px;
-background: transparent; border: 1px solid var(–border2);
-border-radius: 6px; color: var(–muted);
-font-family: var(–mono); font-size: 10px; font-weight: 500;
-letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+  width: 100%; padding: 11px; margin-top: 8px;
+  background: transparent; border: 1px solid var(--border2);
+  border-radius: 6px; color: var(--muted);
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
 }
 
 .log-week-sel { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px 0; scrollbar-width: none; }
 .log-week-sel::-webkit-scrollbar { display: none; }
 .log-week-chip {
-flex-shrink: 0; font-family: var(–mono); font-size: 10px; font-weight: 600;
-letter-spacing: 0.06em; text-transform: uppercase;
-padding: 5px 12px; border-radius: 4px; border: 1px solid var(–border2);
-background: var(–bg3); color: var(–muted); cursor: pointer; white-space: nowrap;
+  flex-shrink: 0; font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 4px; border: 1px solid var(--border2);
+  background: var(--bg3); color: var(--muted); cursor: pointer; white-space: nowrap;
 }
-.log-week-chip.active { background: var(–bg4); border-color: var(–amber); color: var(–amber); }
+.log-week-chip.active { background: var(--bg4); border-color: var(--amber); color: var(--amber); }
 
 /* ══════════════════════════════════════════════════
-LIBRARY TAB
+   LIBRARY TAB
 ══════════════════════════════════════════════════ */
 .lib-search-wrap { padding: 12px 16px 8px; position: relative; }
-.lib-search-icon { position: absolute; left: 28px; top: 50%; transform: translateY(-50%); font-family: var(–mono); font-size: 12px; color: var(–muted); pointer-events: none; }
+.lib-search-icon { position: absolute; left: 28px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; color: var(--muted); pointer-events: none; }
 #lib-search {
-width: 100%; background: var(–bg3); border: 1px solid var(–border2);
-border-radius: 6px; color: var(–text); font-family: var(–sans);
-font-size: 14px; padding: 10px 12px 10px 34px; outline: none;
-transition: border-color 0.12s;
+  width: 100%; background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 6px; color: var(--text); font-family: var(--sans);
+  font-size: 14px; padding: 10px 12px 10px 34px; outline: none;
+  transition: border-color 0.12s;
 }
-#lib-search:focus { border-color: var(–blue); }
-#lib-search::placeholder { color: var(–faint); }
+#lib-search:focus { border-color: var(--blue); }
+#lib-search::placeholder { color: var(--faint); }
 
 .lib-filters { display: flex; gap: 5px; overflow-x: auto; padding: 0 16px 10px; scrollbar-width: none; }
 .lib-filters::-webkit-scrollbar { display: none; }
 .lib-filter {
-flex-shrink: 0; font-family: var(–mono); font-size: 9px; font-weight: 600;
-letter-spacing: 0.06em; text-transform: uppercase;
-padding: 5px 10px; border-radius: 3px; border: 1px solid var(–border2);
-background: transparent; color: var(–muted); cursor: pointer; white-space: nowrap;
+  flex-shrink: 0; font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: 3px; border: 1px solid var(--border2);
+  background: transparent; color: var(--muted); cursor: pointer; white-space: nowrap;
 }
-.lib-filter.active { background: var(–bg4); color: var(–text); border-color: var(–border2); }
-.lib-filter.active[data-val=“strength”]    { border-color: var(–green);  color: var(–green); }
-.lib-filter.active[data-val=“skill”]       { border-color: var(–amber);  color: var(–amber); }
-.lib-filter.active[data-val=“mobility”]    { border-color: var(–blue);   color: var(–blue); }
-.lib-filter.active[data-val=“conditioning”]{ border-color: var(–purple); color: var(–purple); }
-.lib-filter.active[data-val=“none”]        { border-color: var(–green);  color: var(–green); }
-.lib-filter.active[data-val=“low”]         { border-color: var(–amber);  color: var(–amber); }
-.lib-filter.active[data-val=“moderate”]    { border-color: #f08040;       color: #f08040; }
-.lib-filter.active[data-val=“high”]        { border-color: var(–red);    color: var(–red); }
-.lib-filter.active[data-val=“yes”]         { border-color: var(–green);  color: var(–green); }
+.lib-filter.active { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+.lib-filter.active[data-val="strength"]    { border-color: var(--green);  color: var(--green); }
+.lib-filter.active[data-val="skill"]       { border-color: var(--amber);  color: var(--amber); }
+.lib-filter.active[data-val="mobility"]    { border-color: var(--blue);   color: var(--blue); }
+.lib-filter.active[data-val="conditioning"]{ border-color: var(--purple); color: var(--purple); }
+.lib-filter.active[data-val="none"]        { border-color: var(--green);  color: var(--green); }
+.lib-filter.active[data-val="low"]         { border-color: var(--amber);  color: var(--amber); }
+.lib-filter.active[data-val="moderate"]    { border-color: #f08040;       color: #f08040; }
+.lib-filter.active[data-val="high"]        { border-color: var(--red);    color: var(--red); }
+.lib-filter.active[data-val="yes"]         { border-color: var(--green);  color: var(--green); }
 
-.lib-count { font-family: var(–mono); font-size: 10px; color: var(–muted); padding: 0 16px 8px; }
-.lib-count span { color: var(–blue); font-weight: 600; }
+.lib-count { font-family: var(--mono); font-size: 10px; color: var(--muted); padding: 0 16px 8px; }
+.lib-count span { color: var(--blue); font-weight: 600; }
 
 .lib-grid { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 8px; }
 
 .lib-card {
-background: var(–bg2); border: 1px solid var(–border);
-border-radius: 6px; overflow: hidden; cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden; cursor: pointer;
 }
 .lib-card-header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
 .lib-risk-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.risk-none     { background: var(–green); }
-.risk-low      { background: var(–amber); }
+.risk-none     { background: var(--green); }
+.risk-low      { background: var(--amber); }
 .risk-moderate { background: #f08040; }
-.risk-high     { background: var(–red); }
-.lib-card-name { flex: 1; font-size: 13px; font-weight: 500; color: var(–text); }
-.lib-card-chev { font-family: var(–mono); font-size: 10px; color: var(–faint); transition: transform 0.15s; }
+.risk-high     { background: var(--red); }
+.lib-card-name { flex: 1; font-size: 13px; font-weight: 500; color: var(--text); }
+.lib-card-chev { font-family: var(--mono); font-size: 10px; color: var(--faint); transition: transform 0.15s; }
 .lib-card.open .lib-card-chev { transform: rotate(180deg); }
 .lib-card-tags { display: flex; gap: 4px; flex-wrap: wrap; padding: 0 14px 10px; }
-.lib-tag { font-family: var(–mono); font-size: 9px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; border: 1px solid; }
-.lib-tag-strength    { color: var(–green);  border-color: #2a3a0a; background: #0e1a04; }
-.lib-tag-skill       { color: var(–amber);  border-color: #3a2a0a; background: #1a0e04; }
-.lib-tag-mobility    { color: var(–blue);   border-color: #0a2a3a; background: #040e18; }
-.lib-tag-conditioning{ color: var(–purple); border-color: #2a1a3a; background: #0e0418; }
-.lib-tag-plain { color: var(–faint); border-color: var(–border); background: transparent; }
-.lib-tag-inprog { color: var(–green); border-color: #2a3a0a; background: #0e1a04; }
-.lib-card-expand { display: none; border-top: 1px solid var(–border); padding: 12px 14px; }
+.lib-tag { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; border: 1px solid; }
+.lib-tag-strength    { color: var(--green);  border-color: #2a3a0a; background: #0e1a04; }
+.lib-tag-skill       { color: var(--amber);  border-color: #3a2a0a; background: #1a0e04; }
+.lib-tag-mobility    { color: var(--blue);   border-color: #0a2a3a; background: #040e18; }
+.lib-tag-conditioning{ color: var(--purple); border-color: #2a1a3a; background: #0e0418; }
+.lib-tag-plain { color: var(--faint); border-color: var(--border); background: transparent; }
+.lib-tag-inprog { color: var(--green); border-color: #2a3a0a; background: #0e1a04; }
+.lib-card-expand { display: none; border-top: 1px solid var(--border); padding: 12px 14px; }
 .lib-card.open .lib-card-expand { display: block; }
-.lib-muscles { font-size: 12px; color: var(–muted); margin-bottom: 8px; line-height: 1.5; }
-.lib-muscles strong { color: var(–text); font-weight: 500; }
-.lib-notes { font-size: 12px; color: var(–muted); line-height: 1.6; }
-.lib-risk-label { font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding: 5px 8px; border-radius: 3px; display: inline-block; }
-.risk-label-none     { color: var(–green);  background: #0e1a04; }
-.risk-label-low      { color: var(–amber);  background: #1a0e04; }
+.lib-muscles { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+.lib-muscles strong { color: var(--text); font-weight: 500; }
+.lib-notes { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.lib-risk-label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding: 5px 8px; border-radius: 3px; display: inline-block; }
+.risk-label-none     { color: var(--green);  background: #0e1a04; }
+.risk-label-low      { color: var(--amber);  background: #1a0e04; }
 .risk-label-moderate { color: #f08040;       background: #1a0804; }
-.risk-label-high     { color: var(–red);    background: #1a0404; }
-.lib-empty { text-align: center; padding: 48px 16px; color: var(–muted); font-family: var(–mono); font-size: 12px; }
+.risk-label-high     { color: var(--red);    background: #1a0404; }
+.lib-empty { text-align: center; padding: 48px 16px; color: var(--muted); font-family: var(--mono); font-size: 12px; }
 </style>
-
 </head>
 <body>
 <div id="app">
   <div id="view">
 
-```
-<!-- ══ PROGRAM SCREEN ══ -->
-<div id="screen-program" class="screen active">
-  <div class="page-header">
-    <div class="page-label">Phase 1 · Apr 6 – May 30</div>
-    <div class="page-title">Program</div>
-  </div>
-  <div class="week-scroll" id="week-scroll"></div>
-  <div class="days-wrap" id="days-wrap"></div>
-</div>
+    <!-- ══ PROGRAM SCREEN ══ -->
+    <div id="screen-program" class="screen active">
+      <div class="page-header">
+        <div class="page-label">Phase 1 · Apr 6 – May 30</div>
+        <div class="page-title">Program</div>
+      </div>
+      <div class="week-scroll" id="week-scroll"></div>
+      <div class="days-wrap" id="days-wrap"></div>
+    </div>
 
-<!-- ══ LOG SCREEN ══ -->
-<div id="screen-log" class="screen">
-  <div class="page-header">
-    <div class="page-label amber">Session Log</div>
-    <div class="page-title">Log</div>
-  </div>
-  <div class="log-week-sel" id="log-week-sel"></div>
-  <div class="log-day-tabs" id="log-day-tabs"></div>
-  <div class="log-body" id="log-body"></div>
-</div>
+    <!-- ══ LOG SCREEN ══ -->
+    <div id="screen-log" class="screen">
+      <div class="page-header">
+        <div class="page-label amber">Session Log</div>
+        <div class="page-title">Log</div>
+      </div>
+      <div class="log-week-sel" id="log-week-sel"></div>
+      <div class="log-day-tabs" id="log-day-tabs"></div>
+      <div class="log-body" id="log-body"></div>
+    </div>
 
-<!-- ══ LIBRARY SCREEN ══ -->
-<div id="screen-library" class="screen">
-  <div class="page-header">
-    <div class="page-label blue">Movement Database</div>
-    <div class="page-title">Library</div>
-  </div>
-  <div class="lib-search-wrap">
-    <span class="lib-search-icon">/</span>
-    <input type="text" id="lib-search" placeholder="Search movements, muscles, equipment…">
-  </div>
-  <div class="lib-filters" id="lib-filters"></div>
-  <div class="lib-count" id="lib-count"></div>
-  <div class="lib-grid" id="lib-grid"></div>
-  <div class="lib-empty" id="lib-empty" style="display:none">No movements match.</div>
-</div>
-```
+    <!-- ══ LIBRARY SCREEN ══ -->
+    <div id="screen-library" class="screen">
+      <div class="page-header">
+        <div class="page-label blue">Movement Database</div>
+        <div class="page-title">Library</div>
+      </div>
+      <div class="lib-search-wrap">
+        <span class="lib-search-icon">/</span>
+        <input type="text" id="lib-search" placeholder="Search movements, muscles, equipment…">
+      </div>
+      <div class="lib-filters" id="lib-filters"></div>
+      <div class="lib-count" id="lib-count"></div>
+      <div class="lib-grid" id="lib-grid"></div>
+      <div class="lib-empty" id="lib-empty" style="display:none">No movements match.</div>
+    </div>
 
   </div><!-- /view -->
 
   <!-- ══ TAB BAR ══ -->
-
   <div id="tabbar">
     <div class="tab active" data-screen="program" onclick="switchTab('program',this)">
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="4" x2="9" y2="9"/><line x1="15" y1="4" x2="15" y2="9"/></svg>
@@ -603,7 +598,6 @@ border-radius: 6px; overflow: hidden; cursor: pointer;
 </div>
 
 <!-- ══ SWAP MODAL ══ -->
-
 <div id="swap-overlay" onclick="closeSwapIfBackground(event)">
   <div id="swap-sheet">
     <div id="swap-header">
@@ -618,7 +612,6 @@ border-radius: 6px; overflow: hidden; cursor: pointer;
 </div>
 
 <!-- ══ SCOPE MODAL ══ -->
-
 <div id="scope-overlay" onclick="closeScopeIfBackground(event)">
   <div id="scope-sheet" onclick="event.stopPropagation()">
     <div id="scope-title">Apply swap to…</div>
@@ -1177,303 +1170,292 @@ function renderLogBody() {
     html += `<div class="report-field">
       <label>${prompt}</label>
       <textarea placeholder="…" data-rkey="${key}" oninput="saveField(this,'${key}')">${val}</textarea>
+    </div>`;
+  });
+  html += `</div>`;
+  html += `<button class="copy-btn" onclick="copyReport()">Copy Report to Clipboard</button>`;
+  html += `<button class="clear-btn" onclick="clearWeek()">Clear Week ${logWeek+1} Data</button>`;
+  html += `<p style="font-size:10px;color:var(--faint);font-family:var(--mono);text-align:center;margin-top:12px;line-height:1.6">Log is saved on this device only.<br>Use Copy Report to share with Claude.</p>`;
 
-```
-</div>`;
-```
-
-});
-html += `</div>`;
-html += `<button class="copy-btn" onclick="copyReport()">Copy Report to Clipboard</button>`;
-html += `<button class="clear-btn" onclick="clearWeek()">Clear Week ${logWeek+1} Data</button>`;
-html += `<p style="font-size:10px;color:var(--faint);font-family:var(--mono);text-align:center;margin-top:12px;line-height:1.6">Log is saved on this device only.<br>Use Copy Report to share with Claude.</p>`;
-
-document.getElementById(‘log-body’).innerHTML = html;
+  document.getElementById('log-body').innerHTML = html;
 }
 
 function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob, isSwapped, originalName) {
-const baseKey = `w${logWeek}_d${logDay}_e${idx}`;
-const note = logData[baseKey+’_note’] || ‘’;
-const numSets = parseInt(ex.sets) || 1;
-const isTimed = ex.timed === true;
-const isEccentric = ex.name.toLowerCase().includes(‘eccentric’) && ex.name.toLowerCase().includes(‘curl’);
+  const baseKey = `w${logWeek}_d${logDay}_e${idx}`;
+  const note = logData[baseKey+'_note'] || '';
+  const numSets = parseInt(ex.sets) || 1;
+  const isTimed = ex.timed === true;
+  const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
 
-const cardClass = isTendon ? ‘tendon-card’ : isMob ? ‘mob-card’ : ‘’;
-const nameClass = isWatch ? ‘watch’ : isTendon ? ‘tendon’ : isMob ? ‘mob’ : ‘’;
-const subBadge = isSwapped ? `<span class="log-ex-sub-badge">Sub</span>` : ‘’;
+  const cardClass = isTendon ? 'tendon-card' : isMob ? 'mob-card' : '';
+  const nameClass = isWatch ? 'watch' : isTendon ? 'tendon' : isMob ? 'mob' : '';
+  const subBadge = isSwapped ? `<span class="log-ex-sub-badge">Sub</span>` : '';
 
-let setRows = ‘’;
-for (let s = 0; s < numSets; s++) {
-const sk = `${baseKey}_s${s}`;
-const sv_load = logData[sk+’_load’] || ‘’;
-const sv_reps = logData[sk+’_reps’] || ‘’;
-const sv_rpe  = logData[sk+’_rpe’]  || ‘’;
-const sv_pain = logData[sk+’_pain’] || ‘’;
-const sv_sec  = logData[sk+’_sec’]  || ‘’;
+  let setRows = '';
+  for (let s = 0; s < numSets; s++) {
+    const sk = `${baseKey}_s${s}`;
+    const sv_load = logData[sk+'_load'] || '';
+    const sv_reps = logData[sk+'_reps'] || '';
+    const sv_rpe  = logData[sk+'_rpe']  || '';
+    const sv_pain = logData[sk+'_pain'] || '';
+    const sv_sec  = logData[sk+'_sec']  || '';
 
-```
-let rowInputs = '';
-if (isEccentric) {
-  rowInputs = `
-    <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
-    <div class="log-field"><label>Reps/arm</label><input type="number" inputmode="numeric" placeholder="5" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-    <div class="log-field"><label>Tempo (sec)</label><input type="number" inputmode="numeric" placeholder="4" value="${sv_sec}" oninput="saveField(this,'${sk}_sec')"></div>
-    <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
-  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
-    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-    ${rowInputs}
-  </div>`;
-} else if (isCond || (isTimed && !isTendon)) {
-  const durLabel = isCond ? (ex.name.toLowerCase().includes('amrap') ? 'Rounds done' : 'Duration (min)') : 'Time (sec)';
-  rowInputs = `
-    <div class="log-field"><label>${durLabel}</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-    <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
-  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 14px 0;">
-    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-    ${rowInputs}
-  </div>`;
-} else if (isTendon) {
-  rowInputs = `
-    <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
-    <div class="log-field"><label>Time (sec)</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-    <div class="log-field"><label>RPE</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>
-    <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
-  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
-    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-    ${rowInputs}
-  </div>`;
-} else {
-  rowInputs = `
-    <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
-    <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-    <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
-  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
-    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-    ${rowInputs}
-  </div>`;
-}
-```
+    let rowInputs = '';
+    if (isEccentric) {
+      rowInputs = `
+        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+        <div class="log-field"><label>Reps/arm</label><input type="number" inputmode="numeric" placeholder="5" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>Tempo (sec)</label><input type="number" inputmode="numeric" placeholder="4" value="${sv_sec}" oninput="saveField(this,'${sk}_sec')"></div>
+        <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    } else if (isCond || (isTimed && !isTendon)) {
+      const durLabel = isCond ? (ex.name.toLowerCase().includes('amrap') ? 'Rounds done' : 'Duration (min)') : 'Time (sec)';
+      rowInputs = `
+        <div class="log-field"><label>${durLabel}</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    } else if (isTendon) {
+      rowInputs = `
+        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+        <div class="log-field"><label>Time (sec)</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>RPE</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>
+        <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    } else {
+      rowInputs = `
+        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+        <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+        <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
+      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+        ${rowInputs}
+      </div>`;
+    }
+  }
 
-}
-
-return `<div class="log-ex-card ${cardClass}"> <div class="log-ex-header"> <div class="log-ex-name ${nameClass}">${ex.name}${subBadge}</div> ${isSwapped && originalName ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ substitution for ${originalName}</div>` : ‘’}
-<div class="log-ex-prescribed">${ex.sets} sets × ${ex.reps}</div>
-</div>
-${setRows}
-<div class="log-notes-wrap" style="padding-top:8px">
-<div class="log-field"><label>Notes</label><textarea placeholder="Cues, substitutions, how it felt…" oninput="saveField(this,'${baseKey}_note')">${note}</textarea></div>
-</div>
-
+  return `<div class="log-ex-card ${cardClass}">
+    <div class="log-ex-header">
+      <div class="log-ex-name ${nameClass}">${ex.name}${subBadge}</div>
+      ${isSwapped && originalName ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ substitution for ${originalName}</div>` : ''}
+      <div class="log-ex-prescribed">${ex.sets} sets × ${ex.reps}</div>
+    </div>
+    ${setRows}
+    <div class="log-notes-wrap" style="padding-top:8px">
+      <div class="log-field"><label>Notes</label><textarea placeholder="Cues, substitutions, how it felt…" oninput="saveField(this,'${baseKey}_note')">${note}</textarea></div>
+    </div>
   </div>`;
 }
 
 function saveField(el, key) {
-const data = loadLog();
-data[key] = el.value;
-saveLog(data);
+  const data = loadLog();
+  data[key] = el.value;
+  saveLog(data);
 }
 
 function copyReport() {
-const data = loadLog();
-const week = WEEKS[logWeek];
-let out = `WEEK ${logWeek+1} TRAINING REPORT — ${week.dates}\n${'─'.repeat(44)}\n\n`;
+  const data = loadLog();
+  const week = WEEKS[logWeek];
+  let out = `WEEK ${logWeek+1} TRAINING REPORT — ${week.dates}\n${'─'.repeat(44)}\n\n`;
 
-DAYS.forEach((day, di) => {
-out += `${day.day.toUpperCase()} — ${day.label}\n`;
-const exOffset = day.exercises.length;
+  DAYS.forEach((day, di) => {
+    out += `${day.day.toUpperCase()} — ${day.label}\n`;
+    const exOffset = day.exercises.length;
 
-```
-day.exercises.forEach((origEx, i) => {
-  const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, false);
-  const base = `w${logWeek}_d${di}_e${i}`;
-  const note = data[base+'_note'];
-  const numSets = parseInt(ex.sets) || 1;
-  const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
-  const isTimed = ex.timed === true;
-  const isCond = ex.name.toLowerCase().includes('bike') || ex.name.toLowerCase().includes('amrap') || ex.reps.includes('min');
+    day.exercises.forEach((origEx, i) => {
+      const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, false);
+      const base = `w${logWeek}_d${di}_e${i}`;
+      const note = data[base+'_note'];
+      const numSets = parseInt(ex.sets) || 1;
+      const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
+      const isTimed = ex.timed === true;
+      const isCond = ex.name.toLowerCase().includes('bike') || ex.name.toLowerCase().includes('amrap') || ex.reps.includes('min');
 
-  let setLines = [];
-  for (let s = 0; s < numSets; s++) {
-    const sk = `${base}_s${s}`;
-    const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
-          pain = data[sk+'_pain'], sec = data[sk+'_sec'];
-    if (load||reps||rpe||pain||sec) {
-      if (isEccentric) {
-        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'}/arm tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
-      } else if (isCond || (isTimed && !ex.flags.includes('t'))) {
-        setLines.push(`    Set ${s+1}: time=${reps||'—'} rpe=${rpe||'—'}`);
-      } else {
-        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
+      let setLines = [];
+      for (let s = 0; s < numSets; s++) {
+        const sk = `${base}_s${s}`;
+        const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
+              pain = data[sk+'_pain'], sec = data[sk+'_sec'];
+        if (load||reps||rpe||pain||sec) {
+          if (isEccentric) {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'}/arm tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
+          } else if (isCond || (isTimed && !ex.flags.includes('t'))) {
+            setLines.push(`    Set ${s+1}: time=${reps||'—'} rpe=${rpe||'—'}`);
+          } else {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
+          }
+        }
       }
-    }
-  }
-  if (setLines.length || note || isSwapped) {
-    const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
-    out += `  ${ex.name}${subTag}:\n`;
-    if (setLines.length) out += setLines.join('\n') + '\n';
-    if (note) out += `    Note: ${note}\n`;
-  }
-});
-
-out += '  [Mobility]\n';
-day.mobility.forEach((origEx, i) => {
-  const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, true);
-  const base = `w${logWeek}_d${di}_e${exOffset+i}`;
-  const note = data[base+'_note'];
-  const numSets = parseInt(ex.sets) || 1;
-  const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
-  const isTendon = ex.flags.includes('t');
-  const isTimed = ex.timed === true;
-
-  let setLines = [];
-  for (let s = 0; s < numSets; s++) {
-    const sk = `${base}_s${s}`;
-    const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
-          pain = data[sk+'_pain'], sec = data[sk+'_sec'];
-    if (load||reps||rpe||pain||sec) {
-      if (isEccentric) {
-        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'}/arm tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
-      } else if (isTendon) {
-        setLines.push(`    Set ${s+1}: load=${load||'—'} time=${reps||'—'}sec rpe=${rpe||'—'} pain=${pain||'—'}/10`);
-      } else if (isTimed) {
-        setLines.push(`    Set ${s+1}: time=${reps||'—'}sec rpe=${rpe||'—'}`);
-      } else {
-        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
+      if (setLines.length || note || isSwapped) {
+        const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
+        out += `  ${ex.name}${subTag}:\n`;
+        if (setLines.length) out += setLines.join('\n') + '\n';
+        if (note) out += `    Note: ${note}\n`;
       }
-    }
-  }
-  if (setLines.length || note || isSwapped) {
-    const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
-    out += `  ${ex.name}${subTag}:\n`;
-    if (setLines.length) out += setLines.join('\n') + '\n';
-    if (note) out += `    Note: ${note}\n`;
-  }
-});
-out += '\n';
-```
+    });
 
-});
+    out += '  [Mobility]\n';
+    day.mobility.forEach((origEx, i) => {
+      const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, true);
+      const base = `w${logWeek}_d${di}_e${exOffset+i}`;
+      const note = data[base+'_note'];
+      const numSets = parseInt(ex.sets) || 1;
+      const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
+      const isTendon = ex.flags.includes('t');
+      const isTimed = ex.timed === true;
 
-out += `WEEKLY NOTES\n${'─'.repeat(44)}\n`;
-REPORT_PROMPTS.forEach((p, pi) => {
-const val = data[reportKey(logWeek, pi)] || ‘—’;
-out += `${p}\n${val}\n\n`;
-});
+      let setLines = [];
+      for (let s = 0; s < numSets; s++) {
+        const sk = `${base}_s${s}`;
+        const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
+              pain = data[sk+'_pain'], sec = data[sk+'_sec'];
+        if (load||reps||rpe||pain||sec) {
+          if (isEccentric) {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'}/arm tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
+          } else if (isTendon) {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} time=${reps||'—'}sec rpe=${rpe||'—'} pain=${pain||'—'}/10`);
+          } else if (isTimed) {
+            setLines.push(`    Set ${s+1}: time=${reps||'—'}sec rpe=${rpe||'—'}`);
+          } else {
+            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
+          }
+        }
+      }
+      if (setLines.length || note || isSwapped) {
+        const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
+        out += `  ${ex.name}${subTag}:\n`;
+        if (setLines.length) out += setLines.join('\n') + '\n';
+        if (note) out += `    Note: ${note}\n`;
+      }
+    });
+    out += '\n';
+  });
 
-navigator.clipboard.writeText(out).then(() => {
-const btn = document.querySelector(’.copy-btn’);
-btn.textContent = ‘Copied!’;
-btn.classList.add(‘copied’);
-setTimeout(() => {
-btn.textContent = ‘Copy Report to Clipboard’;
-btn.classList.remove(‘copied’);
-}, 2500);
-}).catch(() => {
-prompt(“Copy this report:”, out);
-});
+  out += `WEEKLY NOTES\n${'─'.repeat(44)}\n`;
+  REPORT_PROMPTS.forEach((p, pi) => {
+    const val = data[reportKey(logWeek, pi)] || '—';
+    out += `${p}\n${val}\n\n`;
+  });
+
+  navigator.clipboard.writeText(out).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Report to Clipboard';
+      btn.classList.remove('copied');
+    }, 2500);
+  }).catch(() => {
+    prompt("Copy this report:", out);
+  });
 }
 
 function clearWeek() {
-if (!confirm(`Clear all log data for Week ${logWeek+1}?`)) return;
-const data = loadLog();
-Object.keys(data).forEach(k => {
-if (k.startsWith(`w${logWeek}_`)) delete data[k];
-});
-saveLog(data);
-renderLogBody();
+  if (!confirm(`Clear all log data for Week ${logWeek+1}?`)) return;
+  const data = loadLog();
+  Object.keys(data).forEach(k => {
+    if (k.startsWith(`w${logWeek}_`)) delete data[k];
+  });
+  saveLog(data);
+  renderLogBody();
 }
 
 // ═══════════════════════════════════════════════════════
 // LIBRARY TAB
 // ═══════════════════════════════════════════════════════
 const LIB_FILTER_GROUPS = [
-{ filter:“cat”, buttons:[
-{val:“all”,label:“All types”},{val:“strength”,label:“Strength”},{val:“skill”,label:“Skill”},
-{val:“mobility”,label:“Mobility”},{val:“conditioning”,label:“Conditioning”}
-]},
-{ filter:“risk”, buttons:[
-{val:“all”,label:“Any risk”},{val:“none”,label:“No risk”},{val:“low”,label:“Low”},
-{val:“moderate”,label:“Moderate”},{val:“high”,label:“High”}
-]},
-{ filter:“pattern”, buttons:[
-{val:“all”,label:“Any pattern”},{val:“push”,label:“Push”},{val:“pull”,label:“Pull”},
-{val:“hinge”,label:“Hinge”},{val:“squat”,label:“Squat”},{val:“core”,label:“Core”},{val:“carry”,label:“Carry”}
-]},
-{ filter:“program”, buttons:[
-{val:“all”,label:“All”},{val:“yes”,label:“In program”}
-]},
+  { filter:"cat", buttons:[
+    {val:"all",label:"All types"},{val:"strength",label:"Strength"},{val:"skill",label:"Skill"},
+    {val:"mobility",label:"Mobility"},{val:"conditioning",label:"Conditioning"}
+  ]},
+  { filter:"risk", buttons:[
+    {val:"all",label:"Any risk"},{val:"none",label:"No risk"},{val:"low",label:"Low"},
+    {val:"moderate",label:"Moderate"},{val:"high",label:"High"}
+  ]},
+  { filter:"pattern", buttons:[
+    {val:"all",label:"Any pattern"},{val:"push",label:"Push"},{val:"pull",label:"Pull"},
+    {val:"hinge",label:"Hinge"},{val:"squat",label:"Squat"},{val:"core",label:"Core"},{val:"carry",label:"Carry"}
+  ]},
+  { filter:"program", buttons:[
+    {val:"all",label:"All"},{val:"yes",label:"In program"}
+  ]},
 ];
 
 function buildLibFilters() {
-const el = document.getElementById(‘lib-filters’);
-el.innerHTML = LIB_FILTER_GROUPS.map(g =>
-g.buttons.map(b =>
-`<button class="lib-filter ${libFilters[g.filter]===b.val?'active':''}" data-filter="${g.filter}" data-val="${b.val}" onclick="setLibFilter('${g.filter}','${b.val}',this)">${b.label}</button>`
-).join(’’)
-).join(’<span style="width:1px;background:var(--border);margin:0 4px;flex-shrink:0"></span>’);
+  const el = document.getElementById('lib-filters');
+  el.innerHTML = LIB_FILTER_GROUPS.map(g =>
+    g.buttons.map(b =>
+      `<button class="lib-filter ${libFilters[g.filter]===b.val?'active':''}" data-filter="${g.filter}" data-val="${b.val}" onclick="setLibFilter('${g.filter}','${b.val}',this)">${b.label}</button>`
+    ).join('')
+  ).join('<span style="width:1px;background:var(--border);margin:0 4px;flex-shrink:0"></span>');
 }
 
 function setLibFilter(f, v, el) {
-libFilters[f] = v;
-document.querySelectorAll(`.lib-filter[data-filter="${f}"]`).forEach(b => b.classList.remove(‘active’));
-el.classList.add(‘active’);
-renderLibrary();
+  libFilters[f] = v;
+  document.querySelectorAll(`.lib-filter[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderLibrary();
 }
 
 function renderLibrary() {
-const q = libQuery.toLowerCase();
-const visible = EXERCISES.filter(ex => {
-if (libFilters.cat !== ‘all’ && ex.category !== libFilters.cat) return false;
-if (libFilters.risk !== ‘all’ && ex.risk !== libFilters.risk) return false;
-if (libFilters.pattern !== ‘all’ && ex.pattern !== libFilters.pattern) return false;
-if (libFilters.program === ‘yes’ && !ex.inProgram) return false;
-if (q) {
-const s = [ex.name, ex.muscles, ex.pattern, ex.category, ex.equipment.join(’ ‘), ex.notes, ex.difficulty].join(’ ’).toLowerCase();
-if (!s.includes(q)) return false;
-}
-return true;
-});
+  const q = libQuery.toLowerCase();
+  const visible = EXERCISES.filter(ex => {
+    if (libFilters.cat !== 'all' && ex.category !== libFilters.cat) return false;
+    if (libFilters.risk !== 'all' && ex.risk !== libFilters.risk) return false;
+    if (libFilters.pattern !== 'all' && ex.pattern !== libFilters.pattern) return false;
+    if (libFilters.program === 'yes' && !ex.inProgram) return false;
+    if (q) {
+      const s = [ex.name, ex.muscles, ex.pattern, ex.category, ex.equipment.join(' '), ex.notes, ex.difficulty].join(' ').toLowerCase();
+      if (!s.includes(q)) return false;
+    }
+    return true;
+  });
 
-document.getElementById(‘lib-count’).innerHTML = `Showing <span>${visible.length}</span> of ${EXERCISES.length} movements`;
+  document.getElementById('lib-count').innerHTML = `Showing <span>${visible.length}</span> of ${EXERCISES.length} movements`;
 
-if (visible.length === 0) {
-document.getElementById(‘lib-grid’).innerHTML = ‘’;
-document.getElementById(‘lib-empty’).style.display = ‘block’;
-return;
-}
-document.getElementById(‘lib-empty’).style.display = ‘none’;
+  if (visible.length === 0) {
+    document.getElementById('lib-grid').innerHTML = '';
+    document.getElementById('lib-empty').style.display = 'block';
+    return;
+  }
+  document.getElementById('lib-empty').style.display = 'none';
 
-const riskLabels = {none:“No biceps tendon risk”,low:“Low tendon risk”,moderate:“Moderate tendon risk”,high:“High tendon risk”};
-document.getElementById(‘lib-grid’).innerHTML = visible.map((ex, vi) => {
-const tags = [
-`<span class="lib-tag lib-tag-${ex.category}">${ex.category}</span>`,
-`<span class="lib-tag lib-tag-plain">${ex.pattern}</span>`,
-…ex.equipment.map(e => `<span class="lib-tag lib-tag-plain">${e}</span>`),
-`<span class="lib-tag lib-tag-plain">${ex.difficulty}</span>`,
-ex.inProgram ? `<span class="lib-tag lib-tag-inprog">in program</span>` : ‘’,
-].join(’’);
+  const riskLabels = {none:"No biceps tendon risk",low:"Low tendon risk",moderate:"Moderate tendon risk",high:"High tendon risk"};
+  document.getElementById('lib-grid').innerHTML = visible.map((ex, vi) => {
+    const tags = [
+      `<span class="lib-tag lib-tag-${ex.category}">${ex.category}</span>`,
+      `<span class="lib-tag lib-tag-plain">${ex.pattern}</span>`,
+      ...ex.equipment.map(e => `<span class="lib-tag lib-tag-plain">${e}</span>`),
+      `<span class="lib-tag lib-tag-plain">${ex.difficulty}</span>`,
+      ex.inProgram ? `<span class="lib-tag lib-tag-inprog">in program</span>` : '',
+    ].join('');
 
-```
-return `<div class="lib-card" id="lib-${vi}" onclick="toggleLib(${vi})">
-  <div class="lib-card-header">
-    <div class="lib-risk-dot risk-${ex.risk}" title="${riskLabels[ex.risk]}"></div>
-    <div class="lib-card-name">${ex.name}</div>
-    <div class="lib-card-chev">▾</div>
-  </div>
-  <div class="lib-card-tags">${tags}</div>
-  <div class="lib-card-expand">
-    <div class="lib-muscles"><strong>Muscles:</strong> ${ex.muscles}</div>
-    <div class="lib-notes" style="margin-top:8px">${ex.notes}</div>
-    <div class="lib-risk-label risk-label-${ex.risk}">${riskLabels[ex.risk]}</div>
-  </div>
-</div>`;
-```
-
-}).join(’’);
+    return `<div class="lib-card" id="lib-${vi}" onclick="toggleLib(${vi})">
+      <div class="lib-card-header">
+        <div class="lib-risk-dot risk-${ex.risk}" title="${riskLabels[ex.risk]}"></div>
+        <div class="lib-card-name">${ex.name}</div>
+        <div class="lib-card-chev">▾</div>
+      </div>
+      <div class="lib-card-tags">${tags}</div>
+      <div class="lib-card-expand">
+        <div class="lib-muscles"><strong>Muscles:</strong> ${ex.muscles}</div>
+        <div class="lib-notes" style="margin-top:8px">${ex.notes}</div>
+        <div class="lib-risk-label risk-label-${ex.risk}">${riskLabels[ex.risk]}</div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 function toggleLib(vi) {
-document.getElementById(`lib-${vi}`).classList.toggle(‘open’);
+  document.getElementById(`lib-${vi}`).classList.toggle('open');
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1486,11 +1468,10 @@ renderLogBody();
 buildLibFilters();
 renderLibrary();
 
-document.getElementById(‘lib-search’).addEventListener(‘input’, e => {
-libQuery = e.target.value;
-renderLibrary();
+document.getElementById('lib-search').addEventListener('input', e => {
+  libQuery = e.target.value;
+  renderLibrary();
 });
 </script>
-
 </body>
 </html>
