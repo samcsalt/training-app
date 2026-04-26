@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -36,91 +37,91 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 
 /* ── Tab bar ── */
 #tabbar {
-  display: flex;
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding-bottom: var(--safe-bottom);
-  height: calc(var(--tab-h) + var(--safe-bottom));
-  flex-shrink: 0;
-  z-index: 200;
+display: flex;
+background: var(–bg2);
+border-top: 1px solid var(–border);
+padding-bottom: var(–safe-bottom);
+height: calc(var(–tab-h) + var(–safe-bottom));
+flex-shrink: 0;
+z-index: 200;
 }
 .tab {
-  flex: 1; display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 4px; cursor: pointer;
-  font-family: var(--mono); font-size: 9px; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--faint); transition: color 0.15s; padding-top: 4px;
+flex: 1; display: flex; flex-direction: column; align-items: center;
+justify-content: center; gap: 4px; cursor: pointer;
+font-family: var(–mono); font-size: 9px; font-weight: 500;
+letter-spacing: 0.08em; text-transform: uppercase;
+color: var(–faint); transition: color 0.15s; padding-top: 4px;
 }
 .tab svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.tab.active { color: var(--green); }
-.tab.active.log-tab { color: var(--amber); }
-.tab.active.lib-tab { color: var(--blue); }
+.tab.active { color: var(–green); }
+.tab.active.log-tab { color: var(–amber); }
+.tab.active.lib-tab { color: var(–blue); }
 
 /* ── Shared ── */
 .screen { display: none; padding: 0 0 24px; }
 .screen.active { display: block; }
-.page-header { padding: 20px 16px 12px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 50; }
-.page-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
-.page-label.amber { color: var(--amber); }
-.page-label.blue  { color: var(--blue); }
-.page-title { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
-.section-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 20px 16px 8px; }
-.pill { display: inline-block; font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid; }
-.pill-red    { color: var(--red);    border-color: #4a1a0a; background: #200a04; }
-.pill-amber  { color: var(--amber);  border-color: #4a3a0a; background: #200a04; }
-.pill-green  { color: var(--green);  border-color: #3a4a1a; background: #0a1400; }
-.pill-blue   { color: var(--blue);   border-color: #1a3a4a; background: #040e18; }
-.pill-muted  { color: var(--muted);  border-color: var(--border); }
+.page-header { padding: 20px 16px 12px; border-bottom: 1px solid var(–border); position: sticky; top: 0; background: var(–bg); z-index: 50; }
+.page-label { font-family: var(–mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(–green); margin-bottom: 4px; }
+.page-label.amber { color: var(–amber); }
+.page-label.blue  { color: var(–blue); }
+.page-title { font-family: var(–mono); font-size: 20px; font-weight: 600; color: var(–text); letter-spacing: -0.02em; }
+.section-label { font-family: var(–mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(–muted); margin: 20px 16px 8px; }
+.pill { display: inline-block; font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid; }
+.pill-red    { color: var(–red);    border-color: #4a1a0a; background: #200a04; }
+.pill-amber  { color: var(–amber);  border-color: #4a3a0a; background: #200a04; }
+.pill-green  { color: var(–green);  border-color: #3a4a1a; background: #0a1400; }
+.pill-blue   { color: var(–blue);   border-color: #1a3a4a; background: #040e18; }
+.pill-muted  { color: var(–muted);  border-color: var(–border); }
 
 /* ══════════════════════════════════════════════════
-   PROGRAM TAB
+PROGRAM TAB
 ══════════════════════════════════════════════════ */
 .week-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px; scrollbar-width: none; }
 .week-scroll::-webkit-scrollbar { display: none; }
 .week-btn {
-  flex-shrink: 0; font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 7px 14px; border-radius: 4px; border: 1px solid var(--border2);
-  background: var(--bg3); color: var(--muted); cursor: pointer; white-space: nowrap;
-  transition: all 0.12s;
+flex-shrink: 0; font-family: var(–mono); font-size: 10px; font-weight: 600;
+letter-spacing: 0.06em; text-transform: uppercase;
+padding: 7px 14px; border-radius: 4px; border: 1px solid var(–border2);
+background: var(–bg3); color: var(–muted); cursor: pointer; white-space: nowrap;
+transition: all 0.12s;
 }
-.week-btn:hover { color: var(--text); }
-.week-btn.active { background: var(--bg4); border-color: var(--green); color: var(--green); }
+.week-btn:hover { color: var(–text); }
+.week-btn.active { background: var(–bg4); border-color: var(–green); color: var(–green); }
 
 .days-wrap { padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
 
 .day-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 8px; overflow: hidden; cursor: pointer;
+background: var(–bg2); border: 1px solid var(–border);
+border-radius: 8px; overflow: hidden; cursor: pointer;
 }
 .day-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 16px; user-select: none;
+display: flex; align-items: center; gap: 10px;
+padding: 14px 16px; user-select: none;
 }
 .day-pip { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.pip-upper   { background: var(--green); }
-.pip-lower   { background: var(--amber); }
-.pip-cond    { background: var(--purple); }
-.pip-rest    { background: var(--faint); }
+.pip-upper   { background: var(–green); }
+.pip-lower   { background: var(–amber); }
+.pip-cond    { background: var(–purple); }
+.pip-rest    { background: var(–faint); }
 .day-label-wrap { flex: 1; }
-.day-name { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text); }
-.day-sub  { font-size: 11px; color: var(--muted); margin-top: 2px; }
-.day-chevron { font-family: var(--mono); font-size: 11px; color: var(--faint); transition: transform 0.2s; }
+.day-name { font-family: var(–mono); font-size: 12px; font-weight: 600; color: var(–text); }
+.day-sub  { font-size: 11px; color: var(–muted); margin-top: 2px; }
+.day-chevron { font-family: var(–mono); font-size: 11px; color: var(–faint); transition: transform 0.2s; }
 .day-card.open .day-chevron { transform: rotate(180deg); }
 
-.day-body { display: none; border-top: 1px solid var(--border); }
+.day-body { display: none; border-top: 1px solid var(–border); }
 .day-card.open .day-body { display: block; }
 
 .ex-section-label {
-  font-family: var(--mono); font-size: 9px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 10px 16px 4px; color: var(--faint);
+font-family: var(–mono); font-size: 9px; font-weight: 600;
+letter-spacing: 0.1em; text-transform: uppercase;
+padding: 10px 16px 4px; color: var(–faint);
 }
 .ex-section-label.mob { color: #3060a0; }
 
 .ex-row {
-  display: flex; align-items: flex-start; gap: 10px;
-  padding: 10px 16px; border-bottom: 1px solid var(--border);
+display: flex; align-items: flex-start; gap: 10px;
+padding: 10px 16px; border-bottom: 1px solid var(–border);
 }
 .ex-row:last-child { border-bottom: none; }
 .ex-row.mob-row { background: #0a0a14; }
@@ -128,270 +129,270 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 
 .ex-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
 .ex-main { flex: 1; min-width: 0; }
-.ex-name { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
-.ex-name.watch { color: var(--red); }
-.ex-name.new   { color: var(--amber); }
-.ex-name.mob   { color: var(--blue); }
-.ex-name.tendon{ color: var(--red); font-weight: 500; }
-.ex-sets { font-family: var(--mono); font-size: 11px; color: var(--green); margin-top: 3px; }
-.ex-sets.mob { color: var(--blue); }
-.ex-sets.tendon { color: var(--red); }
-.ex-note { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+.ex-name { font-size: 13px; font-weight: 500; color: var(–text); line-height: 1.3; }
+.ex-name.watch { color: var(–red); }
+.ex-name.new   { color: var(–amber); }
+.ex-name.mob   { color: var(–blue); }
+.ex-name.tendon{ color: var(–red); font-weight: 500; }
+.ex-sets { font-family: var(–mono); font-size: 11px; color: var(–green); margin-top: 3px; }
+.ex-sets.mob { color: var(–blue); }
+.ex-sets.tendon { color: var(–red); }
+.ex-note { font-size: 11px; color: var(–muted); margin-top: 4px; line-height: 1.5; }
 .ex-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
 
 /* Swap button */
 .swap-btn {
-  flex-shrink: 0;
-  background: transparent;
-  border: 1px solid var(--border2);
-  border-radius: 4px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  cursor: pointer;
-  margin-top: 2px;
-  transition: all 0.12s;
-  white-space: nowrap;
+flex-shrink: 0;
+background: transparent;
+border: 1px solid var(–border2);
+border-radius: 4px;
+color: var(–muted);
+font-family: var(–mono);
+font-size: 9px;
+font-weight: 600;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+padding: 4px 8px;
+cursor: pointer;
+margin-top: 2px;
+transition: all 0.12s;
+white-space: nowrap;
 }
-.swap-btn:hover { color: var(--amber); border-color: var(--amber); }
-.swap-btn.swapped { color: var(--amber); border-color: var(--amber); background: #1a0e00; }
+.swap-btn:hover { color: var(–amber); border-color: var(–amber); }
+.swap-btn.swapped { color: var(–amber); border-color: var(–amber); background: #1a0e00; }
 
 /* ══════════════════════════════════════════════════
-   SWAP MODAL
+SWAP MODAL
 ══════════════════════════════════════════════════ */
 #swap-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 500;
-  padding: 0;
-  align-items: flex-end;
-  justify-content: center;
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.75);
+z-index: 500;
+padding: 0;
+align-items: flex-end;
+justify-content: center;
 }
 #swap-overlay.open { display: flex; }
 #swap-sheet {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px 14px 0 0;
-  width: 100%;
-  max-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding-bottom: var(--safe-bottom);
+background: var(–bg2);
+border: 1px solid var(–border);
+border-radius: 14px 14px 0 0;
+width: 100%;
+max-height: 85vh;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+padding-bottom: var(–safe-bottom);
 }
 #swap-header {
-  padding: 16px 16px 12px;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
+padding: 16px 16px 12px;
+border-bottom: 1px solid var(–border);
+flex-shrink: 0;
 }
 #swap-title {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 4px;
+font-family: var(–mono);
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(–amber);
+margin-bottom: 4px;
 }
 #swap-ex-name {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 10px;
+font-size: 15px;
+font-weight: 500;
+color: var(–text);
+margin-bottom: 10px;
 }
 #swap-search {
-  width: 100%;
-  background: var(--bg4);
-  border: 1px solid var(--border2);
-  border-radius: 5px;
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 14px;
-  padding: 8px 12px;
-  outline: none;
-  margin-bottom: 8px;
+width: 100%;
+background: var(–bg4);
+border: 1px solid var(–border2);
+border-radius: 5px;
+color: var(–text);
+font-family: var(–sans);
+font-size: 14px;
+padding: 8px 12px;
+outline: none;
+margin-bottom: 8px;
 }
-#swap-search:focus { border-color: var(--amber); }
-#swap-search::placeholder { color: var(--faint); }
+#swap-search:focus { border-color: var(–amber); }
+#swap-search::placeholder { color: var(–faint); }
 .swap-filter-row {
-  display: flex;
-  gap: 5px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: 2px;
+display: flex;
+gap: 5px;
+overflow-x: auto;
+scrollbar-width: none;
+padding-bottom: 2px;
 }
 .swap-filter-row::-webkit-scrollbar { display: none; }
 .swap-filter-chip {
-  flex-shrink: 0;
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 4px 9px;
-  border-radius: 3px;
-  border: 1px solid var(--border2);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  white-space: nowrap;
+flex-shrink: 0;
+font-family: var(–mono);
+font-size: 9px;
+font-weight: 600;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+padding: 4px 9px;
+border-radius: 3px;
+border: 1px solid var(–border2);
+background: transparent;
+color: var(–muted);
+cursor: pointer;
+white-space: nowrap;
 }
-.swap-filter-chip.active { color: var(--amber); border-color: var(--amber); background: #1a0e00; }
+.swap-filter-chip.active { color: var(–amber); border-color: var(–amber); background: #1a0e00; }
 #swap-list {
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 8px 0;
+flex: 1;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+padding: 8px 0;
 }
 .swap-ex-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  transition: background 0.1s;
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 11px 16px;
+border-bottom: 1px solid var(–border);
+cursor: pointer;
+transition: background 0.1s;
 }
-.swap-ex-item:active { background: var(--bg3); }
+.swap-ex-item:active { background: var(–bg3); }
 .swap-ex-item:last-child { border-bottom: none; }
 .swap-item-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .swap-item-info { flex: 1; min-width: 0; }
-.swap-item-name { font-size: 13px; font-weight: 500; color: var(--text); }
-.swap-item-meta { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
-.swap-item-arrow { color: var(--faint); font-size: 14px; }
-.swap-list-empty { text-align: center; padding: 32px 16px; color: var(--muted); font-family: var(--mono); font-size: 11px; }
+.swap-item-name { font-size: 13px; font-weight: 500; color: var(–text); }
+.swap-item-meta { font-family: var(–mono); font-size: 10px; color: var(–muted); margin-top: 2px; }
+.swap-item-arrow { color: var(–faint); font-size: 14px; }
+.swap-list-empty { text-align: center; padding: 32px 16px; color: var(–muted); font-family: var(–mono); font-size: 11px; }
 #swap-cancel {
-  margin: 8px 16px;
-  padding: 12px;
-  background: transparent;
-  border: 1px solid var(--border2);
-  border-radius: 6px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  flex-shrink: 0;
+margin: 8px 16px;
+padding: 12px;
+background: transparent;
+border: 1px solid var(–border2);
+border-radius: 6px;
+color: var(–muted);
+font-family: var(–mono);
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+cursor: pointer;
+flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════════════
-   SWAP SCOPE MODAL
+SWAP SCOPE MODAL
 ══════════════════════════════════════════════════ */
 #scope-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 600;
-  align-items: flex-end;
-  justify-content: center;
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.75);
+z-index: 600;
+align-items: flex-end;
+justify-content: center;
 }
 #scope-overlay.open { display: flex; }
 #scope-sheet {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px 14px 0 0;
-  width: 100%;
-  padding: 20px 16px;
-  padding-bottom: calc(20px + var(--safe-bottom));
+background: var(–bg2);
+border: 1px solid var(–border);
+border-radius: 14px 14px 0 0;
+width: 100%;
+padding: 20px 16px;
+padding-bottom: calc(20px + var(–safe-bottom));
 }
 #scope-title {
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 6px;
+font-family: var(–mono);
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–amber);
+margin-bottom: 6px;
 }
 #scope-desc {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 18px;
-  line-height: 1.5;
+font-size: 13px;
+color: var(–muted);
+margin-bottom: 18px;
+line-height: 1.5;
 }
 .scope-btn {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 6px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-bottom: 8px;
-  text-align: left;
+width: 100%;
+padding: 14px 16px;
+border-radius: 6px;
+font-family: var(–mono);
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+cursor: pointer;
+margin-bottom: 8px;
+text-align: left;
 }
 .scope-btn-week {
-  background: #1a0e00;
-  border: 1px solid var(--amber);
-  color: var(--amber);
+background: #1a0e00;
+border: 1px solid var(–amber);
+color: var(–amber);
 }
 .scope-btn-phase {
-  background: #001814;
-  border: 1px solid var(--blue);
-  color: var(--blue);
+background: #001814;
+border: 1px solid var(–blue);
+color: var(–blue);
 }
 .scope-btn-cancel {
-  background: transparent;
-  border: 1px solid var(--border2);
-  color: var(--muted);
-  margin-bottom: 0;
+background: transparent;
+border: 1px solid var(–border2);
+color: var(–muted);
+margin-bottom: 0;
 }
 .scope-btn-sub { display: block; font-size: 9px; font-weight: 400; letter-spacing: 0.04em; color: inherit; opacity: 0.7; margin-top: 3px; text-transform: none; }
 
 /* ══════════════════════════════════════════════════
-   LOG TAB
+LOG TAB
 ══════════════════════════════════════════════════ */
 .log-day-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px 16px; scrollbar-width: none; }
 .log-day-tabs::-webkit-scrollbar { display: none; }
 .log-day-btn {
-  flex-shrink: 0; font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border2);
-  background: var(--bg3); color: var(--muted); cursor: pointer; white-space: nowrap;
+flex-shrink: 0; font-family: var(–mono); font-size: 10px; font-weight: 600;
+letter-spacing: 0.05em; text-transform: uppercase;
+padding: 6px 12px; border-radius: 4px; border: 1px solid var(–border2);
+background: var(–bg3); color: var(–muted); cursor: pointer; white-space: nowrap;
 }
-.log-day-btn.active { background: var(--bg4); border-color: var(--amber); color: var(--amber); }
+.log-day-btn.active { background: var(–bg4); border-color: var(–amber); color: var(–amber); }
 
 .log-body { padding: 8px 16px 24px; }
 
 .log-ex-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 6px; margin-bottom: 8px; overflow: hidden;
+background: var(–bg2); border: 1px solid var(–border);
+border-radius: 6px; margin-bottom: 8px; overflow: hidden;
 }
 .log-ex-card.mob-card { background: #0a0a14; border-color: #1a1a2a; }
 .log-ex-card.tendon-card { background: #140808; border-color: #2a1010; }
 
 .log-ex-header { padding: 10px 14px 6px; }
-.log-ex-name { font-size: 13px; font-weight: 500; color: var(--text); }
-.log-ex-name.watch { color: var(--red); }
-.log-ex-name.mob   { color: var(--blue); }
-.log-ex-name.tendon{ color: var(--red); }
+.log-ex-name { font-size: 13px; font-weight: 500; color: var(–text); }
+.log-ex-name.watch { color: var(–red); }
+.log-ex-name.mob   { color: var(–blue); }
+.log-ex-name.tendon{ color: var(–red); }
 .log-ex-sub-badge {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 2px;
-  border: 1px solid var(--amber);
-  color: var(--amber);
-  background: #1a0e00;
-  margin-left: 6px;
-  vertical-align: middle;
+display: inline-block;
+font-family: var(–mono);
+font-size: 8px;
+font-weight: 600;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+padding: 2px 6px;
+border-radius: 2px;
+border: 1px solid var(–amber);
+color: var(–amber);
+background: #1a0e00;
+margin-left: 6px;
+vertical-align: middle;
 }
-.log-ex-prescribed { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 2px; }
+.log-ex-prescribed { font-family: var(–mono); font-size: 10px; color: var(–muted); margin-top: 2px; }
 
 .log-inputs { display: grid; gap: 6px; padding: 0 14px 10px; }
 .log-inputs.strength-inputs { grid-template-columns: 1fr 1fr 1fr; }
@@ -399,188 +400,192 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 .log-inputs.cond-inputs     { grid-template-columns: 1fr 1fr; }
 
 .log-field { display: flex; flex-direction: column; gap: 3px; }
-.log-field label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+.log-field label { font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(–faint); }
 .log-field input, .log-field textarea {
-  background: var(--bg4); border: 1px solid var(--border2);
-  border-radius: 4px; color: var(--text); font-family: var(--sans);
-  font-size: 14px; font-weight: 400; padding: 8px 10px; outline: none;
-  transition: border-color 0.12s; width: 100%;
+background: var(–bg4); border: 1px solid var(–border2);
+border-radius: 4px; color: var(–text); font-family: var(–sans);
+font-size: 14px; font-weight: 400; padding: 8px 10px; outline: none;
+transition: border-color 0.12s; width: 100%;
 }
-.log-field input:focus, .log-field textarea:focus { border-color: var(--amber); }
-.log-field input.tendon-input:focus { border-color: var(--red); }
-.log-field input::placeholder, .log-field textarea::placeholder { color: var(--faint); font-size: 13px; }
+.log-field input:focus, .log-field textarea:focus { border-color: var(–amber); }
+.log-field input.tendon-input:focus { border-color: var(–red); }
+.log-field input::placeholder, .log-field textarea::placeholder { color: var(–faint); font-size: 13px; }
 .log-field textarea { resize: none; height: 60px; font-size: 13px; }
 
 .log-notes-wrap { padding: 0 14px 12px; }
 
-.set-row { border-top: 1px solid var(--border); padding-bottom: 8px; }
+.set-row { border-top: 1px solid var(–border); padding-bottom: 8px; }
 
 .log-section-label {
-  font-family: var(--mono); font-size: 9px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted); padding: 16px 0 6px;
+font-family: var(–mono); font-size: 9px; font-weight: 600;
+letter-spacing: 0.1em; text-transform: uppercase;
+color: var(–muted); padding: 16px 0 6px;
 }
 
 .week-report-box {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 8px; padding: 16px; margin: 8px 0;
+background: var(–bg2); border: 1px solid var(–border);
+border-radius: 8px; padding: 16px; margin: 8px 0;
 }
 .report-field { margin-bottom: 10px; }
 .report-field:last-child { margin-bottom: 0; }
-.report-field label { display: block; font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.report-field label { display: block; font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(–muted); margin-bottom: 4px; }
 .report-field textarea {
-  width: 100%; background: var(--bg4); border: 1px solid var(--border2);
-  border-radius: 4px; color: var(--text); font-family: var(--sans);
-  font-size: 13px; padding: 8px 10px; outline: none; resize: none;
-  height: 52px; transition: border-color 0.12s;
+width: 100%; background: var(–bg4); border: 1px solid var(–border2);
+border-radius: 4px; color: var(–text); font-family: var(–sans);
+font-size: 13px; padding: 8px 10px; outline: none; resize: none;
+height: 52px; transition: border-color 0.12s;
 }
-.report-field textarea:focus { border-color: var(--amber); }
+.report-field textarea:focus { border-color: var(–amber); }
 
 .copy-btn {
-  width: 100%; padding: 14px; margin-top: 12px;
-  background: var(--bg4); border: 1px solid var(--amber);
-  border-radius: 6px; color: var(--amber);
-  font-family: var(--mono); font-size: 12px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
-  transition: background 0.15s;
+width: 100%; padding: 14px; margin-top: 12px;
+background: var(–bg4); border: 1px solid var(–amber);
+border-radius: 6px; color: var(–amber);
+font-family: var(–mono); font-size: 12px; font-weight: 600;
+letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+transition: background 0.15s;
 }
 .copy-btn:active { background: #2a1e00; }
-.copy-btn.copied { background: #1a2800; border-color: var(--green); color: var(--green); }
+.copy-btn.copied { background: #1a2800; border-color: var(–green); color: var(–green); }
 
 .clear-btn {
-  width: 100%; padding: 11px; margin-top: 8px;
-  background: transparent; border: 1px solid var(--border2);
-  border-radius: 6px; color: var(--muted);
-  font-family: var(--mono); font-size: 10px; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+width: 100%; padding: 11px; margin-top: 8px;
+background: transparent; border: 1px solid var(–border2);
+border-radius: 6px; color: var(–muted);
+font-family: var(–mono); font-size: 10px; font-weight: 500;
+letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
 }
 
 .log-week-sel { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px 0; scrollbar-width: none; }
 .log-week-sel::-webkit-scrollbar { display: none; }
 .log-week-chip {
-  flex-shrink: 0; font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 4px; border: 1px solid var(--border2);
-  background: var(--bg3); color: var(--muted); cursor: pointer; white-space: nowrap;
+flex-shrink: 0; font-family: var(–mono); font-size: 10px; font-weight: 600;
+letter-spacing: 0.06em; text-transform: uppercase;
+padding: 5px 12px; border-radius: 4px; border: 1px solid var(–border2);
+background: var(–bg3); color: var(–muted); cursor: pointer; white-space: nowrap;
 }
-.log-week-chip.active { background: var(--bg4); border-color: var(--amber); color: var(--amber); }
+.log-week-chip.active { background: var(–bg4); border-color: var(–amber); color: var(–amber); }
 
 /* ══════════════════════════════════════════════════
-   LIBRARY TAB
+LIBRARY TAB
 ══════════════════════════════════════════════════ */
 .lib-search-wrap { padding: 12px 16px 8px; position: relative; }
-.lib-search-icon { position: absolute; left: 28px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 12px; color: var(--muted); pointer-events: none; }
+.lib-search-icon { position: absolute; left: 28px; top: 50%; transform: translateY(-50%); font-family: var(–mono); font-size: 12px; color: var(–muted); pointer-events: none; }
 #lib-search {
-  width: 100%; background: var(--bg3); border: 1px solid var(--border2);
-  border-radius: 6px; color: var(--text); font-family: var(--sans);
-  font-size: 14px; padding: 10px 12px 10px 34px; outline: none;
-  transition: border-color 0.12s;
+width: 100%; background: var(–bg3); border: 1px solid var(–border2);
+border-radius: 6px; color: var(–text); font-family: var(–sans);
+font-size: 14px; padding: 10px 12px 10px 34px; outline: none;
+transition: border-color 0.12s;
 }
-#lib-search:focus { border-color: var(--blue); }
-#lib-search::placeholder { color: var(--faint); }
+#lib-search:focus { border-color: var(–blue); }
+#lib-search::placeholder { color: var(–faint); }
 
 .lib-filters { display: flex; gap: 5px; overflow-x: auto; padding: 0 16px 10px; scrollbar-width: none; }
 .lib-filters::-webkit-scrollbar { display: none; }
 .lib-filter {
-  flex-shrink: 0; font-family: var(--mono); font-size: 9px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 5px 10px; border-radius: 3px; border: 1px solid var(--border2);
-  background: transparent; color: var(--muted); cursor: pointer; white-space: nowrap;
+flex-shrink: 0; font-family: var(–mono); font-size: 9px; font-weight: 600;
+letter-spacing: 0.06em; text-transform: uppercase;
+padding: 5px 10px; border-radius: 3px; border: 1px solid var(–border2);
+background: transparent; color: var(–muted); cursor: pointer; white-space: nowrap;
 }
-.lib-filter.active { background: var(--bg4); color: var(--text); border-color: var(--border2); }
-.lib-filter.active[data-val="strength"]    { border-color: var(--green);  color: var(--green); }
-.lib-filter.active[data-val="skill"]       { border-color: var(--amber);  color: var(--amber); }
-.lib-filter.active[data-val="mobility"]    { border-color: var(--blue);   color: var(--blue); }
-.lib-filter.active[data-val="conditioning"]{ border-color: var(--purple); color: var(--purple); }
-.lib-filter.active[data-val="none"]        { border-color: var(--green);  color: var(--green); }
-.lib-filter.active[data-val="low"]         { border-color: var(--amber);  color: var(--amber); }
-.lib-filter.active[data-val="moderate"]    { border-color: #f08040;       color: #f08040; }
-.lib-filter.active[data-val="high"]        { border-color: var(--red);    color: var(--red); }
-.lib-filter.active[data-val="yes"]         { border-color: var(--green);  color: var(--green); }
+.lib-filter.active { background: var(–bg4); color: var(–text); border-color: var(–border2); }
+.lib-filter.active[data-val=“strength”]    { border-color: var(–green);  color: var(–green); }
+.lib-filter.active[data-val=“skill”]       { border-color: var(–amber);  color: var(–amber); }
+.lib-filter.active[data-val=“mobility”]    { border-color: var(–blue);   color: var(–blue); }
+.lib-filter.active[data-val=“conditioning”]{ border-color: var(–purple); color: var(–purple); }
+.lib-filter.active[data-val=“none”]        { border-color: var(–green);  color: var(–green); }
+.lib-filter.active[data-val=“low”]         { border-color: var(–amber);  color: var(–amber); }
+.lib-filter.active[data-val=“moderate”]    { border-color: #f08040;       color: #f08040; }
+.lib-filter.active[data-val=“high”]        { border-color: var(–red);    color: var(–red); }
+.lib-filter.active[data-val=“yes”]         { border-color: var(–green);  color: var(–green); }
 
-.lib-count { font-family: var(--mono); font-size: 10px; color: var(--muted); padding: 0 16px 8px; }
-.lib-count span { color: var(--blue); font-weight: 600; }
+.lib-count { font-family: var(–mono); font-size: 10px; color: var(–muted); padding: 0 16px 8px; }
+.lib-count span { color: var(–blue); font-weight: 600; }
 
 .lib-grid { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 8px; }
 
 .lib-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 6px; overflow: hidden; cursor: pointer;
+background: var(–bg2); border: 1px solid var(–border);
+border-radius: 6px; overflow: hidden; cursor: pointer;
 }
 .lib-card-header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
 .lib-risk-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.risk-none     { background: var(--green); }
-.risk-low      { background: var(--amber); }
+.risk-none     { background: var(–green); }
+.risk-low      { background: var(–amber); }
 .risk-moderate { background: #f08040; }
-.risk-high     { background: var(--red); }
-.lib-card-name { flex: 1; font-size: 13px; font-weight: 500; color: var(--text); }
-.lib-card-chev { font-family: var(--mono); font-size: 10px; color: var(--faint); transition: transform 0.15s; }
+.risk-high     { background: var(–red); }
+.lib-card-name { flex: 1; font-size: 13px; font-weight: 500; color: var(–text); }
+.lib-card-chev { font-family: var(–mono); font-size: 10px; color: var(–faint); transition: transform 0.15s; }
 .lib-card.open .lib-card-chev { transform: rotate(180deg); }
 .lib-card-tags { display: flex; gap: 4px; flex-wrap: wrap; padding: 0 14px 10px; }
-.lib-tag { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; border: 1px solid; }
-.lib-tag-strength    { color: var(--green);  border-color: #2a3a0a; background: #0e1a04; }
-.lib-tag-skill       { color: var(--amber);  border-color: #3a2a0a; background: #1a0e04; }
-.lib-tag-mobility    { color: var(--blue);   border-color: #0a2a3a; background: #040e18; }
-.lib-tag-conditioning{ color: var(--purple); border-color: #2a1a3a; background: #0e0418; }
-.lib-tag-plain { color: var(--faint); border-color: var(--border); background: transparent; }
-.lib-tag-inprog { color: var(--green); border-color: #2a3a0a; background: #0e1a04; }
-.lib-card-expand { display: none; border-top: 1px solid var(--border); padding: 12px 14px; }
+.lib-tag { font-family: var(–mono); font-size: 9px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; border: 1px solid; }
+.lib-tag-strength    { color: var(–green);  border-color: #2a3a0a; background: #0e1a04; }
+.lib-tag-skill       { color: var(–amber);  border-color: #3a2a0a; background: #1a0e04; }
+.lib-tag-mobility    { color: var(–blue);   border-color: #0a2a3a; background: #040e18; }
+.lib-tag-conditioning{ color: var(–purple); border-color: #2a1a3a; background: #0e0418; }
+.lib-tag-plain { color: var(–faint); border-color: var(–border); background: transparent; }
+.lib-tag-inprog { color: var(–green); border-color: #2a3a0a; background: #0e1a04; }
+.lib-card-expand { display: none; border-top: 1px solid var(–border); padding: 12px 14px; }
 .lib-card.open .lib-card-expand { display: block; }
-.lib-muscles { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
-.lib-muscles strong { color: var(--text); font-weight: 500; }
-.lib-notes { font-size: 12px; color: var(--muted); line-height: 1.6; }
-.lib-risk-label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding: 5px 8px; border-radius: 3px; display: inline-block; }
-.risk-label-none     { color: var(--green);  background: #0e1a04; }
-.risk-label-low      { color: var(--amber);  background: #1a0e04; }
+.lib-muscles { font-size: 12px; color: var(–muted); margin-bottom: 8px; line-height: 1.5; }
+.lib-muscles strong { color: var(–text); font-weight: 500; }
+.lib-notes { font-size: 12px; color: var(–muted); line-height: 1.6; }
+.lib-risk-label { font-family: var(–mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding: 5px 8px; border-radius: 3px; display: inline-block; }
+.risk-label-none     { color: var(–green);  background: #0e1a04; }
+.risk-label-low      { color: var(–amber);  background: #1a0e04; }
 .risk-label-moderate { color: #f08040;       background: #1a0804; }
-.risk-label-high     { color: var(--red);    background: #1a0404; }
-.lib-empty { text-align: center; padding: 48px 16px; color: var(--muted); font-family: var(--mono); font-size: 12px; }
+.risk-label-high     { color: var(–red);    background: #1a0404; }
+.lib-empty { text-align: center; padding: 48px 16px; color: var(–muted); font-family: var(–mono); font-size: 12px; }
 </style>
+
 </head>
 <body>
 <div id="app">
   <div id="view">
 
-    <!-- ══ PROGRAM SCREEN ══ -->
-    <div id="screen-program" class="screen active">
-      <div class="page-header">
-        <div class="page-label">Phase 1 · Apr 6 – May 30</div>
-        <div class="page-title">Program</div>
-      </div>
-      <div class="week-scroll" id="week-scroll"></div>
-      <div class="days-wrap" id="days-wrap"></div>
-    </div>
+```
+<!-- ══ PROGRAM SCREEN ══ -->
+<div id="screen-program" class="screen active">
+  <div class="page-header">
+    <div class="page-label">Phase 1 · Apr 6 – May 30</div>
+    <div class="page-title">Program</div>
+  </div>
+  <div class="week-scroll" id="week-scroll"></div>
+  <div class="days-wrap" id="days-wrap"></div>
+</div>
 
-    <!-- ══ LOG SCREEN ══ -->
-    <div id="screen-log" class="screen">
-      <div class="page-header">
-        <div class="page-label amber">Session Log</div>
-        <div class="page-title">Log</div>
-      </div>
-      <div class="log-week-sel" id="log-week-sel"></div>
-      <div class="log-day-tabs" id="log-day-tabs"></div>
-      <div class="log-body" id="log-body"></div>
-    </div>
+<!-- ══ LOG SCREEN ══ -->
+<div id="screen-log" class="screen">
+  <div class="page-header">
+    <div class="page-label amber">Session Log</div>
+    <div class="page-title">Log</div>
+  </div>
+  <div class="log-week-sel" id="log-week-sel"></div>
+  <div class="log-day-tabs" id="log-day-tabs"></div>
+  <div class="log-body" id="log-body"></div>
+</div>
 
-    <!-- ══ LIBRARY SCREEN ══ -->
-    <div id="screen-library" class="screen">
-      <div class="page-header">
-        <div class="page-label blue">Movement Database</div>
-        <div class="page-title">Library</div>
-      </div>
-      <div class="lib-search-wrap">
-        <span class="lib-search-icon">/</span>
-        <input type="text" id="lib-search" placeholder="Search movements, muscles, equipment…">
-      </div>
-      <div class="lib-filters" id="lib-filters"></div>
-      <div class="lib-count" id="lib-count"></div>
-      <div class="lib-grid" id="lib-grid"></div>
-      <div class="lib-empty" id="lib-empty" style="display:none">No movements match.</div>
-    </div>
+<!-- ══ LIBRARY SCREEN ══ -->
+<div id="screen-library" class="screen">
+  <div class="page-header">
+    <div class="page-label blue">Movement Database</div>
+    <div class="page-title">Library</div>
+  </div>
+  <div class="lib-search-wrap">
+    <span class="lib-search-icon">/</span>
+    <input type="text" id="lib-search" placeholder="Search movements, muscles, equipment…">
+  </div>
+  <div class="lib-filters" id="lib-filters"></div>
+  <div class="lib-count" id="lib-count"></div>
+  <div class="lib-grid" id="lib-grid"></div>
+  <div class="lib-empty" id="lib-empty" style="display:none">No movements match.</div>
+</div>
+```
 
   </div><!-- /view -->
 
   <!-- ══ TAB BAR ══ -->
+
   <div id="tabbar">
     <div class="tab active" data-screen="program" onclick="switchTab('program',this)">
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="4" x2="9" y2="9"/><line x1="15" y1="4" x2="15" y2="9"/></svg>
@@ -598,6 +603,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 </div>
 
 <!-- ══ SWAP MODAL ══ -->
+
 <div id="swap-overlay" onclick="closeSwapIfBackground(event)">
   <div id="swap-sheet">
     <div id="swap-header">
@@ -612,6 +618,7 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 </div>
 
 <!-- ══ SCOPE MODAL ══ -->
+
 <div id="scope-overlay" onclick="closeScopeIfBackground(event)">
   <div id="scope-sheet" onclick="event.stopPropagation()">
     <div id="scope-title">Apply swap to…</div>
@@ -645,95 +652,111 @@ const WEEKS = [
 
 // exercise type flags: w=watch(tendon risk), n=new, m=mobility, t=tendon protocol
 const DAYS = [
+  // ── MONDAY — Upper A ──────────────────────────────────────────
   { day:"Monday", label:"Upper A", type:"upper", sub:"Pull dominant",
     exercises:[
-      {name:"Weighted pull-ups",         sets:"4", reps:"4–5",      note:"Wk3: 40 lbs × 4–5 reps. Don't chase 6. Quality over grinding.", flags:"", timed:false, pattern:"pull"},
-      {name:"Chest-supported DB row",    sets:"3", reps:"10–12",    note:"Wk3: 80 lbs. Incline bench, chest down, row to hip.", flags:"n", timed:false, pattern:"pull"},
-      {name:"Dips",                      sets:"3", reps:"6–8",      note:"Wk3: 45 lbs × 8. Secondary push day.", flags:"", timed:false, pattern:"push"},
-      {name:"Archer pull-up negatives",  sets:"2", reps:"4/side",   note:"Jump to top position, shift weight to one side, slow negative 3–5 sec. 60/40 load split.", flags:"n", timed:false, pattern:"pull"},
-      {name:"Dead hangs",                sets:"2", reps:"40 sec",   note:"Passive shoulder stretch. Log seconds in Time field.", flags:"", timed:true, pattern:"pull"},
+      {name:"Weighted pull-ups",         sets:"4", reps:"4–5",      note:"Wk4: 45 lbs. One grip only — lock it in (neutral or chin-up recommended). Don't chase 6. Quality reps.", flags:"", timed:false, pattern:"pull"},
+      {name:"Chest-supported DB row",    sets:"3", reps:"10–12",    note:"Wk4: Hold 80 lbs. Incline bench, chest down, row to hip.", flags:"", timed:false, pattern:"pull"},
+      {name:"Dips",                      sets:"3", reps:"6–8",      note:"Wk4: 45 lbs × 8. Secondary push day — not a max effort.", flags:"", timed:false, pattern:"push"},
+      {name:"Archer pull-up negatives",  sets:"2", reps:"4/side",   note:"Jump to top, shift weight to one side, slow 3–5 sec negative. 60/40 load split.", flags:"", timed:false, pattern:"pull"},
+      {name:"Dead hangs",                sets:"2", reps:"40 sec",   note:"Passive shoulder stretch. Let shoulders fully elevate. Log seconds in Time field.", flags:"", timed:true, pattern:"pull"},
+      {name:"Explosive pull-ups",        sets:"3", reps:"4",        note:"NEW Wk4. BW only. Explode through the concentric — chin clears bar. Focus on acceleration, not rep grinding. Controlled descent.", flags:"n", timed:false, pattern:"pull"},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",     sets:"3", reps:"35 sec", note:"Wk3: 17–20 lbs, 35 sec. Supinated grip. Log pain 0–10 every set.", flags:"t", timed:true},
-      {name:"Supination/pronation circles",sets:"2", reps:"10 each way",note:"Slow forearm rotation. Distal biceps tissue.", flags:"", timed:false},
+      {name:"Biceps tendon isometric",     sets:"3", reps:"35 sec", note:"Wk4: 20 lbs, 35 sec, 90° hold across all sets. Log pain 0–10 every set.", flags:"t", timed:true},
+      {name:"Supination/pronation circles",sets:"2", reps:"10 each way",note:"Slow forearm rotation both ways. Addresses distal biceps tissue and helps medial elbow.", flags:"", timed:false},
+      {name:"Wrist flexor stretch",        sets:"2", reps:"30 sec", note:"Arm extended, palm up, gentle downward pressure on fingers. Targets flexor-pronator mass — medial elbow rehab. Do after every pull session.", flags:"", timed:true},
       {name:"Lat hang stretch",            sets:"2", reps:"30 sec", note:"Let shoulders fully elevate. Log seconds in Time field.", flags:"", timed:true},
       {name:"Band pull-apart",             sets:"2", reps:"15",     note:"Light band. Posterior shoulder.", flags:"", timed:false},
       {name:"Thoracic extension (foam)",   sets:"1", reps:"60 sec", note:"Foam roller mid-back, arms overhead. Log seconds in Time field.", flags:"", timed:true},
     ]
   },
+
+  // ── TUESDAY — Lower A ─────────────────────────────────────────
   { day:"Tuesday", label:"Lower A", type:"lower", sub:"Zercher + hinge",
     exercises:[
-      {name:"Zercher squat",             sets:"4", reps:"4–6",      note:"⚠ Wk3: ramp to 225–230×6. Log pain each set. Don't increase if >4/10.", flags:"w", timed:false, pattern:"squat"},
-      {name:"Stiff-leg deadlift",        sets:"4", reps:"5–6",      note:"Wk3: ramp to ~315×6 top sets. Slow eccentric.", flags:"", timed:false, pattern:"hinge"},
-      {name:"Bulgarian split squat",     sets:"3", reps:"8–10/side",note:"Wk3: 55–60 lbs. Rear foot elevated.", flags:"", timed:false, pattern:"squat"},
-      {name:"Bike — conditioning",       sets:"1", reps:"35–40 min",note:"Wk3 protocol: steady state 35–40 min, RPE 5–6. No intervals — continuous effort.", flags:"", timed:true, pattern:"carry"},
+      {name:"Zercher squat",             sets:"4", reps:"6",        note:"⚠ Wk4: 235 lbs × 6 across all sets. Up from 225 — you had clean RPE 6–7. Log pain each set.", flags:"w", timed:false, pattern:"squat"},
+      {name:"Stiff-leg deadlift",        sets:"4", reps:"5–6",      note:"Wk4: Hold 315 lbs. Fatigue is at 7 — don't push load this week. Slow eccentric.", flags:"", timed:false, pattern:"hinge"},
+      {name:"Bulgarian split squat",     sets:"3", reps:"8/side",   note:"Wk4: Hold 60 lbs × 8. Back off depth slightly if left knee is talking. Log knee feel in notes.", flags:"", timed:false, pattern:"squat"},
+      {name:"Tuck front lever hold",     sets:"3", reps:"8–10 sec", note:"NEW Wk4. Hang from pull-up bar, pull body horizontal with knees tucked tight. Hips level, scapulae depressed, arms straight. Hold 8–10 sec. Rest 90 sec between.", flags:"n", timed:true, pattern:"pull"},
     ],
     mobility:[
+      {name:"Terminal knee extension (TKE)",sets:"2",reps:"15/side", note:"NEW — patellar tightness rehab. Band behind knee, slight starting bend, squeeze to full extension. 2×15/side. Light band. Do before squats.", flags:"n", timed:false},
       {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Half-kneeling, posterior pelvic tilt.", flags:"", timed:true},
       {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Knee-over-toe. Zercher depth depends on ankle dorsiflexion.", flags:"", timed:false},
       {name:"Adductor rockback",         sets:"2", reps:"10/side",  note:"Quadruped wide stance, rock back.", flags:"", timed:false},
       {name:"90/90 hip stretch",         sets:"2", reps:"45 sec/side",note:"Both hips at 90°. Log seconds in Time field.", flags:"", timed:true},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk3: 20 lbs. 4-sec eccentric only, other hand resets. Log pain 0–10.", flags:"t", timed:false},
+      {name:"Eccentric-iso curl",        sets:"3", reps:"5/arm",    note:"Wk4 simplified protocol. 4-sec eccentric lower, pause 2 sec at bottom, other hand resets. One arm at a time. Light DB. Do during rest between lower sets — not a separate block. Log pain 0–10.", flags:"t", timed:false},
     ]
   },
+
+  // ── WEDNESDAY — Upper B ───────────────────────────────────────
   { day:"Wednesday", label:"Upper B", type:"upper", sub:"Push dominant",
     exercises:[
-      {name:"Weighted dips",             sets:"5", reps:"4–6",      note:"Wk3: 65 lbs across all 5 sets.", flags:"", timed:false, pattern:"push"},
-      {name:"Pike push-ups",             sets:"4", reps:"8–10",     note:"Wk3: 4 sets (added one). Feet flat — build reps before elevating. Inverted V, head drops to floor.", flags:"n", timed:false, pattern:"push"},
-      {name:"Pull-ups (BW/light)",       sets:"3", reps:"10–12",    note:"Wk3: BW. Volume day. Vary grip across sets.", flags:"", timed:false, pattern:"pull"},
-      {name:"Parallel bar support hold", sets:"3", reps:"30 sec",   note:"Wk3: 30 sec. Arms locked at top of dip. Log seconds in Time field.", flags:"w", timed:true, pattern:"push"},
-      {name:"Hollow body hold",          sets:"3", reps:"25–30 sec",note:"Wk3: push toward 30 sec. Lower back flat, legs 6 in. Log seconds in Time field.", flags:"n", timed:true, pattern:"core"},
+      {name:"Weighted dips",             sets:"5", reps:"4–6",      note:"Wk4: 70 lbs across all 5 sets. Up from 65. RPE 7–8 target.", flags:"", timed:false, pattern:"push"},
+      {name:"Pike push-ups",             sets:"3", reps:"8–10",     note:"Wk4: Back to 3 sets. Feet flat — build reps before elevating. Head drops to floor.", flags:"", timed:false, pattern:"push"},
+      {name:"Pull-ups (BW/light)",       sets:"3", reps:"10–12",    note:"Wk4: BW. Volume day. Vary grip across sets.", flags:"", timed:false, pattern:"pull"},
+      {name:"Parallel bar support hold", sets:"3", reps:"30 sec",   note:"Wk4: Hold 30 sec. Arms locked at top of dip. Log seconds in Time field.", flags:"w", timed:true, pattern:"push"},
+      {name:"Hollow body hold",          sets:"3", reps:"25–30 sec",note:"Wk4: Push toward 30 sec consistently. Lower back flat, legs 6 in. Log seconds.", flags:"", timed:true, pattern:"core"},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk3: Session 2. Compare pain to Monday. Log pain 0–10.", flags:"t", timed:true},
+      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk4: Session 2. 20 lbs, 90°. Compare pain to Monday. Log pain 0–10.", flags:"t", timed:true},
+      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Medial elbow rehab. Arm extended, palm up, gentle finger pullback. 30 sec/side.", flags:"", timed:true},
+      {name:"Eccentric wrist flexion",   sets:"2", reps:"10",       note:"NEW — medial elbow rehab. Forearm on bench, palm up. Light DB in hand. Raise wrist, lower slowly 3–4 sec. Targets flexor-pronator tendons.", flags:"n", timed:false},
       {name:"Doorway chest stretch",     sets:"2", reps:"30 sec",   note:"Arms at 90°, lean through. Log seconds in Time field.", flags:"", timed:true},
       {name:"Thoracic rotation (seated)",sets:"2", reps:"10/side",  note:"Hands behind head, rotate mid-back only.", flags:"", timed:false},
-      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Arm extended, palm up, downward pressure. Log seconds in Time field.", flags:"t", timed:true},
       {name:"Shoulder CARs",             sets:"2", reps:"5/side",   note:"Full-range shoulder circles under control.", flags:"", timed:false},
     ]
   },
-  { day:"Thursday", label:"Conditioning", type:"cond", sub:"Trek Dual Sport 1",
+
+  // ── THURSDAY — Conditioning (Metcon sub) ──────────────────────
+  { day:"Thursday", label:"Conditioning", type:"cond", sub:"Metcon — 20 min AMRAP",
     exercises:[
-      {name:"Bike — Wks 1–2",            sets:"3", reps:"10 min",   note:"RPE 5–6. 3 min easy spin between.", flags:"", timed:true, pattern:"carry"},
-      {name:"Bike — Wks 3–4",            sets:"1", reps:"35–45 min",note:"Wk3: Continuous steady state. RPE 5–6.", flags:"", timed:true, pattern:"carry"},
-      {name:"Bike — Wks 5–6",            sets:"2", reps:"15 min",   note:"RPE 6–7. 5 min easy between.", flags:"", timed:true, pattern:"carry"},
-      {name:"Bike — Wks 7–8",            sets:"1", reps:"50–60 min",note:"Long steady OR 3×8 min RPE 7–8, 4 min recovery.", flags:"", timed:true, pattern:"carry"},
+      {name:"Metcon AMRAP — 20 min",     sets:"1", reps:"20 min",   note:"Wk4: 5 pull-ups / 10 push-ups / 15 air squats. RPE 6–7 ceiling — this is not a gut-check. Log rounds completed in the Reps field.", flags:"n", timed:true, pattern:"carry"},
     ],
     mobility:[
-      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Bike shortens hip flexors. Address post-ride.", flags:"", timed:true},
+      {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Post-conditioning. Log seconds in Time field.", flags:"", timed:true},
       {name:"Thoracic extension (foam)",sets:"1",reps:"60 sec",     note:"Every upper day minimum. Do after conditioning too.", flags:"", timed:true},
-      {name:"Calf stretch (gastrocnemius)",sets:"2",reps:"30 sec/side",note:"Straight leg. Bike riding shortens calves.", flags:"", timed:true},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk3: 20 lbs. Session 2. 4-sec eccentric. Log pain 0–10.", flags:"t", timed:false},
+      {name:"Calf stretch (gastrocnemius)",sets:"2",reps:"30 sec/side",note:"Straight leg. Log seconds in Time field.", flags:"", timed:true},
+      {name:"Eccentric-iso curl",        sets:"3", reps:"5/arm",    note:"4-sec eccentric lower, pause 2 sec at bottom, other hand resets. Light DB. Log pain 0–10.", flags:"t", timed:false},
     ]
   },
+
+  // ── FRIDAY — Upper C ──────────────────────────────────────────
   { day:"Friday", label:"Upper C", type:"upper", sub:"Balanced volume",
     exercises:[
-      {name:"Pull-ups (BW)",             sets:"4", reps:"max–2",    note:"Wk3: Stop 2 short of failure. Log actual reps each set.", flags:"", timed:false, pattern:"pull"},
-      {name:"Dips (BW/light)",           sets:"4", reps:"max–2",    note:"Wk3: Stop 2 short of failure. Not a max-out day.", flags:"", timed:false, pattern:"push"},
-      {name:"Archer push-ups",           sets:"3", reps:"8/side",   note:"Wk3: 8 reps/side (up from 7). Wide-stance, shift weight, opposite arm extends.", flags:"n", timed:false, pattern:"push"},
-      {name:"Tuck L-sit",                sets:"3", reps:"20 sec",   note:"Wk3: 20 sec (up from 15). Knees to chest, arms locked. Log seconds in Time field.", flags:"n", timed:true, pattern:"core"},
-      {name:"Barbell bent-over row",     sets:"3", reps:"6–8",      note:"Wk3: 185–205 lbs. Overhand grip, ~45° torso, pull to lower chest/upper abdomen.", flags:"n", timed:false, pattern:"pull"},
-      {name:"Cable face pulls",          sets:"2", reps:"20",       note:"Rope at forehead height, elbows high and flared. Light load.", flags:"", timed:false, pattern:"pull"},
+      {name:"Pull-ups (BW)",             sets:"4", reps:"max–2",    note:"Wk4: Stop 2–3 short of failure. Log actual reps each set.", flags:"", timed:false, pattern:"pull"},
+      {name:"Dips (BW/light)",           sets:"4", reps:"max–2",    note:"Wk4: Stop 2–3 short of failure. Not a max-out day.", flags:"", timed:false, pattern:"push"},
+      {name:"Archer push-ups",           sets:"3", reps:"8/side",   note:"Wk4: 8 reps/side. Wide-stance, shift weight, opposite arm extends.", flags:"", timed:false, pattern:"push"},
+      {name:"Tuck L-sit",                sets:"3", reps:"20 sec",   note:"Wk4: Hold 20 sec across all 3 sets before progressing. Knees to chest, arms locked. Log seconds.", flags:"", timed:true, pattern:"core"},
+      {name:"Barbell bent-over row",     sets:"3", reps:"6–8",      note:"Wk4: Hold 165 lbs. RPE was 6 across the board — you can push to 175 if it feels right. Overhand grip, 45° torso, pull to lower chest.", flags:"", timed:false, pattern:"pull"},
+      {name:"Cable face pulls",          sets:"2", reps:"20",       note:"Wk4: 80 lbs. Rope at forehead height, elbows high and flared. Keep this.", flags:"", timed:false, pattern:"pull"},
+      {name:"Explosive pull-ups",        sets:"2", reps:"4",        note:"Wk4: Second dose. BW, same as Monday — focus on acceleration and clean reps, not adding sets.", flags:"n", timed:false, pattern:"pull"},
     ],
     mobility:[
-      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk3: Session 3. Compare pain trend across week. Log pain 0–10.", flags:"t", timed:true},
+      {name:"Biceps tendon isometric",   sets:"3", reps:"35 sec",   note:"Wk4: Session 3. 20 lbs, 90°. Compare pain trend across Mon/Wed/Fri. Log pain 0–10.", flags:"t", timed:true},
+      {name:"Wrist flexor stretch",      sets:"2", reps:"30 sec",   note:"Medial elbow — do this every upper day. Arm extended, palm up, finger pullback.", flags:"", timed:true},
       {name:"Lat hang stretch",          sets:"2", reps:"30 sec",   note:"Every upper day. Log seconds in Time field.", flags:"", timed:true},
       {name:"Supination/pronation circles",sets:"2",reps:"10 each way",note:"Forearm tissue management.", flags:"", timed:false},
       {name:"Band pull-apart",           sets:"2", reps:"15",       note:"Posterior shoulder.", flags:"", timed:false},
       {name:"Thoracic extension (foam)", sets:"1", reps:"60 sec",   note:"Non-negotiable. Log seconds in Time field.", flags:"", timed:true},
     ]
   },
+
+  // ── SATURDAY — Lower B ────────────────────────────────────────
   { day:"Saturday", label:"Lower B", type:"lower", sub:"SLDL emphasis",
     exercises:[
-      {name:"Stiff-leg deadlift",        sets:"5", reps:"4–5",      note:"Wk3: ramp to 340–345 top sets. Top loading day.", flags:"", timed:false, pattern:"hinge"},
-      {name:"Zercher squat",             sets:"3", reps:"6–8",      note:"⚠ Wk3: 190–195 lbs. Hold below Tuesday load.", flags:"w", timed:false, pattern:"squat"},
-      {name:"Single-leg hamstring curl", sets:"3", reps:"10/side",  note:"Wk3: per your preference. Controlled through full range.", flags:"", timed:false, pattern:"hinge"},
-      {name:"Bike — optional",           sets:"1", reps:"30 min",   note:"Drop if lower session was heavy or fatigue is high. RPE 5–6.", flags:"", timed:true, pattern:"carry"},
+      {name:"Stiff-leg deadlift",        sets:"5", reps:"4–5",      note:"Wk4: Ramp from 310, cap top set at 345. Do not exceed RPE 8.5. Saturday is top loading day but fatigue management takes priority this week.", flags:"", timed:false, pattern:"hinge"},
+      {name:"Zercher squat",             sets:"3", reps:"8",        note:"⚠ Wk4: 205 lbs × 8. Down from Tuesday load as prescribed. Back off depth if left knee flares.", flags:"w", timed:false, pattern:"squat"},
+      {name:"Single-leg hamstring curl", sets:"3", reps:"10/side",  note:"Wk4: Hold 80 lbs. Controlled through full range.", flags:"", timed:false, pattern:"hinge"},
+      {name:"Tuck front lever hold",     sets:"2", reps:"8–10 sec", note:"Wk4: Second dose. Same cues as Tuesday — knees tight, hips level, scapulae depressed. Rest 90 sec between.", flags:"n", timed:true, pattern:"pull"},
     ],
     mobility:[
+      {name:"Terminal knee extension (TKE)",sets:"2",reps:"15/side", note:"Patellar rehab. Band behind knee, squeeze to full extension from slight bend. Do before squats.", flags:"", timed:false},
+      {name:"Quad stretch (standing)",   sets:"2", reps:"45 sec/side",note:"NEW — patellar tendon offloading. Standing quad stretch, hold heel to glute. Pair with TKE on lower days.", flags:"n", timed:true},
       {name:"Hip flexor stretch (kneeling)",sets:"2",reps:"45 sec/side",note:"Lower body day — open hips.", flags:"", timed:true},
       {name:"Ankle mobility wall drill", sets:"2", reps:"10/side",  note:"Zercher day — ankle mobility affects depth.", flags:"", timed:false},
-      {name:"Biceps eccentric curl",     sets:"3", reps:"8",        note:"Wk3: 20 lbs. Session 3. Cumulative load — monitor carefully. Log pain 0–10.", flags:"t", timed:false},
+      {name:"Eccentric-iso curl",        sets:"3", reps:"5/arm",    note:"4-sec eccentric lower, pause 2 sec at bottom, other hand resets. Light DB. Session 3 this week — monitor cumulative load. Log pain 0–10.", flags:"t", timed:false},
       {name:"Pigeon / figure-4",         sets:"2", reps:"45 sec/side",note:"Glute and external rotator.", flags:"", timed:true},
       {name:"Child's pose with lat reach",sets:"2",reps:"30 sec/side",note:"Lat, shoulder, thoracic cooldown.", flags:"", timed:true},
     ]
@@ -744,7 +767,9 @@ const REPORT_PROMPTS = [
   "Biceps tendon status — pain trend this week (improving / same / worse)?",
   "Zercher tolerance — any flare? What load?",
   "Isometric/eccentric avg pain this week (0–10):",
-  "Bike conditions / route notes:",
+  "Elbow tightness — location and severity this week (0–10):",
+  "Left knee — patellar tightness, better/same/worse?",
+  "Metcon Thursday — rounds completed, how did it feel?",
   "Any substitutions or missed sessions?",
   "Overall fatigue / recovery (1–10):",
   "Anything else for Claude to factor into next week:",
@@ -755,40 +780,41 @@ const EXERCISES = [
   {name:"Archer pull-up negatives",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats (unilateral), biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Jump to top, shift weight to one side, extend opposite arm near-straight. Lower in 3–5 sec on loaded side. 60/40 load split to start. Precursor to one-arm pull-up."},
   {name:"Chest-supported DB row",category:"strength",pattern:"pull",equipment:["dumbbells","incline bench"],muscles:"Mid traps, rhomboids, rear delt, lats",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Chest on incline bench, row to hip. Eliminates lower back. Horizontal pulling — underrepresented in powerlifting backgrounds. Use the 90 lb DBs for loaded sets."},
   {name:"Dead hang",category:"strength",pattern:"pull",equipment:["pull-up bar"],muscles:"Shoulder girdle, grip, lats (passive)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Passive hang — let shoulders fully elevate. Decompresses shoulder joint. 30–45 sec."},
-  {name:"Barbell bent-over row",category:"strength",pattern:"pull",equipment:["barbell"],muscles:"Lats, mid traps, rhomboids, rear delt, biceps",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Hip-hinged torso ~45°, overhand grip, pull to lower chest/upper abdomen. Overhand grip is lower biceps tendon risk than supinated. Start 185–205 lbs × 3×6–8."},
+  {name:"Barbell bent-over row",category:"strength",pattern:"pull",equipment:["barbell"],muscles:"Lats, mid traps, rhomboids, rear delt, biceps",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Hip-hinged torso ~45°, overhand grip, pull to lower chest/upper abdomen. Overhand grip is lower biceps tendon risk than supinated. Wk4: 165–175 lbs × 3×6–8."},
+  {name:"Explosive pull-ups",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Explosive concentric, controlled eccentric. Develops power. Foundation for muscle-up. 3–5 sets of 3–5 reps BW. Introduced Weeks 3–4. Focus on acceleration through the pull, not rep grinding."},
+  {name:"Tuck front lever hold",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, core, rear delt, biceps",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Hang from bar, pull body horizontal with knees tucked tight. Hips level, scapulae depressed, arms straight. Hold 8–10 sec. Introduced Weeks 3–4. Progression: tuck → advanced tuck → straddle → full front lever."},
   {name:"Archer pull-up (full)",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats (unilateral), biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Full range version of the negative. Progress from negatives only. Bridge toward one-arm pull-up."},
   {name:"One-arm pull-up (assisted)",category:"skill",pattern:"pull",equipment:["pull-up bar","band"],muscles:"Lats (unilateral), biceps, core",risk:"moderate",difficulty:"advanced",phase:"1",inProgram:false,notes:"Band looped around wrist. Long-term goal movement. Build via archer negatives → full archer → band-assisted."},
   {name:"Inverted row",category:"strength",pattern:"pull",equipment:["barbell","rack"],muscles:"Mid traps, rhomboids, rear delt, biceps",risk:"low",difficulty:"beginner",phase:"1",inProgram:false,notes:"Bar set low in rack, body underneath. Elevate feet for more difficulty."},
   {name:"Face pull (band)",category:"strength",pattern:"pull",equipment:["band"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Anchored band at face height, pull to forehead with elbows high. High reps (15–25), light load."},
   {name:"Prone Y/T raises",category:"strength",pattern:"pull",equipment:["dumbbells"],muscles:"Lower traps, rear delt, external rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Y: arms overhead. T: arms out to sides. Very light DBs. Shoulder health and scapular control."},
   {name:"Renegade row",category:"strength",pattern:"pull",equipment:["dumbbells"],muscles:"Lats, rhomboids, core (anti-rotation)",risk:"low",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Push-up position on DBs, row one at a time. Anti-rotation core demand is high."},
-  {name:"Weighted dips",category:"strength",pattern:"push",equipment:["dip station","belt/load"],muscles:"Pecs (lower), triceps, anterior delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Primary push movement. Lean forward for pec, stay upright for tricep. Monitor elbows at high loads."},
+  {name:"Weighted dips",category:"strength",pattern:"push",equipment:["dip station","belt/load"],muscles:"Pecs (lower), triceps, anterior delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:true,notes:"Primary push movement. Lean forward for pec, stay upright for tricep. Monitor elbows at high loads. Wk4: 70 lbs."},
   {name:"Pike push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Anterior delt, triceps, upper pec",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Inverted V position, lower head to floor. Overhead pressing pattern. Bridge toward handstand push-ups. Elevate feet on box to increase difficulty."},
   {name:"Archer push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Pec (unilateral), triceps, anterior delt",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Wide stance, shift weight to one side, opposite arm extends. Prerequisite to one-arm push-up."},
   {name:"Deficit push-ups",category:"strength",pattern:"push",equipment:["bodyweight","parallettes or plates"],muscles:"Pecs, triceps, anterior delt",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Hands on parallettes or plates, chest below hand level. Elevate feet for more upper pec/delt."},
   {name:"Pseudo planche push-ups",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Anterior delt, pecs, triceps, wrists",risk:"none",difficulty:"advanced",phase:"1",inProgram:false,notes:"Push-up with hands by hips, fingers backward. Shifts load toward planche. Wrist prep required."},
   {name:"One-arm push-up (assisted)",category:"skill",pattern:"push",equipment:["bodyweight"],muscles:"Pec (unilateral), triceps, core",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Start with elevated hand on box. Progress toward floor. Build via archer push-ups."},
-  {name:"Zercher squat",category:"strength",pattern:"squat",equipment:["barbell"],muscles:"Quads, glutes, upper back, core",risk:"high",difficulty:"intermediate",phase:"1",inProgram:true,notes:"⚠ HIGH BICEPS TENDON RISK — bar rests in elbow crook. Start conservatively. Monitor pain 0–10 every session."},
-  {name:"Stiff-leg deadlift",category:"strength",pattern:"hinge",equipment:["barbell"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Primary deadlift carrier. Minimal knee bend, hinge at hip. Slow eccentric 2–3 sec."},
-  {name:"Bulgarian split squat",category:"strength",pattern:"squat",equipment:["dumbbells","bench"],muscles:"Quads, glutes, hip flexors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Rear foot elevated. More posterior chain with foot forward, more quad with foot back."},
+  {name:"Zercher squat",category:"strength",pattern:"squat",equipment:["barbell"],muscles:"Quads, glutes, upper back, core",risk:"high",difficulty:"intermediate",phase:"1",inProgram:true,notes:"⚠ HIGH BICEPS TENDON RISK — bar rests in elbow crook. Start conservatively. Monitor pain 0–10 every session. Wk4: 235×6 Tuesday, 205×8 Saturday."},
+  {name:"Stiff-leg deadlift",category:"strength",pattern:"hinge",equipment:["barbell"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Primary deadlift carrier. Minimal knee bend, hinge at hip. Slow eccentric 2–3 sec. Wk4: 315 Tuesday, ramp to cap at 345 Saturday."},
+  {name:"Bulgarian split squat",category:"strength",pattern:"squat",equipment:["dumbbells","bench"],muscles:"Quads, glutes, hip flexors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Rear foot elevated. More posterior chain with foot forward, more quad with foot back. Monitor left knee — back off depth if patella is flaring."},
   {name:"Single-leg RDL",category:"strength",pattern:"hinge",equipment:["dumbbells","barbell"],muscles:"Hamstrings (unilateral), glutes, hip stabilizers",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Hip hinge on one leg. Slow and controlled — proprioception as much as strength."},
-  {name:"Single-leg hamstring curl",category:"strength",pattern:"hinge",equipment:["cable","machine"],muscles:"Hamstrings (unilateral), glutes",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Controlled through full range. Good isolation accessory."},
+  {name:"Single-leg hamstring curl",category:"strength",pattern:"hinge",equipment:["cable","machine"],muscles:"Hamstrings (unilateral), glutes",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Controlled through full range. Good isolation accessory. Wk4: 80 lbs."},
   {name:"Romanian deadlift",category:"strength",pattern:"hinge",equipment:["barbell","dumbbells"],muscles:"Hamstrings, glutes, spinal erectors",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Similar to SLDL with slight knee bend. Can alternate for variety."},
   {name:"Hip thrust",category:"strength",pattern:"hinge",equipment:["barbell","bench"],muscles:"Glutes (primary), hamstrings",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Shoulders on bench, barbell across hips. Isolated glute drive. 3×10–15."},
   {name:"Step-ups (weighted)",category:"strength",pattern:"squat",equipment:["dumbbells","box or bench"],muscles:"Quads, glutes, hip stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Controlled step onto box, don't push off back foot. DBs in hands."},
   {name:"Suitcase carry",category:"strength",pattern:"carry",equipment:["dumbbell"],muscles:"Core (lateral), hip stabilizers, traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Single DB in one hand, walk 30–40m. Lateral core anti-flexion."},
   {name:"Farmer's carry",category:"strength",pattern:"carry",equipment:["dumbbells"],muscles:"Traps, grip, core, hip stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"Heavy DBs both hands, walk for distance. Trap and grip strength."},
-  {name:"Hollow body hold",category:"skill",pattern:"core",equipment:["bodyweight"],muscles:"Rectus abdominis, hip flexors, serratus",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Lower back FLAT on floor. Arms overhead, legs ~6 inches. Foundation for all advanced calisthenics."},
-  {name:"Tuck L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars","floor"],muscles:"Hip flexors, abs, triceps, shoulders",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked, pull knees to chest. Entry to L-sit → V-sit → front lever. Progress to L-sit when holding 20+ sec consistently."},
+  {name:"Hollow body hold",category:"skill",pattern:"core",equipment:["bodyweight"],muscles:"Rectus abdominis, hip flexors, serratus",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Lower back FLAT on floor. Arms overhead, legs ~6 inches. Foundation for all advanced calisthenics. Push toward consistent 30 sec."},
+  {name:"Tuck L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars","floor"],muscles:"Hip flexors, abs, triceps, shoulders",risk:"low",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked, pull knees to chest. Entry to L-sit → V-sit → front lever. Progress to L-sit when holding 20 sec consistently across all sets."},
   {name:"L-sit",category:"skill",pattern:"core",equipment:["parallettes","dip bars"],muscles:"Hip flexors, abs, triceps, shoulders, quads",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Arms locked, legs extended horizontally. Progress from tuck L-sit."},
   {name:"Parallel bar support hold",category:"skill",pattern:"push",equipment:["dip station"],muscles:"Triceps, shoulders, chest, stabilizers",risk:"moderate",difficulty:"intermediate",phase:"1",inProgram:true,notes:"Arms locked at top of dip, hold. Start 15 sec. Monitor elbows at extended load."},
-  {name:"Tuck front lever hold",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, core, rear delt, biceps",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Hang from bar, pull body horizontal with knees tucked. Introduced Weeks 3–4."},
-  {name:"Explosive pull-ups",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, rear delt",risk:"low",difficulty:"advanced",phase:"1",inProgram:false,notes:"Explosive concentric, controlled eccentric. Develops power. Foundation for muscle-up. 3–5 sets of 3–5 reps. Introduced Weeks 3–4."},
   {name:"Muscle-up (kipping)",category:"skill",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, biceps, triceps, chest, core",risk:"moderate",difficulty:"advanced",phase:"1",inProgram:false,notes:"Explosive pull + transition over the bar. Long-term goal."},
   {name:"Handstand hold (wall)",category:"skill",pattern:"push",equipment:["bodyweight","wall"],muscles:"Anterior delt, triceps, core, wrists",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"Chest to wall first. 10–20 sec holds. Progress toward freestanding."},
   {name:"Wall handstand push-up",category:"skill",pattern:"push",equipment:["bodyweight","wall"],muscles:"Anterior delt, triceps, upper traps",risk:"none",difficulty:"advanced",phase:"1",inProgram:false,notes:"From handstand, lower head to floor and press. Progresses from pike push-ups."},
-  {name:"Biceps tendon isometric",category:"mobility",pattern:"pull",equipment:["band","dumbbell"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. Supinated grip, 30–45 sec sustained hold. Discomfort ≤4/10. 3×/week Mon/Wed/Fri."},
-  {name:"Biceps eccentric curl",category:"mobility",pattern:"pull",equipment:["dumbbell","band"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. 4-sec eccentric only — lower slowly, other hand resets. 3×8. 3×/week Tue/Thu/Sat."},
+  {name:"Biceps tendon isometric",category:"mobility",pattern:"pull",equipment:["band","dumbbell"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL. Supinated grip, 90° elbow, 30–45 sec sustained hold. Discomfort ≤4/10. 3×/week Mon/Wed/Fri. 20 lbs is current working load."},
+  {name:"Eccentric-iso curl",category:"mobility",pattern:"pull",equipment:["dumbbell"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:true,notes:"⚑ TENDON PROTOCOL (simplified). 4-sec eccentric lower, pause 2 sec at bottom, other hand resets. One arm at a time. 3×5/arm. Do during rest between lower/conditioning sets — not a separate warmup block. Replaces the full 3×8 bilateral eccentric for compliance."},
+  {name:"Biceps eccentric curl",category:"mobility",pattern:"pull",equipment:["dumbbell","band"],muscles:"Biceps brachii (tendon loading)",risk:"low",difficulty:"beginner",phase:"1",inProgram:false,notes:"Original bilateral eccentric protocol. 4-sec eccentric only — lower slowly, other hand resets. 3×8. Replaced by Eccentric-iso curl for compliance. Still valid if preferred."},
   {name:"Thoracic extension (foam roller)",category:"mobility",pattern:"core",equipment:["foam roller"],muscles:"Thoracic extensors, pecs (stretch)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Foam roller perpendicular to spine, mid-back. Arms overhead. 60 sec. Every upper body day minimum."},
   {name:"Lat hang stretch",category:"mobility",pattern:"pull",equipment:["pull-up bar"],muscles:"Lats, shoulder capsule (inferior)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Dead hang, let shoulders passively elevate. 30 sec every upper day."},
   {name:"Shoulder CARs",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Rotator cuff, shoulder capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Controlled articular rotations — slow full-range shoulder circles. 5 each direction."},
@@ -797,23 +823,27 @@ const EXERCISES = [
   {name:"Ankle mobility wall drill",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Ankle dorsiflexors, calf",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Knee-over-toe toward wall, heel flat. 10 reps/side."},
   {name:"90/90 hip stretch",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Hip capsule (internal and external rotation)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Seated, both legs at 90°. Lean over front shin, switch. 45 sec/side."},
   {name:"Adductor rockback",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Adductors, hip internal rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Quadruped, wide knee stance. Rock hips back toward heels."},
-  {name:"Wrist flexor stretch",category:"mobility",pattern:"push",equipment:["bodyweight"],muscles:"Forearm flexors, wrist capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arm extended, palm up, gentle downward pressure on fingers. 30 sec after grip-heavy sessions."},
-  {name:"Supination/pronation circles",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Forearm supinators/pronators, distal biceps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Slow controlled forearm rotation both ways. 10 each direction. Easy to do between sets."},
+  {name:"Wrist flexor stretch",category:"mobility",pattern:"push",equipment:["bodyweight"],muscles:"Forearm flexors, wrist capsule",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arm extended, palm up, gentle downward pressure on fingers. 30 sec after grip-heavy sessions. Primary medial elbow rehab tool."},
+  {name:"Eccentric wrist flexion",category:"mobility",pattern:"push",equipment:["dumbbell"],muscles:"Forearm flexors, wrist flexors",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Forearm on bench, palm up. Light DB. Raise wrist, lower slowly 3–4 sec. Targets flexor-pronator tendons — medial elbow (golfer's elbow) rehab. 2×10. Introduced Week 4."},
+  {name:"Terminal knee extension (TKE)",category:"mobility",pattern:"squat",equipment:["band"],muscles:"VMO, quads, knee stabilizers",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Band anchored behind knee. Start with slight knee bend, squeeze to full extension. 2×15/side. Patellar tendon rehab for left knee tightness. Do before squats on lower days. Introduced Week 4."},
+  {name:"Quad stretch (standing)",category:"mobility",pattern:"squat",equipment:["bodyweight"],muscles:"Quadriceps, rectus femoris",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Standing, hold heel to glute. 45 sec/side. Patellar tendon offloading paired with TKE on lower days. Introduced Week 4."},
+  {name:"Supination/pronation circles",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Forearm supinators/pronators, distal biceps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Slow controlled forearm rotation both ways. 10 each direction. Easy to do between sets. Helps medial elbow tissue."},
   {name:"Pigeon stretch / figure-4",category:"mobility",pattern:"hinge",equipment:["bodyweight"],muscles:"Glutes, piriformis, external rotators",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Floor pigeon or supine figure-4. 45 sec/side. Especially useful after heavy SLDL sessions."},
   {name:"Child's pose with lat reach",category:"mobility",pattern:"pull",equipment:["bodyweight"],muscles:"Lats, thoracic spine, shoulder (inferior capsule)",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Child's pose, walk hands to one side. 30 sec/side. Good full-session cooldown."},
-  {name:"Calf stretch (gastrocnemius)",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Gastrocnemius",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Straight-leg against wall. Bike riding shortens calves. 30 sec/side."},
+  {name:"Calf stretch (gastrocnemius)",category:"mobility",pattern:"squat",equipment:["bodyweight","wall"],muscles:"Gastrocnemius",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Straight-leg against wall. 30 sec/side."},
   {name:"Doorway chest stretch",category:"mobility",pattern:"push",equipment:["bodyweight","doorway"],muscles:"Pec major, anterior delt, pec minor",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Arms at 90°, lean through doorway. Reduces forward shoulder pull. 30 sec."},
   {name:"Thoracic rotation (seated)",category:"mobility",pattern:"core",equipment:["bodyweight"],muscles:"Thoracic rotators, rib cage",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Seated, hands behind head, rotate through mid-back only. 10 each side."},
-  {name:"Bike — steady state",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, calves, cardiovascular",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"RPE 5–6. Conversational pace. Wks 1–2: 3×10 min intervals. Wks 3–4: 35–45 min continuous."},
+  {name:"Bike — steady state",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, calves, cardiovascular",risk:"none",difficulty:"beginner",phase:"1",inProgram:false,notes:"RPE 5–6. Conversational pace. Wks 1–2: 3×10 min intervals. Wks 3–4: 35–45 min continuous. Replaced by metcon in Week 4 Thursday slot."},
   {name:"Bike — threshold intervals",category:"conditioning",pattern:"carry",equipment:["Trek Dual Sport 1"],muscles:"Quads, glutes, cardiovascular",risk:"none",difficulty:"intermediate",phase:"1",inProgram:false,notes:"RPE 7–8. 2×15 min or 3×8 min with recovery. Introduced Weeks 5–6."},
+  {name:"Metcon AMRAP — 20 min",category:"conditioning",pattern:"carry",equipment:["bodyweight"],muscles:"Full body, cardiovascular",risk:"none",difficulty:"intermediate",phase:"1",inProgram:true,notes:"5 pull-ups / 10 push-ups / 15 air squats. 20-min AMRAP. RPE 6–7 ceiling. Log rounds completed. Substitutes for bike on Thursday when riding isn't happening. Introduced Week 4."},
   {name:"Cable face pulls",category:"strength",pattern:"pull",equipment:["cable"],muscles:"Rear delt, external rotators, mid traps",risk:"none",difficulty:"beginner",phase:"1",inProgram:true,notes:"Rope at forehead height, elbows high and flared. Light load, high reps (15–20). Shoulder health staple."},
 ];
 
 // ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
-let activeWeek = 2; // default to Week 3 (index 2)
-let logWeek = 2;
+let activeWeek = 3; // default to Week 4 (index 3)
+let logWeek = 3;
 let logDay = 0;
 let libFilters = { cat:"all", risk:"all", pattern:"all", program:"all" };
 let libQuery = "";
@@ -821,9 +851,9 @@ const STORAGE_KEY = "phase1_log_v1";
 const SWAPS_KEY = "phase1_swaps_v1";
 
 // Swap state
-let swapContext = null; // {dayIdx, exIdx, isMobility, pattern}
-let swapPending = null; // {dayIdx, exIdx, isMobility, newExName}
-let swapFilter = "all"; // pattern filter in swap modal
+let swapContext = null;
+let swapPending = null;
+let swapFilter = "all";
 
 function loadLog() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
@@ -838,7 +868,6 @@ function saveSwaps(data) {
   try { localStorage.setItem(SWAPS_KEY, JSON.stringify(data)); } catch(e) {}
 }
 
-// swapKey: week-specific or phase-level
 function weekSwapKey(week, dayIdx, exIdx, isMob) {
   return `week_${week}_d${dayIdx}_${isMob?'mob':'ex'}_${exIdx}`;
 }
@@ -846,7 +875,6 @@ function phaseSwapKey(dayIdx, exIdx, isMob) {
   return `phase_d${dayIdx}_${isMob?'mob':'ex'}_${exIdx}`;
 }
 
-// Get effective exercise for a given week/day/index
 function getEffectiveEx(week, dayIdx, exIdx, isMob) {
   const swaps = loadSwaps();
   const wKey = weekSwapKey(week, dayIdx, exIdx, isMob);
@@ -854,21 +882,18 @@ function getEffectiveEx(week, dayIdx, exIdx, isMob) {
   const arr = isMob ? DAYS[dayIdx].mobility : DAYS[dayIdx].exercises;
   const original = arr[exIdx];
 
-  // Week swap takes priority, then phase swap
   let swapName = swaps[wKey] || swaps[pKey] || null;
   if (!swapName) return { ex: original, isSwapped: false, originalName: null };
 
-  // Find in EXERCISES library
   const found = EXERCISES.find(e => e.name === swapName);
   if (!found) return { ex: original, isSwapped: false, originalName: null };
 
-  // Build a compatible ex object from library
   const swappedEx = {
     name: found.name,
     sets: original.sets,
     reps: original.reps,
     note: `[Substitution for ${original.name}] ${found.notes}`,
-    flags: original.flags, // keep tendon flags from original slot
+    flags: original.flags,
     timed: original.timed,
     pattern: found.pattern,
   };
@@ -986,13 +1011,11 @@ function openSwap(dayIdx, exIdx, isMob, pattern) {
   swapContext = {dayIdx, exIdx, isMob, pattern};
   swapFilter = pattern || "all";
 
-  const arr = isMob ? DAYS[dayIdx].mobility : DAYS[dayIdx].exercises;
   const {ex} = getEffectiveEx(activeWeek, dayIdx, exIdx, isMob);
 
   document.getElementById('swap-ex-name').textContent = ex.name;
   document.getElementById('swap-search').value = '';
 
-  // Build pattern filter chips
   const patterns = ["all","push","pull","hinge","squat","core","carry"];
   document.getElementById('swap-filter-row').innerHTML = patterns.map(p =>
     `<button class="swap-filter-chip ${swapFilter===p?'active':''}" onclick="setSwapFilter('${p}',this)">${p==='all'?'All patterns':p}</button>`
@@ -1044,7 +1067,6 @@ function filterSwapList() {
 function selectSwapEx(exName) {
   swapPending = {...swapContext, newExName: exName};
   closeSwap();
-  // Show scope modal
   const {dayIdx, exIdx, isMob} = swapContext;
   const {ex} = getEffectiveEx(activeWeek, dayIdx, exIdx, isMob);
   document.getElementById('scope-desc').textContent =
@@ -1075,14 +1097,11 @@ function confirmSwap(scope) {
   const swaps = loadSwaps();
 
   if (scope === 'week') {
-    // Apply to active week only; clear any phase swap for this slot to avoid conflict
     const wKey = weekSwapKey(activeWeek, dayIdx, exIdx, isMob);
     swaps[wKey] = newExName;
   } else {
-    // Apply from current week forward (phase swap)
     const pKey = phaseSwapKey(dayIdx, exIdx, isMob);
     swaps[pKey] = newExName;
-    // Clear any week-specific swaps for past weeks on this slot (leave current/future)
     for (let w = 0; w < activeWeek; w++) {
       const oldWKey = weekSwapKey(w, dayIdx, exIdx, isMob);
       delete swaps[oldWKey];
@@ -1139,7 +1158,7 @@ function renderLogBody() {
     const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, logDay, i, false);
     const isTendon = ex.flags.includes('t');
     const isWatch = ex.flags.includes('w');
-    const isCond = ex.name.toLowerCase().includes('bike') || ex.reps.includes('min');
+    const isCond = ex.name.toLowerCase().includes('bike') || ex.name.toLowerCase().includes('amrap') || ex.reps.includes('min');
     html += buildLogCard(ex, i, logData, isTendon, isWatch, isCond, false, isSwapped, originalName);
   });
 
@@ -1158,293 +1177,303 @@ function renderLogBody() {
     html += `<div class="report-field">
       <label>${prompt}</label>
       <textarea placeholder="…" data-rkey="${key}" oninput="saveField(this,'${key}')">${val}</textarea>
-    </div>`;
-  });
-  html += `</div>`;
-  html += `<button class="copy-btn" onclick="copyReport()">Copy Report to Clipboard</button>`;
-  html += `<button class="clear-btn" onclick="clearWeek()">Clear Week ${logWeek+1} Data</button>`;
-  html += `<p style="font-size:10px;color:var(--faint);font-family:var(--mono);text-align:center;margin-top:12px;line-height:1.6">Log is saved on this device only.<br>Use Copy Report to share with Claude.</p>`;
 
-  document.getElementById('log-body').innerHTML = html;
+```
+</div>`;
+```
+
+});
+html += `</div>`;
+html += `<button class="copy-btn" onclick="copyReport()">Copy Report to Clipboard</button>`;
+html += `<button class="clear-btn" onclick="clearWeek()">Clear Week ${logWeek+1} Data</button>`;
+html += `<p style="font-size:10px;color:var(--faint);font-family:var(--mono);text-align:center;margin-top:12px;line-height:1.6">Log is saved on this device only.<br>Use Copy Report to share with Claude.</p>`;
+
+document.getElementById(‘log-body’).innerHTML = html;
 }
 
 function buildLogCard(ex, idx, logData, isTendon, isWatch, isCond, isMob, isSwapped, originalName) {
-  const baseKey = `w${logWeek}_d${logDay}_e${idx}`;
-  const note = logData[baseKey+'_note'] || '';
-  const numSets = parseInt(ex.sets) || 1;
-  const isTimed = ex.timed === true;
-  const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
+const baseKey = `w${logWeek}_d${logDay}_e${idx}`;
+const note = logData[baseKey+’_note’] || ‘’;
+const numSets = parseInt(ex.sets) || 1;
+const isTimed = ex.timed === true;
+const isEccentric = ex.name.toLowerCase().includes(‘eccentric’) && ex.name.toLowerCase().includes(‘curl’);
 
-  const cardClass = isTendon ? 'tendon-card' : isMob ? 'mob-card' : '';
-  const nameClass = isWatch ? 'watch' : isTendon ? 'tendon' : isMob ? 'mob' : '';
-  const subBadge = isSwapped ? `<span class="log-ex-sub-badge">Sub</span>` : '';
+const cardClass = isTendon ? ‘tendon-card’ : isMob ? ‘mob-card’ : ‘’;
+const nameClass = isWatch ? ‘watch’ : isTendon ? ‘tendon’ : isMob ? ‘mob’ : ‘’;
+const subBadge = isSwapped ? `<span class="log-ex-sub-badge">Sub</span>` : ‘’;
 
-  let setRows = '';
-  for (let s = 0; s < numSets; s++) {
-    const sk = `${baseKey}_s${s}`;
-    const sv_load = logData[sk+'_load'] || '';
-    const sv_reps = logData[sk+'_reps'] || '';
-    const sv_rpe  = logData[sk+'_rpe']  || '';
-    const sv_pain = logData[sk+'_pain'] || '';
-    const sv_sec  = logData[sk+'_sec']  || '';
+let setRows = ‘’;
+for (let s = 0; s < numSets; s++) {
+const sk = `${baseKey}_s${s}`;
+const sv_load = logData[sk+’_load’] || ‘’;
+const sv_reps = logData[sk+’_reps’] || ‘’;
+const sv_rpe  = logData[sk+’_rpe’]  || ‘’;
+const sv_pain = logData[sk+’_pain’] || ‘’;
+const sv_sec  = logData[sk+’_sec’]  || ‘’;
 
-    let rowInputs = '';
-    if (isEccentric) {
-      rowInputs = `
-        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
-        <div class="log-field"><label>Reps</label><input type="number" inputmode="numeric" placeholder="8" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-        <div class="log-field"><label>Tempo (sec)</label><input type="number" inputmode="numeric" placeholder="4" value="${sv_sec}" oninput="saveField(this,'${sk}_sec')"></div>
-        <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
-      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
-        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-        ${rowInputs}
-      </div>`;
-    } else if (isCond || (isTimed && !isTendon)) {
-      const durLabel = isCond ? 'Duration (min)' : 'Time (sec)';
-      rowInputs = `
-        <div class="log-field"><label>${durLabel}</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-        <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
-      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 14px 0;">
-        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-        ${rowInputs}
-      </div>`;
-    } else if (isTendon) {
-      rowInputs = `
-        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
-        <div class="log-field"><label>Time (sec)</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-        <div class="log-field"><label>RPE</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>
-        <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
-      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
-        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-        ${rowInputs}
-      </div>`;
-    } else {
-      rowInputs = `
-        <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
-        <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
-        <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
-      setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
-        <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
-        ${rowInputs}
-      </div>`;
-    }
-  }
+```
+let rowInputs = '';
+if (isEccentric) {
+  rowInputs = `
+    <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+    <div class="log-field"><label>Reps/arm</label><input type="number" inputmode="numeric" placeholder="5" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+    <div class="log-field"><label>Tempo (sec)</label><input type="number" inputmode="numeric" placeholder="4" value="${sv_sec}" oninput="saveField(this,'${sk}_sec')"></div>
+    <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
+  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+    ${rowInputs}
+  </div>`;
+} else if (isCond || (isTimed && !isTendon)) {
+  const durLabel = isCond ? (ex.name.toLowerCase().includes('amrap') ? 'Rounds done' : 'Duration (min)') : 'Time (sec)';
+  rowInputs = `
+    <div class="log-field"><label>${durLabel}</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+    <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
+  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 14px 0;">
+    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+    ${rowInputs}
+  </div>`;
+} else if (isTendon) {
+  rowInputs = `
+    <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+    <div class="log-field"><label>Time (sec)</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+    <div class="log-field"><label>RPE</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>
+    <div class="log-field"><label>Pain (0–10)</label><input type="number" inputmode="decimal" class="tendon-input" placeholder="—" min="0" max="10" step=".5" value="${sv_pain}" oninput="saveField(this,'${sk}_pain')"></div>`;
+  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+    ${rowInputs}
+  </div>`;
+} else {
+  rowInputs = `
+    <div class="log-field"><label>Load (lbs)</label><input type="number" inputmode="decimal" step=".5" placeholder="—" value="${sv_load}" oninput="saveField(this,'${sk}_load')"></div>
+    <div class="log-field"><label>Reps done</label><input type="number" inputmode="numeric" placeholder="—" value="${sv_reps}" oninput="saveField(this,'${sk}_reps')"></div>
+    <div class="log-field"><label>RPE (1–10)</label><input type="number" inputmode="decimal" placeholder="—" min="1" max="10" step=".5" value="${sv_rpe}" oninput="saveField(this,'${sk}_rpe')"></div>`;
+  setRows += `<div class="set-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:4px 14px 0;">
+    <div style="grid-column:1/-1;font-family:var(--mono);font-size:9px;color:var(--faint);padding-top:4px">SET ${s+1}</div>
+    ${rowInputs}
+  </div>`;
+}
+```
 
-  return `<div class="log-ex-card ${cardClass}">
-    <div class="log-ex-header">
-      <div class="log-ex-name ${nameClass}">${ex.name}${subBadge}</div>
-      ${isSwapped && originalName ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ substitution for ${originalName}</div>` : ''}
-      <div class="log-ex-prescribed">${ex.sets} sets × ${ex.reps}</div>
-    </div>
-    ${setRows}
-    <div class="log-notes-wrap" style="padding-top:8px">
-      <div class="log-field"><label>Notes</label><textarea placeholder="Cues, substitutions, how it felt…" oninput="saveField(this,'${baseKey}_note')">${note}</textarea></div>
-    </div>
+}
+
+return `<div class="log-ex-card ${cardClass}"> <div class="log-ex-header"> <div class="log-ex-name ${nameClass}">${ex.name}${subBadge}</div> ${isSwapped && originalName ? `<div style="font-size:10px;color:var(--muted);margin-top:1px">↳ substitution for ${originalName}</div>` : ‘’}
+<div class="log-ex-prescribed">${ex.sets} sets × ${ex.reps}</div>
+</div>
+${setRows}
+<div class="log-notes-wrap" style="padding-top:8px">
+<div class="log-field"><label>Notes</label><textarea placeholder="Cues, substitutions, how it felt…" oninput="saveField(this,'${baseKey}_note')">${note}</textarea></div>
+</div>
+
   </div>`;
 }
 
 function saveField(el, key) {
-  const data = loadLog();
-  data[key] = el.value;
-  saveLog(data);
+const data = loadLog();
+data[key] = el.value;
+saveLog(data);
 }
 
 function copyReport() {
-  const data = loadLog();
-  const swaps = loadSwaps();
-  const week = WEEKS[logWeek];
-  let out = `WEEK ${logWeek+1} TRAINING REPORT — ${week.dates}\n${'─'.repeat(44)}\n\n`;
+const data = loadLog();
+const week = WEEKS[logWeek];
+let out = `WEEK ${logWeek+1} TRAINING REPORT — ${week.dates}\n${'─'.repeat(44)}\n\n`;
 
-  DAYS.forEach((day, di) => {
-    out += `${day.day.toUpperCase()} — ${day.label}\n`;
-    const exOffset = day.exercises.length;
+DAYS.forEach((day, di) => {
+out += `${day.day.toUpperCase()} — ${day.label}\n`;
+const exOffset = day.exercises.length;
 
-    day.exercises.forEach((origEx, i) => {
-      const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, false);
-      const base = `w${logWeek}_d${di}_e${i}`;
-      const note = data[base+'_note'];
-      const numSets = parseInt(ex.sets) || 1;
-      const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
-      const isTimed = ex.timed === true;
-      const isCond = ex.name.toLowerCase().includes('bike') || ex.reps.includes('min');
+```
+day.exercises.forEach((origEx, i) => {
+  const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, false);
+  const base = `w${logWeek}_d${di}_e${i}`;
+  const note = data[base+'_note'];
+  const numSets = parseInt(ex.sets) || 1;
+  const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
+  const isTimed = ex.timed === true;
+  const isCond = ex.name.toLowerCase().includes('bike') || ex.name.toLowerCase().includes('amrap') || ex.reps.includes('min');
 
-      let setLines = [];
-      for (let s = 0; s < numSets; s++) {
-        const sk = `${base}_s${s}`;
-        const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
-              pain = data[sk+'_pain'], sec = data[sk+'_sec'];
-        if (load||reps||rpe||pain||sec) {
-          if (isEccentric) {
-            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
-          } else if (isCond || (isTimed && !ex.flags.includes('t'))) {
-            setLines.push(`    Set ${s+1}: time=${reps||'—'} rpe=${rpe||'—'}`);
-          } else {
-            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
-          }
-        }
+  let setLines = [];
+  for (let s = 0; s < numSets; s++) {
+    const sk = `${base}_s${s}`;
+    const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
+          pain = data[sk+'_pain'], sec = data[sk+'_sec'];
+    if (load||reps||rpe||pain||sec) {
+      if (isEccentric) {
+        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'}/arm tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
+      } else if (isCond || (isTimed && !ex.flags.includes('t'))) {
+        setLines.push(`    Set ${s+1}: time=${reps||'—'} rpe=${rpe||'—'}`);
+      } else {
+        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
       }
-      if (setLines.length || note || isSwapped) {
-        const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
-        out += `  ${ex.name}${subTag}:\n`;
-        if (setLines.length) out += setLines.join('\n') + '\n';
-        if (note) out += `    Note: ${note}\n`;
+    }
+  }
+  if (setLines.length || note || isSwapped) {
+    const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
+    out += `  ${ex.name}${subTag}:\n`;
+    if (setLines.length) out += setLines.join('\n') + '\n';
+    if (note) out += `    Note: ${note}\n`;
+  }
+});
+
+out += '  [Mobility]\n';
+day.mobility.forEach((origEx, i) => {
+  const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, true);
+  const base = `w${logWeek}_d${di}_e${exOffset+i}`;
+  const note = data[base+'_note'];
+  const numSets = parseInt(ex.sets) || 1;
+  const isEccentric = ex.name.toLowerCase().includes('eccentric') && ex.name.toLowerCase().includes('curl');
+  const isTendon = ex.flags.includes('t');
+  const isTimed = ex.timed === true;
+
+  let setLines = [];
+  for (let s = 0; s < numSets; s++) {
+    const sk = `${base}_s${s}`;
+    const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
+          pain = data[sk+'_pain'], sec = data[sk+'_sec'];
+    if (load||reps||rpe||pain||sec) {
+      if (isEccentric) {
+        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'}/arm tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
+      } else if (isTendon) {
+        setLines.push(`    Set ${s+1}: load=${load||'—'} time=${reps||'—'}sec rpe=${rpe||'—'} pain=${pain||'—'}/10`);
+      } else if (isTimed) {
+        setLines.push(`    Set ${s+1}: time=${reps||'—'}sec rpe=${rpe||'—'}`);
+      } else {
+        setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
       }
-    });
+    }
+  }
+  if (setLines.length || note || isSwapped) {
+    const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
+    out += `  ${ex.name}${subTag}:\n`;
+    if (setLines.length) out += setLines.join('\n') + '\n';
+    if (note) out += `    Note: ${note}\n`;
+  }
+});
+out += '\n';
+```
 
-    out += '  [Mobility]\n';
-    day.mobility.forEach((origEx, i) => {
-      const {ex, isSwapped, originalName} = getEffectiveEx(logWeek, di, i, true);
-      const base = `w${logWeek}_d${di}_e${exOffset+i}`;
-      const note = data[base+'_note'];
-      const numSets = parseInt(ex.sets) || 1;
-      const isEccentric = ex.name.toLowerCase().includes('eccentric curl');
-      const isTendon = ex.flags.includes('t');
-      const isTimed = ex.timed === true;
+});
 
-      let setLines = [];
-      for (let s = 0; s < numSets; s++) {
-        const sk = `${base}_s${s}`;
-        const load = data[sk+'_load'], reps = data[sk+'_reps'], rpe = data[sk+'_rpe'],
-              pain = data[sk+'_pain'], sec = data[sk+'_sec'];
-        if (load||reps||rpe||pain||sec) {
-          if (isEccentric) {
-            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} tempo=${sec||'—'}sec pain=${pain||'—'}/10`);
-          } else if (isTendon) {
-            setLines.push(`    Set ${s+1}: load=${load||'—'} time=${reps||'—'}sec rpe=${rpe||'—'} pain=${pain||'—'}/10`);
-          } else if (isTimed) {
-            setLines.push(`    Set ${s+1}: time=${reps||'—'}sec rpe=${rpe||'—'}`);
-          } else {
-            setLines.push(`    Set ${s+1}: load=${load||'—'} reps=${reps||'—'} rpe=${rpe||'—'}`);
-          }
-        }
-      }
-      if (setLines.length || note || isSwapped) {
-        const subTag = isSwapped ? ` [SUB for ${originalName}]` : '';
-        out += `  ${ex.name}${subTag}:\n`;
-        if (setLines.length) out += setLines.join('\n') + '\n';
-        if (note) out += `    Note: ${note}\n`;
-      }
-    });
-    out += '\n';
-  });
+out += `WEEKLY NOTES\n${'─'.repeat(44)}\n`;
+REPORT_PROMPTS.forEach((p, pi) => {
+const val = data[reportKey(logWeek, pi)] || ‘—’;
+out += `${p}\n${val}\n\n`;
+});
 
-  out += `WEEKLY NOTES\n${'─'.repeat(44)}\n`;
-  REPORT_PROMPTS.forEach((p, pi) => {
-    const val = data[reportKey(logWeek, pi)] || '—';
-    out += `${p}\n${val}\n\n`;
-  });
-
-  navigator.clipboard.writeText(out).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'Copy Report to Clipboard';
-      btn.classList.remove('copied');
-    }, 2500);
-  }).catch(() => {
-    prompt("Copy this report:", out);
-  });
+navigator.clipboard.writeText(out).then(() => {
+const btn = document.querySelector(’.copy-btn’);
+btn.textContent = ‘Copied!’;
+btn.classList.add(‘copied’);
+setTimeout(() => {
+btn.textContent = ‘Copy Report to Clipboard’;
+btn.classList.remove(‘copied’);
+}, 2500);
+}).catch(() => {
+prompt(“Copy this report:”, out);
+});
 }
 
 function clearWeek() {
-  if (!confirm(`Clear all log data for Week ${logWeek+1}?`)) return;
-  const data = loadLog();
-  Object.keys(data).forEach(k => {
-    if (k.startsWith(`w${logWeek}_`)) delete data[k];
-  });
-  saveLog(data);
-  renderLogBody();
+if (!confirm(`Clear all log data for Week ${logWeek+1}?`)) return;
+const data = loadLog();
+Object.keys(data).forEach(k => {
+if (k.startsWith(`w${logWeek}_`)) delete data[k];
+});
+saveLog(data);
+renderLogBody();
 }
 
 // ═══════════════════════════════════════════════════════
 // LIBRARY TAB
 // ═══════════════════════════════════════════════════════
 const LIB_FILTER_GROUPS = [
-  { filter:"cat", buttons:[
-    {val:"all",label:"All types"},{val:"strength",label:"Strength"},{val:"skill",label:"Skill"},
-    {val:"mobility",label:"Mobility"},{val:"conditioning",label:"Conditioning"}
-  ]},
-  { filter:"risk", buttons:[
-    {val:"all",label:"Any risk"},{val:"none",label:"No risk"},{val:"low",label:"Low"},
-    {val:"moderate",label:"Moderate"},{val:"high",label:"High"}
-  ]},
-  { filter:"pattern", buttons:[
-    {val:"all",label:"Any pattern"},{val:"push",label:"Push"},{val:"pull",label:"Pull"},
-    {val:"hinge",label:"Hinge"},{val:"squat",label:"Squat"},{val:"core",label:"Core"},{val:"carry",label:"Carry"}
-  ]},
-  { filter:"program", buttons:[
-    {val:"all",label:"All"},{val:"yes",label:"In program"}
-  ]},
+{ filter:“cat”, buttons:[
+{val:“all”,label:“All types”},{val:“strength”,label:“Strength”},{val:“skill”,label:“Skill”},
+{val:“mobility”,label:“Mobility”},{val:“conditioning”,label:“Conditioning”}
+]},
+{ filter:“risk”, buttons:[
+{val:“all”,label:“Any risk”},{val:“none”,label:“No risk”},{val:“low”,label:“Low”},
+{val:“moderate”,label:“Moderate”},{val:“high”,label:“High”}
+]},
+{ filter:“pattern”, buttons:[
+{val:“all”,label:“Any pattern”},{val:“push”,label:“Push”},{val:“pull”,label:“Pull”},
+{val:“hinge”,label:“Hinge”},{val:“squat”,label:“Squat”},{val:“core”,label:“Core”},{val:“carry”,label:“Carry”}
+]},
+{ filter:“program”, buttons:[
+{val:“all”,label:“All”},{val:“yes”,label:“In program”}
+]},
 ];
 
 function buildLibFilters() {
-  const el = document.getElementById('lib-filters');
-  el.innerHTML = LIB_FILTER_GROUPS.map(g =>
-    g.buttons.map(b =>
-      `<button class="lib-filter ${libFilters[g.filter]===b.val?'active':''}" data-filter="${g.filter}" data-val="${b.val}" onclick="setLibFilter('${g.filter}','${b.val}',this)">${b.label}</button>`
-    ).join('')
-  ).join('<span style="width:1px;background:var(--border);margin:0 4px;flex-shrink:0"></span>');
+const el = document.getElementById(‘lib-filters’);
+el.innerHTML = LIB_FILTER_GROUPS.map(g =>
+g.buttons.map(b =>
+`<button class="lib-filter ${libFilters[g.filter]===b.val?'active':''}" data-filter="${g.filter}" data-val="${b.val}" onclick="setLibFilter('${g.filter}','${b.val}',this)">${b.label}</button>`
+).join(’’)
+).join(’<span style="width:1px;background:var(--border);margin:0 4px;flex-shrink:0"></span>’);
 }
 
 function setLibFilter(f, v, el) {
-  libFilters[f] = v;
-  document.querySelectorAll(`.lib-filter[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  renderLibrary();
+libFilters[f] = v;
+document.querySelectorAll(`.lib-filter[data-filter="${f}"]`).forEach(b => b.classList.remove(‘active’));
+el.classList.add(‘active’);
+renderLibrary();
 }
 
 function renderLibrary() {
-  const q = libQuery.toLowerCase();
-  const visible = EXERCISES.filter(ex => {
-    if (libFilters.cat !== 'all' && ex.category !== libFilters.cat) return false;
-    if (libFilters.risk !== 'all' && ex.risk !== libFilters.risk) return false;
-    if (libFilters.pattern !== 'all' && ex.pattern !== libFilters.pattern) return false;
-    if (libFilters.program === 'yes' && !ex.inProgram) return false;
-    if (q) {
-      const s = [ex.name, ex.muscles, ex.pattern, ex.category, ex.equipment.join(' '), ex.notes, ex.difficulty].join(' ').toLowerCase();
-      if (!s.includes(q)) return false;
-    }
-    return true;
-  });
+const q = libQuery.toLowerCase();
+const visible = EXERCISES.filter(ex => {
+if (libFilters.cat !== ‘all’ && ex.category !== libFilters.cat) return false;
+if (libFilters.risk !== ‘all’ && ex.risk !== libFilters.risk) return false;
+if (libFilters.pattern !== ‘all’ && ex.pattern !== libFilters.pattern) return false;
+if (libFilters.program === ‘yes’ && !ex.inProgram) return false;
+if (q) {
+const s = [ex.name, ex.muscles, ex.pattern, ex.category, ex.equipment.join(’ ‘), ex.notes, ex.difficulty].join(’ ’).toLowerCase();
+if (!s.includes(q)) return false;
+}
+return true;
+});
 
-  document.getElementById('lib-count').innerHTML = `Showing <span>${visible.length}</span> of ${EXERCISES.length} movements`;
+document.getElementById(‘lib-count’).innerHTML = `Showing <span>${visible.length}</span> of ${EXERCISES.length} movements`;
 
-  if (visible.length === 0) {
-    document.getElementById('lib-grid').innerHTML = '';
-    document.getElementById('lib-empty').style.display = 'block';
-    return;
-  }
-  document.getElementById('lib-empty').style.display = 'none';
+if (visible.length === 0) {
+document.getElementById(‘lib-grid’).innerHTML = ‘’;
+document.getElementById(‘lib-empty’).style.display = ‘block’;
+return;
+}
+document.getElementById(‘lib-empty’).style.display = ‘none’;
 
-  const riskLabels = {none:"No biceps tendon risk",low:"Low tendon risk",moderate:"Moderate tendon risk",high:"High tendon risk"};
-  document.getElementById('lib-grid').innerHTML = visible.map((ex, vi) => {
-    const tags = [
-      `<span class="lib-tag lib-tag-${ex.category}">${ex.category}</span>`,
-      `<span class="lib-tag lib-tag-plain">${ex.pattern}</span>`,
-      ...ex.equipment.map(e => `<span class="lib-tag lib-tag-plain">${e}</span>`),
-      `<span class="lib-tag lib-tag-plain">${ex.difficulty}</span>`,
-      ex.inProgram ? `<span class="lib-tag lib-tag-inprog">in program</span>` : '',
-    ].join('');
+const riskLabels = {none:“No biceps tendon risk”,low:“Low tendon risk”,moderate:“Moderate tendon risk”,high:“High tendon risk”};
+document.getElementById(‘lib-grid’).innerHTML = visible.map((ex, vi) => {
+const tags = [
+`<span class="lib-tag lib-tag-${ex.category}">${ex.category}</span>`,
+`<span class="lib-tag lib-tag-plain">${ex.pattern}</span>`,
+…ex.equipment.map(e => `<span class="lib-tag lib-tag-plain">${e}</span>`),
+`<span class="lib-tag lib-tag-plain">${ex.difficulty}</span>`,
+ex.inProgram ? `<span class="lib-tag lib-tag-inprog">in program</span>` : ‘’,
+].join(’’);
 
-    return `<div class="lib-card" id="lib-${vi}" onclick="toggleLib(${vi})">
-      <div class="lib-card-header">
-        <div class="lib-risk-dot risk-${ex.risk}" title="${riskLabels[ex.risk]}"></div>
-        <div class="lib-card-name">${ex.name}</div>
-        <div class="lib-card-chev">▾</div>
-      </div>
-      <div class="lib-card-tags">${tags}</div>
-      <div class="lib-card-expand">
-        <div class="lib-muscles"><strong>Muscles:</strong> ${ex.muscles}</div>
-        <div class="lib-notes" style="margin-top:8px">${ex.notes}</div>
-        <div class="lib-risk-label risk-label-${ex.risk}">${riskLabels[ex.risk]}</div>
-      </div>
-    </div>`;
-  }).join('');
+```
+return `<div class="lib-card" id="lib-${vi}" onclick="toggleLib(${vi})">
+  <div class="lib-card-header">
+    <div class="lib-risk-dot risk-${ex.risk}" title="${riskLabels[ex.risk]}"></div>
+    <div class="lib-card-name">${ex.name}</div>
+    <div class="lib-card-chev">▾</div>
+  </div>
+  <div class="lib-card-tags">${tags}</div>
+  <div class="lib-card-expand">
+    <div class="lib-muscles"><strong>Muscles:</strong> ${ex.muscles}</div>
+    <div class="lib-notes" style="margin-top:8px">${ex.notes}</div>
+    <div class="lib-risk-label risk-label-${ex.risk}">${riskLabels[ex.risk]}</div>
+  </div>
+</div>`;
+```
+
+}).join(’’);
 }
 
 function toggleLib(vi) {
-  document.getElementById(`lib-${vi}`).classList.toggle('open');
+document.getElementById(`lib-${vi}`).classList.toggle(‘open’);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1457,10 +1486,11 @@ renderLogBody();
 buildLibFilters();
 renderLibrary();
 
-document.getElementById('lib-search').addEventListener('input', e => {
-  libQuery = e.target.value;
-  renderLibrary();
+document.getElementById(‘lib-search’).addEventListener(‘input’, e => {
+libQuery = e.target.value;
+renderLibrary();
 });
 </script>
+
 </body>
 </html>
